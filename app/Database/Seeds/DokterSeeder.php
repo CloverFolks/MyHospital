@@ -14,13 +14,13 @@ class DokterSeeder extends Seeder
         $faker = \Faker\Factory::create('id_ID');
         for ($i = 0; $i < 20; $i++) {
             $data = [
-
                 'nik' => $faker->nik(),
                 'nama' => $faker->name(),
                 'email'    => $faker->freeEmail(),
                 'alamat' => $faker->address(),
+                'jenis_kelamin' => $faker->boolean(),
                 'image_profile' => $faker->numerify('#.jpg'),
-                'izin_praktek' => $faker->bothify('###/????/???/#/200#'),
+                'izin_praktek' => strtoupper($faker->bothify('###/????/???/#/200#')),
                 'tgl_mulai_bekerja' => $faker->date('Y_m_d'),
                 'no_hp' => $faker->phoneNumber(),
             ];

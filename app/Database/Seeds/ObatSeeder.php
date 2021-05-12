@@ -16,7 +16,7 @@ class ObatSeeder extends Seeder
         for ($i = 0; $i < 20; $i++) {
             $data = [
                 'kode' => $faker->bothify('???#########?#'),
-                'nama_obat' => $faker->word(),
+                'nama_obat' =>  ucwords($faker->words(2, true)),
                 'produsen' => $faker->company(),
             ];
             $this->db->table('obat')->insert($data);
