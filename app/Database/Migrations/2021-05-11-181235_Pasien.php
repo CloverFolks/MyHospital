@@ -15,6 +15,10 @@ class Pasien extends Migration
 				'unsigned'       => true,
 				'auto_increment' => true,
 			],
+			'nik'       => [
+				'type'       => 'VARCHAR',
+				'constraint' => '16',
+			],
 			'image_profile' => [
 				'type' => 'VARCHAR',
 				'constraint' => '20', //masih perlu dicek
@@ -29,7 +33,7 @@ class Pasien extends Migration
 			],
 			'pekerjaan' => [
 				'type' => 'VARCHAR',
-				'constraint' => '20',
+				'constraint' => '36',
 			],
 			'no_hp' => [
 				'type' => 'VARCHAR',
@@ -46,10 +50,6 @@ class Pasien extends Migration
 			'golongan_darah' => [
 				'type' => 'VARCHAR',
 				'constraint' => '5',
-			],
-			'tempat_lahir' => [
-				'type' => 'VARCHAR',
-				'constraint' => '20',
 			],
 			'tgl_lahir' => [
 				'type' => 'DATE',

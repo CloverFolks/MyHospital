@@ -17,7 +17,7 @@ class Obat extends Migration
 			],
 			'kode'       => [
 				'type'       => 'VARCHAR',
-				'constraint' => '20',
+				'constraint' => '10',
 			],
 			'nama_obat' => [
 				'type' => 'VARCHAR',
@@ -30,11 +30,11 @@ class Obat extends Migration
 
 		]);
 		$this->forge->addKey('id', true);
-		$this->forge->createTable('Obat');
+		$this->forge->createTable('obat');
 	}
 
 	public function down()
 	{
-		$this->forge->dropTable('Obat');
+		$this->forge->dropTable('obat');
 	}
 }

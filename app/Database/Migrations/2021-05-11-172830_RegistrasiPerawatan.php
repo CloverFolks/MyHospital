@@ -17,7 +17,7 @@ class RegistrasiPerawatan extends Migration
 			],
 			'no_registrasi'       => [
 				'type'       => 'VARCHAR',
-				'constraint' => '6',
+				'constraint' => '10',
 			],
 			'tgl_masuk' => [
 				'type' => 'DATE',
@@ -38,10 +38,6 @@ class RegistrasiPerawatan extends Migration
 			'id_pasien' => [
 				'type' => 'INT',
 				'constraint' => '3',
-			],
-			'nama_pasien' => [
-				'type' => 'VARCHAR',
-				'constraint' => '30',
 			],
 		]);
 		$this->forge->addKey('id', true);

@@ -25,11 +25,11 @@ class PemberianTindakan extends Migration
 			],
 			'id_dokter' => [
 				'type' => 'INT',
-				'constraint' => '3', //masih perlu dicek
+				'constraint' => '11', //masih perlu dicek
 			],
 			'id_registrasi_perawatan' => [
 				'type' => 'INT',
-				'constraint' => '3',
+				'constraint' => '11',
 			],
 			'metode_pembayaran' => [
 				'type' => 'VARCHAR',

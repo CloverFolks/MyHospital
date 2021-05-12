@@ -31,6 +31,10 @@ class Dokter extends Migration
 				'type' => 'VARCHAR',
 				'constraint' => '50',
 			],
+			'jenis_kelamin' => [
+				'type' => 'BOOLEAN',
+				'constraint' => null,
+			],
 			'image_profile' => [
 				'type' => 'VARCHAR',
 				'constraint' => '20', //masih perlu dicek

@@ -16,8 +16,8 @@ class PemberianObat extends Migration
 				'auto_increment' => true,
 			],
 			'id_obat' => [
-				'type' => 'INT',
-				'constraint' => '5', //masih perlu dicek
+				'type' => 'VARCHAR',
+				'constraint' => '10', //masih perlu dicek
 			],
 			'kuantitas' => [
 				'type' => 'INT',
@@ -29,7 +29,7 @@ class PemberianObat extends Migration
 			],
 			'id_registrasi_perawatan' => [
 				'type' => 'INT',
-				'constraint' => '3',
+				'constraint' => '11',
 			],
 			'biaya' => [
 				'type' => 'INT',
