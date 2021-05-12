@@ -39,6 +39,10 @@ class ComposerStaticInit61a67d42d3155708c2f5f0b9b987f27a
             'Prophecy\\' => 9,
             'PhpParser\\' => 10,
         ),
+        'M' => 
+        array (
+            'Myth\\Auth\\' => 10,
+        ),
         'L' => 
         array (
             'Laminas\\ZendFrameworkBridge\\' => 28,
@@ -102,6 +106,10 @@ class ComposerStaticInit61a67d42d3155708c2f5f0b9b987f27a
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
+        ),
+        'Myth\\Auth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/myth/auth/src',
         ),
         'Laminas\\ZendFrameworkBridge\\' => 
         array (

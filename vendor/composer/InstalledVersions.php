@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '723f178a8fe1bc545d2e5719ed1ac2e97f473add',
+    'reference' => '6bb1ed445677ebdf9e99974cf4640846f4b3c2e4',
     'name' => 'codeigniter4/appstarter',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '723f178a8fe1bc545d2e5719ed1ac2e97f473add',
+      'reference' => '6bb1ed445677ebdf9e99974cf4640846f4b3c2e4',
     ),
     'codeigniter4/framework' => 
     array (
@@ -119,6 +119,15 @@ private static $installed = array (
       array (
         0 => '1.10.2',
       ),
+    ),
+    'myth/auth' => 
+    array (
+      'pretty_version' => '1.0-beta.3',
+      'version' => '1.0.0.0-beta3',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '85572d1f1bb312d7d2e0a444b45531170773d2de',
     ),
     'nikic/php-parser' => 
     array (
