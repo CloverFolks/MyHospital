@@ -6,6 +6,6 @@ class Perawatan extends BaseController
 {
     public function index()
     {
-        return view('pages/registrasi_perawatan.php');
+        return view('perawatan/index.php');
     }
 }
