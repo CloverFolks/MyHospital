@@ -7,8 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInit61a67d42d3155708c2f5f0b9b987f27a
 {
     public static $files = array (
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '7e9bd612cc444b3eed788ebbe46263a0' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/autoload.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '3917c79c5052b270641b5a200963dbc2' => __DIR__ . '/..' . '/kint-php/kint/init.php',
@@ -38,6 +38,10 @@ class ComposerStaticInit61a67d42d3155708c2f5f0b9b987f27a
             'Psr\\Container\\' => 14,
             'Prophecy\\' => 9,
             'PhpParser\\' => 10,
+        ),
+        'M' => 
+        array (
+            'Myth\\Auth\\' => 10,
         ),
         'L' => 
         array (
@@ -72,8 +76,8 @@ class ComposerStaticInit61a67d42d3155708c2f5f0b9b987f27a
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -102,6 +106,10 @@ class ComposerStaticInit61a67d42d3155708c2f5f0b9b987f27a
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
+        ),
+        'Myth\\Auth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/myth/auth/src',
         ),
         'Laminas\\ZendFrameworkBridge\\' => 
         array (
