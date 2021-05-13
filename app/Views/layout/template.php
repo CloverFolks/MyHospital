@@ -26,66 +26,66 @@
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
-                        <!-- Bagian Lihat -->
                         <li class="sidebar-title">Main Menu</li>
 
-                        <li class="sidebar-item active">
+                        <li class="sidebar-item has-sub">
                             <a href="#" class="sidebar-link">
-                                <i data-feather="file" width="20"></i>
-                                <span>Registrasi Perawatan</span>
+                                <i data-feather="activity" width="20"></i>
+                                <span>Perawatan</span>
                             </a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="<?= base_url('/perawatan'); ?>">Lihat Daftar Perawatan</a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url('/perawatan/create'); ?>">Tambah Registrasi Perawatan</a>
+                                </li>
+                            </ul>
                         </li>
 
-                        <li class="sidebar-item">
+                        <li class="sidebar-item has-sub">
                             <a href="#" class="sidebar-link">
                                 <i data-feather="user" width="20"></i>
-                                <span>Data Dokter</span>
+                                <span>Dokter</span>
                             </a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="<?= base_url('/dokter'); ?>">Lihat Daftar Dokter</a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url('/dokter/create'); ?>">Tambah Data Dokter</a>
+                                </li>
+                            </ul>
                         </li>
 
-                        <li class="sidebar-item">
+                        <li class="sidebar-item has-sub">
                             <a href="#" class="sidebar-link">
                                 <i data-feather="users" width="20"></i>
-                                <span>Data Pasien</span>
+                                <span>Pasien</span>
                             </a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="<?= base_url('/pasien'); ?>">Lihat Daftar Pasien</a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url('/pasien/create'); ?>">Tambah Data Pasien</a>
+                                </li>
+                            </ul>
                         </li>
 
-                        <li class="sidebar-item">
+                        <li class="sidebar-item has-sub">
                             <a href="#" class="sidebar-link">
                                 <i data-feather="briefcase" width="20"></i>
-                                <span>Data Obat</span>
+                                <span>Obat</span>
                             </a>
-                        </li>
-
-                        <!-- Bagian Input -->
-                        <li class="sidebar-title">Forms Input</li>
-
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">
-                                <i data-feather="file-text" width="20"></i>
-                                <span>Form Registrasi Perawatan</span>
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">
-                                <i data-feather="file-text" width="20"></i>
-                                <span>Form Dokter</span>
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">
-                                <i data-feather="file-text" width="20"></i>
-                                <span>Form Pasien</span>
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">
-                                <i data-feather="file-text" width="20"></i>
-                                <span>Form Obat</span>
-                            </a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="<?= base_url('/obat'); ?>">Lihat Daftar Obat</a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url('/obat/create'); ?>">Tambah Data Obat</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
