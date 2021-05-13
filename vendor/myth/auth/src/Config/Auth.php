@@ -1,4 +1,6 @@
-<?php namespace Myth\Auth\Config;
+<?php
+
+namespace Myth\Auth\Config;
 
 use CodeIgniter\Config\BaseConfig;
 use Myth\Auth\Authentication\LocalAuthenticator;
@@ -113,7 +115,8 @@ class Auth extends BaseConfig
     // When enabled, every registered user will receive an email message
     // with a special link he have to confirm to activate his account.
     //
-    public $requireActivation = 'Myth\Auth\Authentication\Activators\EmailActivator';
+    // public $requireActivation = 'Myth\Auth\Authentication\Activators\EmailActivator';
+    public $requireActivation = false;
 
     //--------------------------------------------------------------------
     // Allow to reset password via email
@@ -249,6 +252,4 @@ class Auth extends BaseConfig
     // in seconds.
     //
     public $resetTime = 3600;
-
-
 }

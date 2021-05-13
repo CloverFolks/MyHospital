@@ -1,4 +1,6 @@
-<?php namespace Myth\Auth\Filters;
+<?php
+
+namespace Myth\Auth\Filters;
 
 use Config\Services;
 use CodeIgniter\HTTP\RequestInterface;
@@ -21,28 +23,25 @@ class LoginFilter implements FilterInterface
 	 *
 	 * @return mixed
 	 */
-	public function before(RequestInterface $request)
+	public function before(RequestInterface $request, $arguments = NULL)
 	{
-		if (! function_exists('logged_in'))
-		{
+		if (!function_exists('logged_in')) {
 			helper('auth');
 		}
 
-		$current = (string)current_url(true)
+		$current = (string) current_url(true)
 			->setHost('')
 			->setScheme('')
 			->stripQuery('token');
 
 		// Make sure this isn't already a login route
-		if (in_array((string)$current, [route_to('login'), route_to('forgot'), route_to('reset-password'), route_to('register')]))
-		{
+		if (in_array((string) $current, [route_to('login'), route_to('forgot'), route_to('reset-password'), route_to('register')])) {
 			return;
 		}
 
 		// if no user is logged in then send to the login form
 		$authenticate = Services::authentication();
-		if (! $authenticate->check())
-		{
+		if (!$authenticate->check()) {
 			session()->set('redirect_url', current_url());
 			return redirect('login');
 		}
@@ -61,9 +60,8 @@ class LoginFilter implements FilterInterface
 	 *
 	 * @return mixed
 	 */
-	public function after(RequestInterface $request, ResponseInterface $response)
+	public function after(RequestInterface $request, ResponseInterface $response, $arguments = NULL)
 	{
-
 	}
 
 	//--------------------------------------------------------------------

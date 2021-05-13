@@ -112,7 +112,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i data-feather="log-out"></i> Logout</a>
+                                <a class="dropdown-item" href="/logout"><i data-feather="log-out"></i> Logout</a>
                             </div>
                         </li>
                     </ul>
