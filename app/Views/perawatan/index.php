@@ -21,14 +21,14 @@
                         <th scope="col">Poliklinik</th>
                         <th scope="col">Tanggal Masuk</th>
                         <th scope="col">Tanggal Keluar</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $i = 1 ?>
                     <?php foreach ($perawatan as $p) : ?>
                         <tr>
-                            <th scope="row"><?= $i++; ?></th>
+                            <td><?= $i++; ?></td>
                             <td><?= $p['no_registrasi']; ?></td>
                             <td><?= $p['poliklinik']; ?></td>
                             <td><?= $p['tgl_masuk']; ?></td>
