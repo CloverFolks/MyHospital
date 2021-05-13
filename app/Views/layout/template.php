@@ -4,16 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+    <title><?= $title; ?> | MyHospital</title>
 
     <link rel="stylesheet" href="/css/bootstrap.css" />
     <link rel="stylesheet" href="/css/app.css" />
-    <!-- 
-    <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet" />
-    <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet" />
-    <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet" /> 
-    <link rel="stylesheet" href="assets/vendors/chartjs/Chart.min.css" />
-    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css" /> -->
 </head>
 
 <body>
@@ -104,7 +98,7 @@
                         <li class="dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                                 <div class="avatar me-1">
-                                    <img src="/images/avatar/1.jpg" alt="" srcset="" />
+                                    <img src="/images/avatar/2.jpg" alt="" />
                                 </div>
                                 <div class="d-none d-md-block d-lg-inline-block">
                                     Hi, Admin
@@ -119,14 +113,10 @@
                 </div>
             </nav>
 
-            <div class="main-content container-fluid">
-                <section class="section">
-                    <div class="row">
-                        <div class="card">
-                            <?= $this->renderSection('content'); ?>
-                        </div>
-                    </div>
-                </section>
+            <div class="main-content">
+                <div class="card pt-4 p-3">
+                    <?= $this->renderSection('content'); ?>
+                </div>
             </div>
 
             <footer>
