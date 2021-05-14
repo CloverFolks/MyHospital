@@ -114,9 +114,7 @@
             </nav>
 
             <div class="main-content">
-                <div class="card pt-4 p-3">
-                    <?= $this->renderSection('content'); ?>
-                </div>
+                <?= $this->renderSection('content'); ?>
             </div>
 
             <footer>
