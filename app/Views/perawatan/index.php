@@ -49,8 +49,8 @@
                                 <td><?= $item['tgl_masuk']; ?></td>
                                 <td><?= $item['tgl_keluar']; ?></td>
                                 <td>
-                                    <a href="<?= base_url('/perawatan/' . $item['id']); ?>" class="btn btn-outline-success"><i data-feather="eye"></i></a>
-                                    <a href="<?= base_url('/perawatan/' . $item['id'] . '/edit'); ?>" class="btn btn-outline-primary"><i data-feather="edit"></i></a>
+                                    <a href="<?= base_url('/perawatan/detail/' . $item['id']); ?>" class="btn btn-outline-success"><i data-feather="eye"></i></a>
+                                    <a href="<?= base_url('/perawatan/edit/' . $item['id']); ?>" class="btn btn-outline-primary"><i data-feather="edit"></i></a>
                                     <a href="<?= base_url('/perawatan/' . $item['id'] . '/delete'); ?>" class="btn btn-outline-danger"><i data-feather="trash-2"></i></a>
                                 </td>
                             </tr>
