@@ -9,35 +9,35 @@ class RegistrasiPerawatan extends Migration
 	public function up()
 	{
 		$this->forge->addField([
-			'id'          => [
+			'id' => [
 				'type'           => 'INT',
 				'constraint'     => 11,
 				'unsigned'       => true,
 				'auto_increment' => true,
 			],
-			'no_registrasi'       => [
-				'type'       => 'VARCHAR',
-				'constraint' => '10',
+			'no_registrasi' => [
+				'type'			=> 'CHAR',
+				'constraint'	=> '10',
 			],
 			'tgl_masuk' => [
-				'type' => 'DATE',
-				'constraint' => null,
+				'type'			=> 'DATETIME',
+				'constraint'	=> null,
 			],
 			'tgl_keluar' => [
-				'type' => 'DATE',
-				'constraint' => null,
+				'type' 			=> 'DATETIME',
+				'constraint' 	=> null,
 			],
 			'poliklinik' => [
-				'type' => 'VARCHAR',
-				'constraint' => '20',
+				'type'			=> 'VARCHAR',
+				'constraint' 	=> '50',
 			],
 			'id_dokter' => [
-				'type' => 'INT',
-				'constraint' => '3', //masih perlu dicek
+				'type'			=> 'INT',
+				'constraint'	=> '11',
 			],
 			'id_pasien' => [
-				'type' => 'INT',
-				'constraint' => '3',
+				'type'			=> 'INT',
+				'constraint'	=> '11',
 			],
 		]);
 		$this->forge->addKey('id', true);
