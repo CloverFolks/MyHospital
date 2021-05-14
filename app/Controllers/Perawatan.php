@@ -15,9 +15,25 @@ class Perawatan extends BaseController
 
     public function index()
     {
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $perawatan =  $this->perawatanModel->search($keyword);
+        } else {
+            $perawatan = $this->perawatanModel;
+        }
+
+        $itemsCount = 6;
+        $currentPage =
+            $this->request->getVar('page_perawatan') ?
+            $this->request->getVar('page_perawatan') : 1;
+        $startingNumber = 1 + $itemsCount * ($currentPage - 1);
+
         $data = [
             'title' => 'Daftar Perawatan',
-            'perawatan' => $this->perawatanModel->findAll()
+            'perawatanList' => $perawatan->paginate(6, 'perawatan'),
+            'pager' => $perawatan->pager,
+            'startingNumber' => $startingNumber,
+            'keyword' => $keyword
         ];
         return view('perawatan/index', $data);
     }
