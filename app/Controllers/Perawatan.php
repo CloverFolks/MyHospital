@@ -45,4 +45,16 @@ class Perawatan extends BaseController
         ];
         return view('perawatan/create', $data);
     }
+
+    public function detail()
+    {
+        $data = [
+            'title' => 'Detail Perawatan'
+        ];
+        return view('perawatan/detail', $data);
+    }
+
+    public function edit()
+    {
+    }
 }
