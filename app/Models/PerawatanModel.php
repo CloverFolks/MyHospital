@@ -15,6 +15,7 @@ class PerawatanModel extends Model
             ->like('no_registrasi', $keyword)
             ->orLike('poliklinik', $keyword)
             ->orLike('tgl_masuk', $keyword)
-            ->orLike('tgl_keluar', $keyword);
+            ->orLike('tgl_keluar', $keyword)
+            ->orderBy('tgl_masuk', 'DESC');
     }
 }
