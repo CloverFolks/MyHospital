@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Raleway:wght@400;500&display=swap);
+/* @import url(https://fonts.googleapis.com/css2?family=Raleway:wght@400;500&display=swap);
 
 .color-primary {
   color: #5a8dee;
@@ -34,9 +34,16 @@
 
 .color-link {
   color: #2178d1;
-}
+} */
 
-* {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.sidebar-wrapper,
+.navbar {
   font-family: Raleway;
 }
 
@@ -1196,7 +1203,7 @@ footer {
 .navbar.navbar-header .dropdown > a:after {
   display: none;
 }
-
+/* 
 .pagination.pagination-primary .page-item.active .page-link {
   background-color: #5a8dee;
   border-color: #5a8dee;
@@ -1249,8 +1256,8 @@ footer {
   background-color: #2178d1;
   border-color: #2178d1;
   box-shadow: 0 2px 5px rgba(33, 120, 209, 0.3);
-}
-
+} */
+/* 
 .page-item:not(.active) .page-link:hover {
   color: #000;
 }
@@ -1276,7 +1283,7 @@ footer {
 
 .page-item:last-child {
   margin-left: 0.4rem;
-}
+} */
 
 .dataTable-table td,
 .dataTable-table thead th,
