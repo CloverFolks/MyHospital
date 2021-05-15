@@ -8,6 +8,15 @@ class PerawatanModel extends Model
 {
     protected $table = 'registrasi_perawatan';
 
+    public function getPerawatan($id = false)
+    {
+        if (!$id) {
+            return $this->findAll();
+        } else {
+            return $this->where(['id' => $id])->first();
+        }
+    }
+
     public function search($keyword)
     {
         return $this
