@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row mx-3 mb-3">
         <div class="col">
-            <h1 class=""><?= $title; ?></h1>
+            <h1><?= $title; ?></h1>
             <?php if ($keyword) : ?>
                 <p>Menampilkan <?= sizeOf($perawatanList); ?> hasil pencarian dengan kata kunci '<?= $keyword; ?>'. <a href="<?= base_url('/perawatan'); ?>">Reset pencarian.</a></p>
             <?php endif; ?>
