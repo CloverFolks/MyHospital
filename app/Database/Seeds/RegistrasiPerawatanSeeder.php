@@ -11,51 +11,22 @@ class RegistrasiPerawatanSeeder extends Seeder
 {
     public function run()
     {
-        $faker = \Faker\Factory::create('id_ID');
-        for ($i = 0; $i < 6; $i++) {
+        $faker = \Faker\Factory::create();
+
+        $poliklinik = array("Bedah", "Penyakit Dalam", "Obstetri dan Ginekologi", "Anak", "Jantung", "Syaraf", "THT", "Mata", "Paru", "TB-MDR", "Anestesiologi", "DOTS TB", "Gigi", "Dokter Gigi Spesialis", "Psikologi", "Tumbuh Kembang Anak", "Kulit dan Kelamin");
+
+        for ($i = 0; $i < 100; $i++) {
+            $timeMasuk = $faker->unixTime();
+            $timeKeluar = $timeMasuk + $faker->numberBetween(86400, 60 * 86400);
             $data = [
-                [
-                    'no_registrasi' => $faker->numerify('##########'),
-                    'tgl_masuk' => $faker->date('Y_m_d'),
-                    'tgl_keluar' => $faker->date('Y_m_d'),
-                    'poliklinik' => 'Kebidanan',
-                    'id_dokter'    => $faker->numberBetween(1, 20),
-                    'id_pasien'    => $faker->numberBetween(1, 20)
-                ],
-                [
-                    'no_registrasi' => $faker->numerify('##########'),
-                    'tgl_masuk' => $faker->date('Y_m_d'),
-                    'tgl_keluar' => $faker->date('Y_m_d'),
-                    'poliklinik' => 'Anak',
-                    'id_dokter'    => $faker->numberBetween(1, 20),
-                    'id_pasien'    => $faker->numberBetween(1, 20)
-                ],
-                [
-                    'no_registrasi' => $faker->numerify('##########'),
-                    'tgl_masuk' => $faker->date('Y_m_d'),
-                    'tgl_keluar' => $faker->date('Y_m_d'),
-                    'poliklinik' => 'Bedah Umum',
-                    'id_dokter'    => $faker->numberBetween(1, 20),
-                    'id_pasien'    => $faker->numberBetween(1, 20)
-                ],
-                [
-                    'no_registrasi' => $faker->numerify('##########'),
-                    'tgl_masuk' => $faker->date('Y_m_d'),
-                    'tgl_keluar' => $faker->date('Y_m_d'),
-                    'poliklinik' => 'Bedah Plastik',
-                    'id_dokter'    => $faker->numberBetween(1, 20),
-                    'id_pasien'    => $faker->numberBetween(1, 20)
-                ],
-                [
-                    'no_registrasi' => $faker->numerify('##########'),
-                    'tgl_masuk' => $faker->date('Y_m_d'),
-                    'tgl_keluar' => $faker->date('Y_m_d'),
-                    'poliklinik' => 'Bedah Ortophedi',
-                    'id_dokter'    => $faker->numberBetween(1, 20),
-                    'id_pasien'    => $faker->numberBetween(1, 20)
-                ],
+                'no_registrasi' => $faker->unique()->numerify('##########'),
+                'tgl_masuk'     => Time::createFromTimestamp($timeMasuk),
+                'tgl_keluar'    => Time::createFromTimestamp($timeKeluar),
+                'poliklinik'    => $poliklinik[$faker->numberBetween(0, 16)],
+                'id_dokter'     => $faker->numberBetween(1, 20),
+                'id_pasien'     => $faker->numberBetween(1, 20)
             ];
-            $this->db->table('registrasi_perawatan')->insertBatch($data);
+            $this->db->table('registrasi_perawatan')->insert($data);
         }
     }
 }
