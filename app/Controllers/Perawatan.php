@@ -30,6 +30,7 @@ class Perawatan extends BaseController
 
         $data = [
             'title' => 'Daftar Perawatan',
+            'menu' => 'perawatan',
             'perawatanList' => $perawatan->paginate(6, 'perawatan'),
             'pager' => $perawatan->pager,
             'startingNumber' => $startingNumber,
@@ -41,7 +42,8 @@ class Perawatan extends BaseController
     public function create()
     {
         $data = [
-            'title' => 'Registrasi Perawatan'
+            'title' => 'Registrasi Perawatan',
+            'menu' => 'perawatan'
         ];
         return view('perawatan/create', $data);
     }
@@ -49,7 +51,8 @@ class Perawatan extends BaseController
     public function detail()
     {
         $data = [
-            'title' => 'Detail Perawatan'
+            'title' => 'Detail Perawatan',
+            'menu' => 'perawatan'
         ];
         return view('perawatan/detail', $data);
     }

@@ -22,7 +22,7 @@
                     <ul class="menu">
                         <li class="sidebar-title">Main Menu</li>
 
-                        <li class="sidebar-item has-sub">
+                        <li class="sidebar-item has-sub <?= ($menu == 'perawatan') ? 'active' : ''; ?>">
                             <a href="#" class="sidebar-link">
                                 <i data-feather="activity" width="20"></i>
                                 <span>Perawatan</span>
@@ -37,7 +37,7 @@
                             </ul>
                         </li>
 
-                        <li class="sidebar-item has-sub">
+                        <li class="sidebar-item has-sub <?= ($menu == 'dokter') ? 'active' : ''; ?>">
                             <a href="#" class="sidebar-link">
                                 <i data-feather="user" width="20"></i>
                                 <span>Dokter</span>
@@ -52,7 +52,7 @@
                             </ul>
                         </li>
 
-                        <li class="sidebar-item has-sub">
+                        <li class="sidebar-item has-sub <?= ($menu == 'pasien') ? 'active' : ''; ?>">
                             <a href="#" class="sidebar-link">
                                 <i data-feather="users" width="20"></i>
                                 <span>Pasien</span>
@@ -67,7 +67,7 @@
                             </ul>
                         </li>
 
-                        <li class="sidebar-item has-sub">
+                        <li class="sidebar-item has-sub <?= ($menu == 'obat') ? 'active' : ''; ?>">
                             <a href="#" class="sidebar-link">
                                 <i data-feather="briefcase" width="20"></i>
                                 <span>Obat</span>
