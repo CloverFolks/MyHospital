@@ -2,6 +2,11 @@
 
 namespace App\Controllers;
 
+use App\Models\DokterModel;
+use App\Models\PasienModel;
+use App\Models\ObatModel;
+use App\Models\PemberianObatModel;
+use App\Models\PemberianTindakanModel;
 use App\Models\PerawatanModel;
 
 class Perawatan extends BaseController
@@ -48,12 +53,29 @@ class Perawatan extends BaseController
         return view('perawatan/create', $data);
     }
 
-    public function detail()
+    public function detail($id)
     {
+        $dokterModel = new DokterModel();
+        $pasienModel = new PasienModel();
+        $pemberianObatModel = new PemberianObatModel();
+        $pemberianTindakanModel = new PemberianTindakanModel();
+
+        $perawatan = $this->perawatanModel->getPerawatan($id);
+        $dokter = $dokterModel->getDokter($perawatan['id_dokter']);
+        $pasien = $pasienModel->getPasien($perawatan['id_pasien']);
+        $riwayatTindakan = $pemberianTindakanModel->getPemberianTindakan($id);
+        $riwayatObat = $pemberianObatModel->getPemberianObat($id);
+
         $data = [
             'title' => 'Detail Perawatan',
-            'menu' => 'perawatan'
+            'menu' => 'perawatan',
+            'perawatan' => $perawatan,
+            'dokter' => $dokter,
+            'pasien' => $pasien,
+            'riwayatObat' => $riwayatObat,
+            'riwayatTindakan' => $riwayatTindakan
         ];
+
         return view('perawatan/detail', $data);
     }
 
