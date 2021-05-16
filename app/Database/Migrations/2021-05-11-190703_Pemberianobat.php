@@ -9,35 +9,35 @@ class PemberianObat extends Migration
 	public function up()
 	{
 		$this->forge->addField([
-			'id'          => [
+			'id' => [
 				'type'           => 'INT',
 				'constraint'     => 11,
 				'unsigned'       => true,
 				'auto_increment' => true,
 			],
 			'id_obat' => [
-				'type' => 'VARCHAR',
-				'constraint' => '10', //masih perlu dicek
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 10, //masih perlu dicek
 			],
 			'kuantitas' => [
-				'type' => 'INT',
-				'constraint' => '5',
+				'type'			=> 'INT',
+				'constraint'	=> 5,
 			],
 			'tanggal' => [
-				'type' => 'DATE',
-				'constraint' => null,
+				'type'			=> 'DATE',
+				'constraint'	=> null,
 			],
 			'id_registrasi_perawatan' => [
-				'type' => 'INT',
-				'constraint' => '11',
+				'type'			=> 'INT',
+				'constraint'	=> 11,
 			],
 			'biaya' => [
-				'type' => 'INT',
-				'constraint' => 10,
+				'type'			=> 'INT',
+				'constraint'	=> 11,
 			],
 			'metode_pembayaran' => [
-				'type' => 'VARCHAR',
-				'constraint' => '20',
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 20,
 			],
 
 		]);
