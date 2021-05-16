@@ -135,9 +135,9 @@ class Dokter extends BaseController
         //ambil jenis kelamin
         $jeniskelamin = $this->request->getVar('jenis_kelamin');
         if ($jeniskelamin == 'laki-laki') {
-            $jenis_kelamin = 1;
-        } else {
             $jenis_kelamin = 0;
+        } else {
+            $jenis_kelamin = 1;
         }
 
         $this->dokterModel->save([
@@ -307,9 +307,9 @@ class Dokter extends BaseController
         //ambil jenis kelamin
         $jeniskelamin = $this->request->getVar('jenis_kelamin');
         if ($jeniskelamin == 'laki-laki') {
-            $jenis_kelamin = 1;
-        } else {
             $jenis_kelamin = 0;
+        } else {
+            $jenis_kelamin = 1;
         }
 
         $this->dokterModel->save([
