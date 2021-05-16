@@ -19,13 +19,17 @@ class Dokter extends Migration
 				'type'       => 'VARCHAR',
 				'constraint' => '16',
 			],
+			'nip'       => [
+				'type'       => 'VARCHAR',
+				'constraint' => '18',
+			],
 			'nama' => [
 				'type' => 'VARCHAR',
 				'constraint' => '30',
 			],
 			'email' => [
 				'type' => 'VARCHAR',
-				'constraint' => '20',
+				'constraint' => '30',
 			],
 			'alamat' => [
 				'type' => 'VARCHAR',
@@ -37,7 +41,7 @@ class Dokter extends Migration
 			],
 			'image_profile' => [
 				'type' => 'VARCHAR',
-				'constraint' => '20', //masih perlu dicek
+				'constraint' => '50', //masih perlu dicek
 			],
 			'izin_praktek' => [
 				'type' => 'VARCHAR',
