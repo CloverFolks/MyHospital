@@ -288,7 +288,7 @@ class Dokter extends BaseController
             ]
 
         ])) {
-            return redirect()->to('/dokter/create')->withInput();
+            return redirect()->to('/dokter/edit')->withInput();
         }
 
 
