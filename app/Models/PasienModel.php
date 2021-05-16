@@ -16,4 +16,9 @@ class PasienModel extends Model
             return $this->where(['id' => $id])->first();
         }
     }
+
+    public function getPasienByNik($nik)
+    {
+        return $this->where(['nik' => $nik])->first();
+    }
 }
