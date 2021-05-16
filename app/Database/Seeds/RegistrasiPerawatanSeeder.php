@@ -23,7 +23,7 @@ class RegistrasiPerawatanSeeder extends Seeder
                 'no_registrasi' => $faker->unique()->numerify('##########'),
                 'tgl_masuk'     => Time::createFromTimestamp($timeMasuk),
                 'tgl_keluar'    => Time::createFromTimestamp($timeKeluar),
-                'poliklinik'    => $poliklinik[$faker->numberBetween(0, 16)],
+                'poliklinik'    => $poliklinik[$faker->numberBetween(0, sizeof($poliklinik) - 1)],
                 'id_dokter'     => $faker->numberBetween(1, 20),
                 'id_pasien'     => $faker->numberBetween(1, 20)
             ];
