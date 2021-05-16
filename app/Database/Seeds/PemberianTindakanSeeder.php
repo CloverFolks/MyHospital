@@ -13,46 +13,18 @@ class PemberianTindakanSeeder extends Seeder
     public function run()
     {
         $faker = \Faker\Factory::create('id_ID');
-        for ($i = 0; $i < 5; $i++) {
+        $tindakan = array('Pemberian suntikan penenang', 'Pemeriksaan pasca operasi', 'Pemberian konseling', 'Konsultasi hasil pemeriksaan', 'Pemeriksaan suhu tubuh', 'Pemasangan ventilator', 'Konsultasi diagnosis awal', 'Pemeriksaan kejiwaan pasien', 'Pemeriksaan darah lengkap', 'Pemeriksaan tingkat sedimentasi eritrosit (laju endap darah)', 'Uji protein C – reaktif', 'Pengujian elektrolit darah', 'Analisis gas darah', 'Pemeriksaan fungsi tiroid', 'Pemeriksaan tingkat kolesterol', 'Pemeriksaan gula darah', 'Cek tekanan darah', 'Pemeriksaan fungsi paru');
+
+        for ($i = 0; $i < 300; $i++) {
             $data = [
-                [
-                    'nama_tindakan' => 'Pemberian Suntikan Penenang',
-                    'biaya' => $faker->numerify('###000'),
-                    'id_dokter' => $faker->numberBetween(1, 20),
-                    'id_registrasi_perawatan' => $faker->numberBetween(1, 30),
-                    'metode_pembayaran'    => $faker->creditCardType(),
-                    'tanggal' => $faker->date('Y_m_d'),
-                ], [
-                    'nama_tindakan' => 'Pengecekan Pasca Operasi',
-                    'biaya' => $faker->numerify('###000'),
-                    'id_dokter' => $faker->numberBetween(1, 20),
-                    'id_registrasi_perawatan' => $faker->numberBetween(1, 30),
-                    'metode_pembayaran'    => $faker->creditCardType(),
-                    'tanggal' => $faker->date('Y_m_d'),
-                ], [
-                    'nama_tindakan' => 'Pemeriksaan Darah',
-                    'biaya' => $faker->numerify('###000'),
-                    'id_dokter' => $faker->numberBetween(1, 20),
-                    'id_registrasi_perawatan' => $faker->numberBetween(1, 30),
-                    'metode_pembayaran'    => $faker->creditCardType(),
-                    'tanggal' => $faker->date('Y_m_d'),
-                ], [
-                    'nama_tindakan' => 'Pengukuran Tensi',
-                    'biaya' => $faker->numerify('###000'),
-                    'id_dokter' => $faker->numberBetween(1, 20),
-                    'id_registrasi_perawatan' => $faker->numberBetween(1, 30),
-                    'metode_pembayaran'    => $faker->creditCardType(),
-                    'tanggal' => $faker->date('Y_m_d'),
-                ], [
-                    'nama_tindakan' => 'Pemeriksaan Perban',
-                    'biaya' => $faker->numerify('###000'),
-                    'id_dokter' => $faker->numberBetween(1, 20),
-                    'id_registrasi_perawatan' => $faker->numberBetween(1, 30),
-                    'metode_pembayaran'    => $faker->creditCardType(),
-                    'tanggal' => $faker->date('Y_m_d'),
-                ],
+                'nama_tindakan' => $tindakan[$faker->numberBetween(0, sizeof($tindakan) - 1)],
+                'biaya' => $faker->numerify('###000'),
+                'id_dokter' => $faker->numberBetween(1, 20),
+                'id_registrasi_perawatan' => $faker->numberBetween(1, 100),
+                'metode_pembayaran' => $faker->creditCardType(),
+                'tanggal' => Time::createFromTimestamp($faker->numberBetween(1550000000, time()))
             ];
-            $this->db->table('pemberian_tindakan')->insertBatch($data);
+            $this->db->table('pemberian_tindakan')->insert($data);
         }
     }
 }
