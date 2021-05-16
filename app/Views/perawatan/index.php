@@ -41,17 +41,15 @@
                     </thead>
                     <tbody>
                         <?php $i = $startingNumber ?>
-                        <?php foreach ($perawatanList as $item) : ?>
+                        <?php foreach ($perawatanList as $perawatan) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?= $item['no_registrasi']; ?></td>
-                                <td><?= $item['poliklinik']; ?></td>
-                                <td><?= $item['tgl_masuk']; ?></td>
-                                <td><?= $item['tgl_keluar']; ?></td>
+                                <td><?= $perawatan['no_registrasi']; ?></td>
+                                <td><?= $perawatan['poliklinik']; ?></td>
+                                <td><?= $perawatan['tgl_masuk']; ?></td>
+                                <td><?= ($perawatan['tgl_keluar']) ? $perawatan['tgl_keluar'] : '-'; ?></td>
                                 <td>
-                                    <a href="<?= base_url('/perawatan/detail/' . $item['id']); ?>" class="btn btn-outline-success"><i data-feather="eye"></i></a>
-                                    <a href="<?= base_url('/perawatan/edit/' . $item['id']); ?>" class="btn btn-outline-primary"><i data-feather="edit"></i></a>
-                                    <a href="<?= base_url('/perawatan/' . $item['id'] . '/delete'); ?>" class="btn btn-outline-danger"><i data-feather="trash-2"></i></a>
+                                    <a href="<?= base_url('/perawatan/detail/' . $perawatan['id']); ?>" class="btn btn-success">Detail</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
