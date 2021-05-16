@@ -16,8 +16,9 @@ class RegistrasiPerawatanSeeder extends Seeder
         $poliklinik = array("Bedah", "Penyakit Dalam", "Obstetri dan Ginekologi", "Anak", "Jantung", "Syaraf", "THT", "Mata", "Paru", "TB-MDR", "Anestesiologi", "DOTS TB", "Gigi", "Dokter Gigi Spesialis", "Psikologi", "Tumbuh Kembang Anak", "Kulit dan Kelamin");
 
         for ($i = 0; $i < 100; $i++) {
-            $timeMasuk = $faker->unixTime();
-            $timeKeluar = $timeMasuk + $faker->numberBetween(86400, 60 * 86400);
+            $timeKeluar = $faker->numberBetween(1550000000, time());
+            $duration = $faker->numberBetween(86400, 60 * 86400);
+            $timeMasuk = $timeKeluar - $duration;
             $data = [
                 'no_registrasi' => $faker->unique()->numerify('##########'),
                 'tgl_masuk'     => Time::createFromTimestamp($timeMasuk),
