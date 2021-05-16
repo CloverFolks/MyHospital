@@ -9,31 +9,31 @@ class PemberianTindakan extends Migration
 	public function up()
 	{
 		$this->forge->addField([
-			'id'          => [
+			'id' => [
 				'type'           => 'INT',
 				'constraint'     => 11,
 				'unsigned'       => true,
 				'auto_increment' => true,
 			],
-			'nama_tindakan'       => [
-				'type'       => 'VARCHAR',
-				'constraint' => '20',
+			'nama_tindakan' => [
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 140,
 			],
 			'biaya' => [
-				'type' => 'INT',
-				'constraint' => 10,
+				'type'			=> 'INT',
+				'constraint'	=> 11,
 			],
 			'id_dokter' => [
-				'type' => 'INT',
-				'constraint' => '11', //masih perlu dicek
+				'type'			=> 'INT',
+				'constraint'	=> 11,
 			],
 			'id_registrasi_perawatan' => [
-				'type' => 'INT',
-				'constraint' => '11',
+				'type' 			=> 'INT',
+				'constraint'	=> 11,
 			],
 			'metode_pembayaran' => [
-				'type' => 'VARCHAR',
-				'constraint' => '20',
+				'type'			=> 'VARCHAR',
+				'constraint'	=> '20',
 			],
 			'tanggal' => [
 				'type' => 'DATE',
