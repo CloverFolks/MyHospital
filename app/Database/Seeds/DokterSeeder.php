@@ -15,6 +15,7 @@ class DokterSeeder extends Seeder
         for ($i = 0; $i < 20; $i++) {
             $data = [
                 'nik' => $faker->nik(),
+                'nip' => $faker->numerify('19################'),
                 'nama' => $faker->name(),
                 'email'    => $faker->freeEmail(),
                 'alamat' => $faker->address(),
