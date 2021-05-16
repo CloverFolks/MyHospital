@@ -9,9 +9,22 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col">
-            <div class="card p-4">
+    <div class="card p-4">
+        <div class="row mb-3">
+            <div class="col">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown">
+                        <i data-feather="settings"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="<?= base_url('/perawatan/edit/' . $perawatan['id']); ?>"><i data-feather="edit"></i> Edit data</a></li>
+                        <li><a class="dropdown-item" href="#"><i data-feather="trash-2"></i> Hapus data</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
                 <table class="table">
                     <tbody>
                         <tr>
@@ -27,7 +40,7 @@
                         </tr>
                         <tr>
                             <td>Tanggal Keluar</td>
-                            <td><?= $perawatan['tgl_keluar']; ?></td>
+                            <td><?= ($perawatan['tgl_keluar']) ? $perawatan['tgl_keluar'] : '-'; ?></td>
                         </tr>
                         <tr>
                             <td>Poliklinik</td>
@@ -35,7 +48,11 @@
                         </tr>
 
                         <tr>
-                            <th rowspan="7" scope="row">Pasien</th>
+                            <th rowspan="8" scope="row">Pasien</th>
+                        </tr>
+                        <tr>
+                            <td>NIK</td>
+                            <td><?= $pasien['nik']; ?></td>
                         </tr>
                         <tr>
                             <td>No. Rekam Medis</td>
@@ -70,7 +87,11 @@
                         </tr>
 
                         <tr>
-                            <th rowspan="4" scope="row">Dokter</th>
+                            <th rowspan="5" scope="row">Dokter</th>
+                        </tr>
+                        <tr>
+                            <td>NIK</td>
+                            <td><?= $dokter['nik']; ?></td>
                         </tr>
                         <tr>
                             <td>Nama Lengkap</td>
@@ -117,12 +138,13 @@
                                 <th scope="row"><?= $i++; ?></th>
                                 <td><?= $tindakan['tanggal']; ?></td>
                                 <td><?= $tindakan['nama_tindakan']; ?></td>
-                                <td><?= $tindakan['biaya']; ?></td>
+                                <td><?= 'Rp' . number_format($tindakan['biaya'], 0, ',', '.'); ?></td>
                                 <td><?= $tindakan['metode_pembayaran']; ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+                <button class="btn btn-success"><i data-feather="plus-circle"></i> Tambah data</button>
             </div>
         </div>
     </div>
@@ -146,7 +168,7 @@
                     <tbody>
                         <?php if (!$riwayatObat) : ?>
                             <tr>
-                                <td colspan="5"><i>Belum ada riwayat pemberian obat.</i></td>
+                                <td colspan="7"><i>Belum ada riwayat pemberian obat.</i></td>
                             </tr>
                         <?php endif; ?>
 
@@ -158,12 +180,13 @@
                                 <td><?= $obat['kode']; ?></td>
                                 <td><?= $obat['nama_obat']; ?></td>
                                 <td><?= $obat['kuantitas']; ?></td>
-                                <td><?= $obat['biaya']; ?></td>
+                                <td><?= 'Rp' . number_format($obat['biaya'], 0, ',', '.'); ?></td>
                                 <td><?= $obat['metode_pembayaran']; ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+                <button class="btn btn-success"><i data-feather="plus-circle"></i> Tambah data</button>
             </div>
         </div>
     </div>
