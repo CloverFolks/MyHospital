@@ -20,8 +20,8 @@ class Dokter extends Migration
 				'constraint' => '16',
 			],
 			'nip'       => [
-				'type'       => 'VARCHAR',
-				'constraint' => '18',
+				'type'       => 'INT',
+				'constraint' => '4',
 			],
 			'nama' => [
 				'type' => 'VARCHAR',
