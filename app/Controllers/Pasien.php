@@ -57,21 +57,23 @@ class Pasien extends BaseController
         //validation
         if (!$this->validate([
             'nik' => [
-                'rules' => 'required|is_unique[pasien.nik]|numeric|min_length[16]',
+                'rules' => 'required|is_unique[pasien.nik]|numeric|min_length[16]|max_length[16]',
                 'errors' => [
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
                     'numeric' => '{field} hanya boleh diisi angka',
-                    'min_length' => '{field} harus terdiri dari 16 angka'
+                    'min_length' => '{field} harus terdiri dari 16 angka',
+                    'max_length' => '{field} harus terdiri dari 16 angka'
                 ]
             ],
 
             'no_rekam_medis' => [
-                'rules' => 'required|is_unique[pasien.no_rekam_medis]|min_length[10]',
+                'rules' => 'required|is_unique[pasien.no_rekam_medis]|min_length[10]|max_length[10]',
                 'errors' => [
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
-                    'min_length' => '{field} harus terdiri dari 10 karakter'
+                    'min_length' => '{field} harus terdiri dari 10 karakter',
+                    'max_length' => '{field} harus terdiri dari 10 karakter'
                 ]
             ],
 
@@ -262,7 +264,7 @@ class Pasien extends BaseController
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
                     'min_length' => '{field} harus terdiri dari 10 karakter',
-                    'max_length' => '{field} harus terdiri dari 10 angka'
+                    'max_length' => '{field} harus terdiri dari 10 karakter'
                 ]
             ],
 

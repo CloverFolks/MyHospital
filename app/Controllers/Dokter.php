@@ -57,22 +57,24 @@ class Dokter extends BaseController
         //validation
         if (!$this->validate([
             'nik' => [
-                'rules' => 'required|is_unique[dokter.nik]|numeric|min_length[16]',
+                'rules' => 'required|is_unique[dokter.nik]|numeric|min_length[16]|max_length[16]',
                 'errors' => [
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
                     'numeric' => '{field} hanya boleh diisi angka',
-                    'min_length' => '{field} harus terdiri dari 16 angka'
+                    'min_length' => '{field} harus terdiri dari 16 angka',
+                    'max_length' => '{field} harus terdiri dari 16 angka'
 
                 ]
             ],
             'nip' => [
-                'rules' => 'required|is_unique[dokter.nip]|numeric|min_length[4]',
+                'rules' => 'required|is_unique[dokter.nip]|numeric|min_length[4]|max_length[4]',
                 'errors' => [
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
                     'numeric' => '{field} hanya boleh diisi angka',
-                    'min_length' => '{field} harus terdiri dari 18 angka'
+                    'min_length' => '{field} harus terdiri dari 18 angka',
+                    'max_length' => '{field} harus terdiri dari 18 angka'
 
                 ]
             ],
@@ -95,11 +97,12 @@ class Dokter extends BaseController
                 ]
             ],
             'izin_praktek' => [
-                'rules' => 'required|is_unique[dokter.izin_praktek]|min_length[18]',
+                'rules' => 'required|is_unique[dokter.izin_praktek]|min_length[18]|max_length[18]',
                 'errors' => [
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
-                    'min_length' => '{field} harus terdiri dari 18 karakter'
+                    'min_length' => '{field} harus terdiri dari 18 karakter',
+                    'max_length' => '{field} harus terdiri dari 18 karakter'
                 ]
             ],
             'tgl_mulai_bekerja' => [
