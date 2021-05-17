@@ -90,8 +90,8 @@
                             <th rowspan="5" scope="row">Dokter</th>
                         </tr>
                         <tr>
-                            <td>NIK</td>
-                            <td><?= $dokter['nik']; ?></td>
+                            <td>NIP</td>
+                            <td><?= $dokter['nip']; ?></td>
                         </tr>
                         <tr>
                             <td>Nama Lengkap</td>
@@ -144,7 +144,56 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-                <button class="btn btn-success"><i data-feather="plus-circle"></i> Tambah data</button>
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalTambahRiwayatTindakan"><i data-feather="plus-circle"></i> Tambah data</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalTambahRiwayatTindakan" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tambah data pemberian tindakan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form action="<?= base_url('/perawatan/savePemberianTindakan'); ?>" method="POST">
+                    <input type="hidden" name="tindakan_id_perawatan" value="<?= $perawatan['id']; ?>">
+                    <?= csrf_field(); ?>
+                    <div class="modal-body">
+                        <div class="form-floating mb-3">
+                            <input name="tindakan_tanggal" type="date" class="form-control" id="formTindakanTanggal" placeholder="0" required>
+                            <label for="formTindakanTanggal">Tanggal</label>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <input id="dokter-nip" type="number" class="form-control" placeholder="NIP Dokter" required>
+                            <button id="btn-search-dokter" class="btn btn-outline-secondary" type="button"><i data-feather="search"></i></button>
+                        </div>
+
+                        <input name="tindakan_id_dokter" id="dokter-id" class="visually-hidden" required>
+
+                        <input id="dokter-nama" type="text" class="form-control mb-3" placeholder="Nama dokter" disabled>
+
+                        <div class="form-floating mb-3">
+                            <textarea name="tindakan_nama" id="formTindakanNama" class="form-control" placeholder="Masukkan deskripsi tindakan" style="height: 100px" required></textarea>
+                            <label for="formTindakanNama">Tindakan</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input name="tindakan_biaya" type="number" class="form-control" id="formTindakanBiaya" placeholder="0" required>
+                            <label for="formTindakanBiaya">Biaya</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input name="tindakan_metode_pembayaran" type="text" class="form-control" id="formTindakanMetodePembayaran" placeholder="0" required>
+                            <label for="formTindakanMetodePembayaran">Metode Pembayaran</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary"><i data-feather="save"></i> Simpan</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -186,9 +235,112 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-                <button class="btn btn-success"><i data-feather="plus-circle"></i> Tambah data</button>
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalTambahRiwayatObat"><i data-feather="plus-circle"></i> Tambah data</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalTambahRiwayatObat" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tambah data pemberian obat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form action="<?= base_url('/perawatan/savePemberianObat'); ?>" method="POST">
+                    <input type="hidden" name="obat_id_perawatan" value="<?= $perawatan['id']; ?>">
+                    <?= csrf_field(); ?>
+                    <div class="modal-body">
+                        <div class="form-floating mb-3">
+                            <input name="obat_tanggal" type="date" class="form-control" id="formObatTanggal" placeholder="0" required>
+                            <label for="formObatTanggal">Tanggal</label>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <input id="obat-kode" type="number" class="form-control" placeholder="Kode Obat" required>
+                            <button id="btn-search-obat" class="btn btn-outline-secondary" type="button"><i data-feather="search"></i></button>
+                        </div>
+
+                        <input name="obat_id_obat" id="obat-id" class="visually-hidden" required>
+
+                        <input id="obat-nama" type="text" class="form-control mb-3" placeholder="Nama obat" disabled>
+
+                        <div class="form-floating mb-3">
+                            <input name="obat_kuantitas" type="number" class="form-control" id="formObatKuantitas" placeholder="0" required>
+                            <label for="formObatKuantitas">Kuantitas</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input name="obat_biaya" type="number" class="form-control" id="formObatBiaya" placeholder="0" required>
+                            <label for="formObatBiaya">Biaya</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input name="obat_metode_pembayaran" type="text" class="form-control" id="formObatMetodePembayaran" placeholder="0" required>
+                            <label for="formObatMetodePembayaran">Metode Pembayaran</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary"><i data-feather="save"></i> Simpan</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    $("#btn-search-dokter").click(function() {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('perawatan/findDokterByNip'); ?>",
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            data: {
+                nip: $("#dokter-nip").val()
+            },
+            success: function(result) {
+                try {
+                    let dokter = JSON.parse(result);
+                    $("#dokter-nip").removeClass('is-invalid');
+                    $("#dokter-id").val(dokter.id);
+                    $("#dokter-nama").val(dokter.nama);
+                } catch (error) {
+                    $("#dokter-nip").addClass('is-invalid');
+                    $("#dokter-id").val('');
+                    $("#dokter-nama").val('Dokter tidak ditemukan');
+                }
+            }
+        })
+    });
+
+    $("#btn-search-obat").click(function() {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('perawatan/findObatByKode'); ?>",
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            data: {
+                kode: $("#obat-kode").val()
+            },
+            success: function(result) {
+                try {
+                    let obat = JSON.parse(result);
+                    $("#obat-kode").removeClass('is-invalid');
+                    $("#obat-id").val(obat.id);
+                    $("#obat-nama").val(obat.nama_obat);
+                } catch (error) {
+                    alert(error);
+                    $("#obat-kode").addClass('is-invalid');
+                    $("#obat-id").val('');
+                    $("#obat-nama").val('Obat tidak ditemukan');
+                }
+            }
+        })
+    });
+</script>
+
 <?= $this->endSection(); ?>
