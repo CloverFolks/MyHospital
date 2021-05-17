@@ -354,6 +354,7 @@ class Pasien extends BaseController
 
 
         $this->pasienModel->save([
+            'id' => $id,
             'nik' => $this->request->getVar('nik'),
             'image_profile' => $namaProfile,
             'no_rekam_medis' => $this->request->getVar('no_rekam_medis'),
@@ -364,8 +365,7 @@ class Pasien extends BaseController
             'jenis_kelamin' => $jenis_kelamin,
             'golongan_darah' => $this->request->getVar('golongan_darah'),
             'tgl_lahir' => $this->request->getVar('tgl_lahir'),
-            'status_menikah' => $status_menikah,
-
+            'status_menikah' => $status_menikah
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
         return redirect()->to('/pasien/index');
