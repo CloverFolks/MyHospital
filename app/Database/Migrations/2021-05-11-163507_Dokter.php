@@ -16,20 +16,24 @@ class Dokter extends Migration
 				'auto_increment' => true,
 			],
 			'nik'       => [
-				'type'       => 'VARCHAR',
-				'constraint' => '16',
+				'type'       => 'CHAR',
+				'constraint' => 16,
+			],
+			'nip'		=> [
+				'type'		=> 'CHAR',
+				'constraint' => 4,
 			],
 			'nama' => [
 				'type' => 'VARCHAR',
-				'constraint' => '30',
+				'constraint' => 30,
 			],
 			'email' => [
 				'type' => 'VARCHAR',
-				'constraint' => '20',
+				'constraint' => 20,
 			],
 			'alamat' => [
 				'type' => 'VARCHAR',
-				'constraint' => '50',
+				'constraint' => 50,
 			],
 			'jenis_kelamin' => [
 				'type' => 'BOOLEAN',
@@ -37,11 +41,11 @@ class Dokter extends Migration
 			],
 			'image_profile' => [
 				'type' => 'VARCHAR',
-				'constraint' => '20', //masih perlu dicek
+				'constraint' => 50,
 			],
 			'izin_praktek' => [
-				'type' => 'VARCHAR',
-				'constraint' => '30',
+				'type' => 'CHAR',
+				'constraint' => 18,
 			],
 			'tgl_mulai_bekerja' => [
 				'type' => 'DATE',

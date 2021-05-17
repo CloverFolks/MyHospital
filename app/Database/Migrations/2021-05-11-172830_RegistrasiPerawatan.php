@@ -20,12 +20,13 @@ class RegistrasiPerawatan extends Migration
 				'constraint'	=> '10',
 			],
 			'tgl_masuk' => [
-				'type'			=> 'DATETIME',
+				'type'			=> 'DATE',
 				'constraint'	=> null,
 			],
 			'tgl_keluar' => [
-				'type' 			=> 'DATETIME',
+				'type' 			=> 'DATE',
 				'constraint' 	=> null,
+				'null'			=> true,
 			],
 			'poliklinik' => [
 				'type'			=> 'VARCHAR',

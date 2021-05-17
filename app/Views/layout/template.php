@@ -5,9 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?= $title; ?> | MyHospital</title>
-
     <link rel="stylesheet" href="/css/bootstrap.css" />
     <link rel="stylesheet" href="/css/app.css" />
+    <script src="/js/jquery.min.js"></script>
 </head>
 
 <body>
@@ -126,9 +126,6 @@
             </footer>
         </div>
     </div>
-    <!-- <script src="assets/vendors/chartjs/Chart.min.js"></script>
-    <script src="assets/vendors/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script> -->
     <script src="/js/feather-icons/feather.min.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/pages/dashboard.js"></script>

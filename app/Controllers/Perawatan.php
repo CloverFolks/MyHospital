@@ -12,10 +12,18 @@ use App\Models\PerawatanModel;
 class Perawatan extends BaseController
 {
     protected $perawatanModel;
+    protected $pasienModel;
+    protected $dokterModel;
+    protected $pemberianObatModel;
+    protected $pemberianTindakanModel;
 
     public function __construct()
     {
         $this->perawatanModel = new PerawatanModel();
+        $this->pasienModel = new PasienModel();
+        $this->dokterModel = new DokterModel();
+        $this->pemberianObatModel = new PemberianObatModel();
+        $this->pemberianTindakanModel = new PemberianTindakanModel();
     }
 
     public function index()
@@ -27,7 +35,7 @@ class Perawatan extends BaseController
             $perawatan = $this->perawatanModel;
         }
 
-        $itemsCount = 6;
+        $itemsCount = 10;
         $currentPage =
             $this->request->getVar('page_perawatan') ?
             $this->request->getVar('page_perawatan') : 1;
@@ -36,7 +44,7 @@ class Perawatan extends BaseController
         $data = [
             'title' => 'Daftar Perawatan',
             'menu' => 'perawatan',
-            'perawatanList' => $perawatan->paginate(6, 'perawatan'),
+            'perawatanList' => $perawatan->paginate($itemsCount, 'perawatan'),
             'pager' => $perawatan->pager,
             'startingNumber' => $startingNumber,
             'keyword' => $keyword
@@ -47,24 +55,20 @@ class Perawatan extends BaseController
     public function create()
     {
         $data = [
-            'title' => 'Registrasi Perawatan',
-            'menu' => 'perawatan'
+            'title' => 'Form Registrasi Perawatan',
+            'menu' => 'perawatan',
+            'noRegistrasi' => $this->perawatanModel->getFreshNoRegistrasi()
         ];
         return view('perawatan/create', $data);
     }
 
     public function detail($id)
     {
-        $dokterModel = new DokterModel();
-        $pasienModel = new PasienModel();
-        $pemberianObatModel = new PemberianObatModel();
-        $pemberianTindakanModel = new PemberianTindakanModel();
-
         $perawatan = $this->perawatanModel->getPerawatan($id);
-        $dokter = $dokterModel->getDokter($perawatan['id_dokter']);
-        $pasien = $pasienModel->getPasien($perawatan['id_pasien']);
-        $riwayatTindakan = $pemberianTindakanModel->getPemberianTindakan($id);
-        $riwayatObat = $pemberianObatModel->getPemberianObat($id);
+        $pasien = $this->pasienModel->getPasien($perawatan['id_pasien']);
+        $dokter = $this->dokterModel->getDokter($perawatan['id_dokter']);
+        $riwayatTindakan = $this->pemberianTindakanModel->getPemberianTindakan($id);
+        $riwayatObat = $this->pemberianObatModel->getPemberianObat($id);
 
         $data = [
             'title' => 'Detail Perawatan',
@@ -79,7 +83,88 @@ class Perawatan extends BaseController
         return view('perawatan/detail', $data);
     }
 
-    public function edit()
+    public function edit($id)
     {
+        $perawatan = $this->perawatanModel->getPerawatan($id);
+        $dokter = $this->dokterModel->getDokter($perawatan['id_dokter']);
+        $pasien = $this->pasienModel->getPasien($perawatan['id_pasien']);
+        $riwayatTindakan = $this->pemberianTindakanModel->getPemberianTindakan($id);
+        $riwayatObat = $this->pemberianObatModel->getPemberianObat($id);
+
+        $data = [
+            'title' => 'Edit Data Perawatan',
+            'menu' => 'perawatan',
+            'perawatan' => $perawatan,
+            'dokter' => $dokter,
+            'pasien' => $pasien,
+            'riwayatObat' => $riwayatObat,
+            'riwayatTindakan' => $riwayatTindakan
+        ];
+
+        return view('perawatan/edit', $data);
+    }
+
+    public function save()
+    {
+        $this->perawatanModel->save([
+            'no_registrasi' => $this->request->getVar('no_registrasi'),
+            'tgl_masuk' => $this->request->getVar('tgl_masuk'),
+            'tgl_keluar' => ($this->request->getVar('tgl_keluar')) ? $this->request->getVar('tgl_keluar') : null,
+            'poliklinik' => $this->request->getVar('poliklinik'),
+            'id_dokter' => $this->request->getVar('id_dokter'),
+            'id_pasien' => $this->request->getVar('id_pasien')
+        ]);
+
+        return redirect()->to('/perawatan/detail/' . $this->perawatanModel->db->insertID());
+    }
+
+    public function savePemberianTindakan()
+    {
+        $this->pemberianTindakanModel->save([
+            'nama_tindakan' => $this->request->getVar('tindakan_nama'),
+            'biaya' => $this->request->getVar('tindakan_biaya'),
+            'id_dokter' => $this->request->getVar('tindakan_id_dokter'),
+            'id_registrasi_perawatan' => $this->request->getVar('tindakan_id_perawatan'),
+            'metode_pembayaran' => $this->request->getVar('tindakan_metode_pembayaran'),
+            'tanggal' => $this->request->getVar('tindakan_tanggal')
+        ]);
+
+        return redirect()->to('/perawatan/detail/' . $this->request->getVar('tindakan_id_perawatan'));
+    }
+
+    public function savePemberianObat()
+    {
+        $this->pemberianObatModel->save([
+            'id_obat' => $this->request->getVar('obat_id_obat'),
+            'kuantitas' => $this->request->getVar('obat_kuantitas'),
+            'tanggal' => $this->request->getVar('obat_tanggal'),
+            'id_registrasi_perawatan' => $this->request->getVar('obat_id_perawatan'),
+            'biaya' => $this->request->getVar('obat_biaya'),
+            'metode_pembayaran' => $this->request->getVar('obat_metode_pembayaran')
+        ]);
+
+        return redirect()->to('/perawatan/detail/' . $this->request->getVar('obat_id_perawatan'));
+    }
+
+    public function findPasienByNik()
+    {
+        $nik = $this->request->getVar('nik');
+        $result = json_encode($this->pasienModel->getPasienByNik($nik));
+        return $result;
+    }
+
+    public function findDokterByNip()
+    {
+        $nip = $this->request->getVar('nip');
+        $result = json_encode($this->dokterModel->getDokterByNip($nip));
+        return $result;
+    }
+
+    public function findObatByKode()
+    {
+        $obatModel = new ObatModel();
+        $kode = $this->request->getVar('kode');
+        $result = json_encode($obatModel->getObatByKode($kode));
+        return $result;
     }
 }

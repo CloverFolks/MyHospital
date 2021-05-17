@@ -14,9 +14,9 @@ class PasienSeeder extends Seeder
     {
         $faker = \Faker\Factory::create('id_ID');
         $faker2 = \Faker\Factory::create();
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $data = [
-                'nik' => $faker->nik(),
+                'nik' => $faker->unique()->nik(),
                 'image_profile' => $faker->numerify('#.jpg'),
                 'no_rekam_medis' => $faker->numerify('####-##-##'),
                 'nama_pasien' => $faker->name(),
