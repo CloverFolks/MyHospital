@@ -177,7 +177,6 @@ class Dokter extends BaseController
 
     public function detail($id)
     {
-
         $dokter = $this->dokterModel->getDokter($id);
 
         $data = [
@@ -191,10 +190,13 @@ class Dokter extends BaseController
 
     public function edit($id)
     {
+
+        $dokter = $this->dokterModel->getDokter($id);
+
         $data = [
             'title' => 'Edit Data Dokter',
             'menu' => 'dokter',
-            'dokter' => $this->dokterModel->getDokter($id),
+            'dokter' => $dokter,
             'validation' => \Config\Services::validation()
         ];
 
@@ -203,25 +205,27 @@ class Dokter extends BaseController
 
     public function update($id)
     {
-        $dokterLama = $this->dokterModel->getDokter($id);
+
+        $dokterLama = $this->dokterModel->getDokter($this->request->getVar('id'));
+
         if ($dokterLama['nik'] == $this->request->getVar('nik')) {
-            $rule_nik = 'required|numeric|min_length[16]';
+            $rule_nik = 'required|numeric|min_length[16]|max_length[16]';
         } else {
-            $rule_nik = 'required|is_unique[dokter.nik]|numeric|min_length[16]';
+            $rule_nik = 'required|is_unique[dokter.nik]|numeric|min_length[16]|max_length[16]';
         };
 
-        // $nipLama = $this->dokterModel->getDokter($this->request->getVar('id'));
+
         if ($dokterLama['nip'] == $this->request->getVar('nip')) {
-            $rule_nip = 'required|numeric|min_length[4]';
+            $rule_nip = 'required|numeric|min_length[4]|max_length[4]';
         } else {
-            $rule_nip = 'required|is_unique[dokter.nip]|numeric|min_length[4]';
+            $rule_nip = 'required|is_unique[dokter.nip]|numeric|min_length[4]|max_length[4]';
         };
 
-        // $izin_praktekLama = $this->dokterModel->getDokter($this->request->getVar('id'));
+
         if ($dokterLama['izin_praktek'] == $this->request->getVar('izin_praktek')) {
-            $rule_izin_praktek = 'required|min_length[18]';
+            $rule_izin_praktek = 'required|min_length[18]|max_length[18]';
         } else {
-            $rule_izin_praktek = 'required|is_unique[dokter.izin_praktek]|min_length[18]';
+            $rule_izin_praktek = 'required|is_unique[dokter.izin_praktek]|min_length[18]|max_length[18]';
         };
 
 
@@ -233,7 +237,8 @@ class Dokter extends BaseController
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
                     'numeric' => '{field} hanya boleh diisi angka',
-                    'min_length' => '{field} harus terdiri dari 16 angka'
+                    'min_length' => '{field} harus terdiri dari 16 angka',
+                    'max_length' => '{field} harus terdiri dari 16 angka'
 
                 ]
             ],
@@ -243,7 +248,8 @@ class Dokter extends BaseController
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
                     'numeric' => '{field} hanya boleh diisi angka',
-                    'min_length' => '{field} harus terdiri dari 18 angka'
+                    'min_length' => '{field} harus terdiri dari 18 angka',
+                    'max_length' => '{field} harus terdiri dari 18 angka'
 
                 ]
             ],
@@ -270,7 +276,8 @@ class Dokter extends BaseController
                 'errors' => [
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
-                    'min_length' => '{field} harus terdiri dari 18 karakter'
+                    'min_length' => '{field} harus terdiri dari 18 karakter',
+                    'max_length' => '{field} harus terdiri dari 16 angka'
                 ]
             ],
             'tgl_mulai_bekerja' => [
@@ -290,7 +297,7 @@ class Dokter extends BaseController
             ]
 
         ])) {
-            return redirect()->to('/dokter/edit')->withInput();
+            return redirect()->to('/dokter/edit/' . $this->request->getVar('id'))->withInput();
         }
 
 

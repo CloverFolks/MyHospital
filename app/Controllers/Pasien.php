@@ -216,10 +216,11 @@ class Pasien extends BaseController
 
     public function edit($id)
     {
+        $pasien = $this->pasienModel->getPasien($id);
         $data = [
             'title' => 'Edit Data Pasien',
             'menu' => 'pasien',
-            'pasien' => $this->pasienModel->getPasien($id),
+            'pasien' => $pasien,
             'validation' => \Config\Services::validation()
         ];
 
@@ -230,15 +231,15 @@ class Pasien extends BaseController
     {
         $pasienLama = $this->pasienModel->getPasien($id);
         if ($pasienLama['nik'] == $this->request->getVar('nik')) {
-            $rule_nik = 'required|numeric|min_length[16]';
+            $rule_nik = 'required|numeric|min_length[16]|max_length[16]';
         } else {
-            $rule_nik = 'required|is_unique[pasien.nik]|numeric|min_length[16]';
+            $rule_nik = 'required|is_unique[pasien.nik]|numeric|min_length[16]|max_length[16]';
         };
 
         if ($pasienLama['no_rekam_medis'] == $this->request->getVar('no_rekam_medis')) {
-            $rule_no_rekam_medis = 'required|min_length[10]';
+            $rule_no_rekam_medis = 'required|min_length[10]|max_length[10]';
         } else {
-            $rule_no_rekam_medis = 'required|is_unique[pasien.no_rekam_medis]|min_length[10]';
+            $rule_no_rekam_medis = 'required|is_unique[pasien.no_rekam_medis]|min_length[10]|max_length[10]';
         };
 
         //validation
@@ -249,7 +250,8 @@ class Pasien extends BaseController
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
                     'numeric' => '{field} hanya boleh diisi angka',
-                    'min_length' => '{field} harus terdiri dari 16 angka'
+                    'min_length' => '{field} harus terdiri dari 16 angka',
+                    'max_length' => '{field} harus terdiri dari 16 angka'
                 ]
             ],
 
@@ -258,7 +260,8 @@ class Pasien extends BaseController
                 'errors' => [
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
-                    'min_length' => '{field} harus terdiri dari 10 karakter'
+                    'min_length' => '{field} harus terdiri dari 10 karakter',
+                    'max_length' => '{field} harus terdiri dari 10 angka'
                 ]
             ],
 

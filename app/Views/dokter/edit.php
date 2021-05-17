@@ -15,6 +15,7 @@
         <div class="card p-4">
             <form action="/dokter/update/<?= $dokter['id']; ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
+                <input type="hidden" name="id" value="<?= $dokter['id']; ?>">
                 <input type="hidden" name="image_profile_lama" value="<?= $dokter['image_profile']; ?>">
                 <div class="mb-3">
                     <label for="nik" class="form-label">NIK</label>
