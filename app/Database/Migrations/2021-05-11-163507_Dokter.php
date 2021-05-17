@@ -16,11 +16,11 @@ class Dokter extends Migration
 				'auto_increment' => true,
 			],
 			'nik'       => [
-				'type'       => 'VARCHAR',
+				'type'       => 'CHAR',
 				'constraint' => '16',
 			],
 			'nip'       => [
-				'type'       => 'INT',
+				'type'       => 'CHAR',
 				'constraint' => '4',
 			],
 			'nama' => [
@@ -44,8 +44,8 @@ class Dokter extends Migration
 				'constraint' => '50', //masih perlu dicek
 			],
 			'izin_praktek' => [
-				'type' => 'VARCHAR',
-				'constraint' => '30',
+				'type' => 'CHAR',
+				'constraint' => '18',
 			],
 			'tgl_mulai_bekerja' => [
 				'type' => 'DATE',
