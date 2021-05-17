@@ -65,7 +65,7 @@ class Dokter extends BaseController
                 ]
             ],
             'nip' => [
-                'rules' => 'required|is_unique[dokter.nip]|numeric|min_length[18]',
+                'rules' => 'required|is_unique[dokter.nip]|numeric|min_length[4]',
                 'errors' => [
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
@@ -210,9 +210,9 @@ class Dokter extends BaseController
 
         // $nipLama = $this->dokterModel->getDokter($this->request->getVar('id'));
         if ($dokterLama['nip'] == $this->request->getVar('nip')) {
-            $rule_nip = 'required|numeric|min_length[18]';
+            $rule_nip = 'required|numeric|min_length[4]';
         } else {
-            $rule_nip = 'required|is_unique[dokter.nip]|numeric|min_length[18]';
+            $rule_nip = 'required|is_unique[dokter.nip]|numeric|min_length[4]';
         };
 
         // $izin_praktekLama = $this->dokterModel->getDokter($this->request->getVar('id'));
