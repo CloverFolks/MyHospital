@@ -156,7 +156,7 @@ class Dokter extends BaseController
             'tgl_mulai_bekerja' => $this->request->getVar('tgl_mulai_bekerja'),
             'no_hp' => $this->request->getVar('no_hp')
         ]);
-        session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
+
         return redirect()->to('/dokter/index');
     }
 
@@ -173,7 +173,7 @@ class Dokter extends BaseController
         }
 
         $this->dokterModel->delete($id);
-        session()->setFlashdata('pesan', 'Data berhasil dihapus.');
+
         return redirect()->to('/dokter');
     }
 
@@ -337,7 +337,7 @@ class Dokter extends BaseController
             'no_hp' => $this->request->getVar('no_hp')
         ]);
 
-        session()->setFlashdata('pesan', 'Data berhasil diubah');
+
 
         return redirect()->to('/dokter/index');
     }

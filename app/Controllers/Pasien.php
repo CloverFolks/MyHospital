@@ -182,7 +182,7 @@ class Pasien extends BaseController
             'status_menikah' => $status_menikah,
 
         ]);
-        session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
+
         return redirect()->to('/pasien/index');
     }
 
@@ -199,7 +199,7 @@ class Pasien extends BaseController
         }
 
         $this->pasienModel->delete($id);
-        session()->setFlashdata('pesan', 'Data berhasil dihapus.');
+
         return redirect()->to('/pasien');
     }
 
@@ -376,7 +376,7 @@ class Pasien extends BaseController
             'tgl_lahir' => $this->request->getVar('tgl_lahir'),
             'status_menikah' => $nilai_menikah
         ]);
-        session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
+
         return redirect()->to('/pasien/index');
     }
 }
