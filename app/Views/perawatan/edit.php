@@ -116,10 +116,10 @@
                                 </th>
                             </tr>
                             <tr>
-                                <td>NIK</td>
+                                <td>NIP</td>
                                 <td>
                                     <div class="input-group">
-                                        <input id="dokter-nik" value="<?= $dokter['nik']; ?>" type="text" class="form-control" required>
+                                        <input id="dokter-nip" value="<?= $dokter['nip']; ?>" type="text" class="form-control" required>
                                         <button id="btn-search-dokter" class="btn btn-outline-secondary" type="button"><i data-feather="search"></i></button>
                                     </div>
                                     <input name="id_dokter" value="<?= $dokter['id']; ?>" id="dokter-id" class="visually-hidden" required>
@@ -186,28 +186,28 @@
                 }
             }
         })
-    })
+    });
 
     $("#btn-search-dokter").click(function() {
         $.ajax({
             type: "POST",
-            url: "<?= base_url('perawatan/findDokterByNik'); ?>",
+            url: "<?= base_url('perawatan/findDokterByNip'); ?>",
             headers: {
                 'X-Requested-With': 'XMLHttpRequest'
             },
             data: {
-                nik: $("#dokter-nik").val()
+                nip: $("#dokter-nip").val()
             },
             success: function(result) {
                 try {
                     let dokter = JSON.parse(result);
-                    $("#dokter-nik").removeClass('is-invalid');
+                    $("#dokter-nip").removeClass('is-invalid');
                     $("#dokter-id").val(dokter.id);
                     $("#dokter-nama").val(dokter.nama);
                     $("#dokter-izin-praktik").val(dokter.izin_praktek);
                     $("#dokter-no-hp").val(dokter.no_hp);
                 } catch (error) {
-                    $("#dokter-nik").addClass('is-invalid');
+                    $("#dokter-nip").addClass('is-invalid');
                     $("#dokter-id").val('');
                     $("#dokter-nama").val('Dokter tidak ditemukan');
                     $("#dokter-izin-praktik").val('Dokter tidak ditemukan');
@@ -215,6 +215,6 @@
                 }
             }
         })
-    })
+    });
 </script>
 <?= $this->endSection(); ?>

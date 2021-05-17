@@ -17,8 +17,8 @@ class DokterModel extends Model
         }
     }
 
-    public function getDokterByNik($nik)
+    public function getDokterByNip($nip)
     {
-        return $this->where(['nik' => $nik])->first();
+        return $this->where(['nip' => $nip])->first();
     }
 }
