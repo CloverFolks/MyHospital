@@ -46,7 +46,7 @@ class Pasien extends BaseController
             'title' => 'Tambah pasien',
             'menu' => 'pasien',
             'validation' => \Config\Services::validation(),
-            'nik' => $this->pasienModel->getFreshNik(),
+            'no_rekam_medis' => $this->pasienModel->getFreshNoRekamMedis(),
         ];
         return view('pasien/create', $data);
     }

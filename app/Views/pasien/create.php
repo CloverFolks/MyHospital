@@ -24,7 +24,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="no_rekam_medis" class="form-label">No. Rekam Medis</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('no_rekam_medis')) ? 'is-invalid' : ''; ?>" id="no_rekam_medis" name="no_rekam_medis" value="<?= old('no_rekam_medis'); ?>" placeholder="0000-00-00">
+                    <input name="no_rekam_medis" type="hidden" value="<?= $no_rekam_medis; ?>">
+                    <input type="text" class="form-control <?= ($validation->hasError('no_rekam_medis')) ? 'is-invalid' : ''; ?>" id="no_rekam_medis" name="no_rekam_medis" placeholder="<?= $no_rekam_medis; ?>" disabled>
                     <div class="invalid-feedback">
                         <?= $validation->getError('no_rekam_medis'); ?>
                     </div>
