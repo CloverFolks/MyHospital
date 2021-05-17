@@ -103,5 +103,21 @@
         </div>
     </div>
 </div>
+<script>
+    function previewImg() {
+        const profile = document.querySelector('#image_profile');
+        const profileLabel = document.querySelector('.form-control')
+        const imgPreview = document.querySelector('.img-preview')
+
+        profileLabel.textContent = profile.files[0].name;
+
+        const fileProfile = new FileReader();
+        fileProfile.readAsDataURL(profile.files[0]);
+
+        fileProfile.onload = function(e) {
+            imgPreview.src = e.target.result;
+        }
+    }
+</script>
 
 <?= $this->endSection(); ?>
