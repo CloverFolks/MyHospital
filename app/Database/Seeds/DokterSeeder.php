@@ -20,7 +20,7 @@ class DokterSeeder extends Seeder
                 'email'    => $faker->freeEmail(),
                 'alamat' => $faker->address(),
                 'jenis_kelamin' => $faker->boolean(),
-                'image_profile' => $faker->numerify('#.jpg'),
+                'image_profile' => '',
                 'izin_praktek' => strtoupper($faker->bothify('###/????/???/#/200#')),
                 'tgl_mulai_bekerja' => $faker->date('Y_m_d'),
                 'no_hp' => $faker->phoneNumber(),
