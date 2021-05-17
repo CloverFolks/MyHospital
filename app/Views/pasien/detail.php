@@ -38,7 +38,7 @@
                                 <p>Anda yakin ingin menghapus data pasien ini?</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                 <a type="button" href="/pasien/delete/<?= $pasien['id']; ?>" class="btn btn-danger">Hapus</a>
                             </div>
                         </div>
