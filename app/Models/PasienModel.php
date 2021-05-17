@@ -42,7 +42,8 @@ class PasienModel extends Model
             ->orLike('alamat', $keyword)
             ->orLike('golongan_darah', $keyword)
             ->orLike('status_menikah', $keyword);
-      
+    }
+
     public function getPasienByNik($nik)
     {
         return $this->where(['nik' => $nik])->first();
