@@ -9,23 +9,23 @@ class Obat extends Migration
 	public function up()
 	{
 		$this->forge->addField([
-			'id'          => [
+			'id' => [
 				'type'           => 'INT',
 				'constraint'     => 11,
 				'unsigned'       => true,
 				'auto_increment' => true,
 			],
-			'kode'       => [
-				'type'       => 'VARCHAR',
-				'constraint' => '10',
+			'kode' => [
+				'type'       => 'CHAR',
+				'constraint' => 13,
 			],
 			'nama_obat' => [
-				'type' => 'VARCHAR',
-				'constraint' => '20',
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 50,
 			],
 			'produsen' => [
-				'type' => 'VARCHAR',
-				'constraint' => '20',
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 50,
 			],
 
 		]);
