@@ -47,7 +47,6 @@ class Dokter extends BaseController
             'menu' => 'dokter',
             'validation' => \Config\Services::validation(),
             'nik' => $this->dokterModel->getFreshNik(),
-            'nip' => $this->dokterModel->getFreshNip(),
         ];
         return view('dokter/create', $data);
     }

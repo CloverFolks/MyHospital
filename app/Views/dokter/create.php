@@ -17,7 +17,8 @@
                 <?= csrf_field(); ?>
                 <div class="mb-3">
                     <label for="nik" class="form-label">NIK</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('nik')) ? 'is-invalid' : ''; ?>" id="nik" name="nik" value="<?= old('nik'); ?>">
+                    <input name="nik" type="hidden" value="<?= $nik; ?>">
+                    <input type="text" class="form-control <?= ($validation->hasError('nik')) ? 'is-invalid' : ''; ?>" id="nik" name="nik" placeholder="<?= $nik; ?>" disabled>
                     <div class="invalid-feedback">
                         <?= $validation->getError('nik'); ?>
                     </div>
