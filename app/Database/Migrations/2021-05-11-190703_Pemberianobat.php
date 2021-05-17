@@ -16,8 +16,8 @@ class PemberianObat extends Migration
 				'auto_increment' => true,
 			],
 			'id_obat' => [
-				'type'			=> 'VARCHAR',
-				'constraint'	=> 10, //masih perlu dicek
+				'type'			=> 'INT',
+				'constraint'	=> 11,
 			],
 			'kuantitas' => [
 				'type'			=> 'INT',

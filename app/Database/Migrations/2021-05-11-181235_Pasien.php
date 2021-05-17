@@ -16,16 +16,16 @@ class Pasien extends Migration
 				'auto_increment' => true,
 			],
 			'nik'       => [
-				'type'       => 'VARCHAR',
-				'constraint' => '16',
+				'type'       => 'CHAR',
+				'constraint' => 16,
 			],
 			'image_profile' => [
 				'type' => 'VARCHAR',
-				'constraint' => '20', //masih perlu dicek
+				'constraint' => '50',
 			],
 			'no_rekam_medis' => [
-				'type' => 'VARCHAR',
-				'constraint' => '10',
+				'type' => 'CHAR',
+				'constraint' => 10,
 			],
 			'nama_pasien' => [
 				'type' => 'VARCHAR',

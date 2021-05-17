@@ -23,11 +23,30 @@ class Obat extends Migration
 				'type'			=> 'VARCHAR',
 				'constraint'	=> 50,
 			],
+			'jenis_obat' => [
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 50,
+			],
+			'label_obat' => [
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 50,
+			],
 			'produsen' => [
 				'type'			=> 'VARCHAR',
 				'constraint'	=> 50,
 			],
-
+			'no_bpom' => [
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 20,
+			],
+			'tgl_produksi' => [
+				'type'			=> 'DATE',
+				'constraint'	=> null,
+			],
+			'tgl_kedaluwarsa' => [
+				'type'			=> 'DATE',
+				'constraint'	=> null,
+			]
 		]);
 		$this->forge->addKey('id', true);
 		$this->forge->createTable('obat');
