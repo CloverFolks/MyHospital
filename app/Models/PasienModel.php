@@ -18,6 +18,17 @@ class PasienModel extends Model
         }
     }
 
+    public function getFreshNik()
+    {
+        do {
+            $nik = "";
+            for ($i = 0; $i < 10; $i++) {
+                $nik .= mt_rand(0, 9);
+            }
+        } while ($this->where(['nik' => $nik])->first());
+        return $nik;
+    }
+
     public function search($keyword)
     {
         return $this

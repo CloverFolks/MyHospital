@@ -45,7 +45,9 @@ class Dokter extends BaseController
         $data = [
             'title' => 'Tambah Dokter',
             'menu' => 'dokter',
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+            'nik' => $this->dokterModel->getFreshNik(),
+            'nip' => $this->dokterModel->getFreshNip(),
         ];
         return view('dokter/create', $data);
     }

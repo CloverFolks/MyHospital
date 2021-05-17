@@ -17,6 +17,27 @@ class DokterModel extends Model
             return $this->where(['id' => $id])->first();
         }
     }
+    public function getFreshNik()
+    {
+        do {
+            $nik = "";
+            for ($i = 0; $i < 10; $i++) {
+                $nik .= mt_rand(0, 9);
+            }
+        } while ($this->where(['nik' => $nik])->first());
+        return $nik;
+    }
+
+    public function getFreshNip()
+    {
+        do {
+            $nip = "";
+            for ($i = 0; $i < 10; $i++) {
+                $nip .= mt_rand(0, 9);
+            }
+        } while ($this->where(['nip' => $nip])->first());
+        return $nip;
+    }
 
     public function search($keyword)
     {
