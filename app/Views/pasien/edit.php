@@ -90,7 +90,9 @@
                 </div>
                 <div class="mb-3">
                     <label for="alamat" class="form-label">Alamat</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" value="<?= (old('alamat')) ? old('alamat') : $pasien['alamat'] ?>">
+                    <div class="form-floating">
+                        <textarea class="form-control  <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" placeholder="Leave a comment here" id="alamat" name="alamat"><?= (old('alamat')) ? old('alamat') : $pasien['alamat'] ?></textarea>
+                    </div>
                     <div class="invalid-feedback">
                         <?= $validation->getError('alamat'); ?>
                     </div>
