@@ -7,6 +7,7 @@ use CodeIgniter\Model;
 class PemberianObatModel extends Model
 {
     protected $table = 'pemberian_obat';
+    protected $allowedFields = ['id_obat', 'kuantitas', 'tanggal', 'id_registrasi_perawatan', 'biaya', 'metode_pembayaran'];
 
     public function getPemberianObat($idPerawatan)
     {

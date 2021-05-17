@@ -17,6 +17,7 @@ class DokterModel extends Model
             return $this->where(['id' => $id])->first();
         }
     }
+  
     public function getFreshNik()
     {
         do {
@@ -51,5 +52,9 @@ class DokterModel extends Model
             ->orLike('izin_praktek', $keyword)
             ->orLike('tgl_mulai_bekerja', $keyword)
             ->orLike('no_hp', $keyword);
+
+    public function getDokterByNip($nip)
+    {
+        return $this->where(['nip' => $nip])->first();
     }
 }

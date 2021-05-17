@@ -17,15 +17,15 @@ class Pasien extends Migration
 			],
 			'nik'       => [
 				'type'       => 'CHAR',
-				'constraint' => '16',
+				'constraint' => 16,
 			],
 			'image_profile' => [
 				'type' => 'VARCHAR',
-				'constraint' => '50', //masih perlu dicek
+				'constraint' => 50,
 			],
 			'no_rekam_medis' => [
 				'type' => 'CHAR',
-				'constraint' => '10',
+				'constraint' => 10,
 			],
 			'nama_pasien' => [
 				'type' => 'VARCHAR',
