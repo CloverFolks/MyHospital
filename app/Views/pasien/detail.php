@@ -12,6 +12,19 @@
     <div class="row">
         <div class="col">
             <div class="card p-4">
+                <div class="row mb-3">
+                    <div class="col">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown">
+                                <i data-feather="settings"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="<?= base_url('/pasien/edit/' . $pasien['id']); ?>"><i data-feather="edit"></i> Edit data</a></li>
+                                <li><a class="dropdown-item" href="/pasien/delete/<?= $pasien['id']; ?>"><i data-feather="trash-2"></i> Hapus data</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <table class="table">
                     <tbody>
                         <tr>
