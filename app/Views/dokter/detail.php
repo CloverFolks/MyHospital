@@ -49,9 +49,17 @@
                         <tr>
                             <th rowspan="11" scope="row">Biodata Dokter</th>
                         </tr>
+                        <?php
+                        $image = $dokter['image_profile'];
+                        if ($image == '') {
+                            $image = 'default.jpg';
+                        } else {
+                            $image = $dokter['image_profile'];
+                        }
 
+                        ?>
                         <tr>
-                            <td><img src="/images/avatar/<?= $dokter['image_profile']; ?>" alt="" class="image" style="width: 150px;"></td>
+                            <td><img src="/images/avatar/<?= $image; ?>" alt="" class="image" style="width: 150px;"></td>
                         </tr>
                         <tr>
                             <td>NIK</td>
