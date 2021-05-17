@@ -21,7 +21,7 @@ class Pasien extends Migration
 			],
 			'image_profile' => [
 				'type' => 'VARCHAR',
-				'constraint' => '50',
+				'constraint' => 50,
 			],
 			'no_rekam_medis' => [
 				'type' => 'CHAR',

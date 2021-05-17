@@ -35,6 +35,16 @@ $routes->get('/', 'Perawatan::index');
 $routes->get('/perawatan/detail/(:segment)', 'Perawatan::detail/$1');
 $routes->get('/perawatan/edit/(:segment)', 'Perawatan::edit/$1');
 
+$routes->get('/dokter', 'Dokter::index');
+$routes->get('/dokter/create/(:segment)', 'Dokter::create/$1');
+$routes->get('/dokter/detail/(:segment)', 'Dokter::detail/$1');
+$routes->get('/dokter/edit/(:segment)', 'Dokter::edit/$1');
+
+
+$routes->get('/pasien', 'Pasien::index');
+$routes->get('/pasien/create/(:segment)', 'Pasien::create/$1');
+$routes->get('/pasien/detail/(:segment)', 'Pasien::detail/$1');
+$routes->get('/pasien/edit/(:segment)', 'Pasien::edit/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

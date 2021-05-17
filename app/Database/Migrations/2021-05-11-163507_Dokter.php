@@ -23,13 +23,17 @@ class Dokter extends Migration
 				'type'		=> 'CHAR',
 				'constraint' => 4,
 			],
+			'nip'       => [
+				'type'       => 'CHAR',
+				'constraint' => '4',
+			],
 			'nama' => [
 				'type' => 'VARCHAR',
 				'constraint' => 30,
 			],
 			'email' => [
 				'type' => 'VARCHAR',
-				'constraint' => 20,
+				'constraint' => 30,
 			],
 			'alamat' => [
 				'type' => 'VARCHAR',
