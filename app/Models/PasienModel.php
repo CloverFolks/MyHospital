@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class PasienModel extends Model
 {
     protected $table = 'pasien';
-    protected $allowedFields = ['nik', 'image_profile', 'no_rekam_medis', 'nama_pasien', 'pekerjaan', 'no_hp', 'alamat', 'jenis_kelamin', 'golongan_darah', 'tgl_lahir'];
+    protected $allowedFields = ['nik', 'image_profile', 'no_rekam_medis', 'nama_pasien', 'pekerjaan', 'no_hp', 'alamat', 'jenis_kelamin', 'golongan_darah', 'tgl_lahir', 'status_menikah'];
 
     public function getPasien($id = false)
     {

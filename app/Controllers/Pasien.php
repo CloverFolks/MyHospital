@@ -53,6 +53,7 @@ class Pasien extends BaseController
 
     public function save()
     {
+
         //validation
         if (!$this->validate([
             'nik' => [
@@ -152,17 +153,17 @@ class Pasien extends BaseController
 
         //ambil jenis kelamin
         $jeniskelamin = $this->request->getVar('jenis_kelamin');
-        if ($jeniskelamin == 'laki-laki') {
-            $jenis_kelamin = 0;
-        } else {
+        if ($jeniskelamin == 'Laki-laki') {
             $jenis_kelamin = 1;
+        } else {
+            $jenis_kelamin = 0;
         }
 
         $status_menikah = $this->request->getVar('status_menikah');
-        if ($status_menikah == 'sudah menikah') {
-            $status_menikah = 0;
-        } else {
+        if ($status_menikah == 'Sudah Menikah') {
             $status_menikah = 1;
+        } else {
+            $status_menikah = 0;
         }
 
         $this->pasienModel->save([
@@ -325,7 +326,7 @@ class Pasien extends BaseController
             ]
 
         ])) {
-            return redirect()->to('/pasien/edit')->withInput();
+            return redirect()->to('/pasien/edit/' . $this->request->getVar('id'))->withInput();
         }
 
 
@@ -343,19 +344,21 @@ class Pasien extends BaseController
 
         //ambil jenis kelamin
         $jeniskelamin = $this->request->getVar('jenis_kelamin');
-        if ($jeniskelamin == 'laki-laki') {
-            $jenis_kelamin = 0;
-        } else {
+        if ($jeniskelamin == 'Laki-laki') {
             $jenis_kelamin = 1;
+        } else {
+            $jenis_kelamin = 0;
         }
 
         $status_menikah = $this->request->getVar('status_menikah');
-        if ($status_menikah == 'sudah menikah') {
-            $status_menikah = 0;
+        // dd($status_menikah);
+        if ($status_menikah == 'Sudah Menikah') {
+            $nilai_menikah = 1;
         } else {
-            $status_menikah = 1;
+            $nilai_menikah = 0;
         }
 
+        // dd($status_menikah);
 
         $this->pasienModel->save([
             'id' => $id,
@@ -369,7 +372,7 @@ class Pasien extends BaseController
             'jenis_kelamin' => $jenis_kelamin,
             'golongan_darah' => $this->request->getVar('golongan_darah'),
             'tgl_lahir' => $this->request->getVar('tgl_lahir'),
-            'status_menikah' => $status_menikah
+            'status_menikah' => $nilai_menikah
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
         return redirect()->to('/pasien/index');

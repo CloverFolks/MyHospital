@@ -66,17 +66,25 @@
                 </div>
                 <div class="mb-3">
                     <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : ''; ?>" id="jenis_kelamin" name="jenis_kelamin" value="<?= old('jenis_kelamin'); ?>" placeholder="laki-laki/perempuan">
-                    <div class="invalid-feedback">
-                        <?= $validation->getError('jenis_kelamin'); ?>
-                    </div>
+                    <select name="jenis_kelamin" class="form-select <?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : ''; ?>" aria-label="Default select example">
+                        <option value="" selected>Pilih jenis kelamin</option>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('jenis_kelamin'); ?>
+                        </div>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="status_menikah" class="form-label">Status Menikah</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('status_menikah')) ? 'is-invalid' : ''; ?>" id="status_menikah" name="status_menikah" value="<?= old('status_menikah'); ?>" placeholder="sudah menikah/belum menikah">
-                    <div class="invalid-feedback">
-                        <?= $validation->getError('status_menikah'); ?>
-                    </div>
+                    <select name="status_menikah" class="form-select <?= ($validation->hasError('status_menikah')) ? 'is-invalid' : ''; ?>" aria-label="Default select example">
+                        <option value="" selected>Pilih status menikah</option>
+                        <option value="Sudah Menikah">Sudah Menikah</option>
+                        <option value="Belum Menikah">Belum Menikah</option>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('status_menikah'); ?>
+                        </div>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="alamat" class="form-label">Alamat</label>

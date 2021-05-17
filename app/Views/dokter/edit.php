@@ -54,10 +54,17 @@
                 </div>
                 <div class="mb-3">
                     <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : ''; ?>" id="jenis_kelamin" name="jenis_kelamin" value="<?= (old('jenis_kelamin')) ? old('jenis_kelamin') : (($dokter['jenis_kelamin']) ? 'Laki-laki' : 'Perempuan'); ?>">
-                    <div class="invalid-feedback">
-                        <?= $validation->getError('jenis_kelamin'); ?>
-                    </div>
+                    <select name="jenis_kelamin" class="form-select <?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : ''; ?>" aria-label="Default select example">
+                        <option value="<?= (old('jenis_kelamin')) ? old('jenis_kelamin') : (($dokter['jenis_kelamin']) ? 'Laki-laki' : 'Perempuan'); ?>" selected><?= (old('jenis_kelamin')) ? old('jenis_kelamin') : (($dokter['jenis_kelamin']) ? 'Laki-laki' : 'Perempuan'); ?></option>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('jenis_kelamin'); ?>
+                        </div>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('jenis_kelamin'); ?>
+                        </div>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="izin_praktek" class="form-label">Izin Praktek</label>
