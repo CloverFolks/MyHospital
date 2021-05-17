@@ -15,7 +15,7 @@ class ObatSeeder extends Seeder
         $faker = \Faker\Factory::create('id_ID');
         for ($i = 0; $i < 20; $i++) {
             $data = [
-                'kode' => $faker->bothify('???#########?#'),
+                'kode' => $faker->unique()->numerify('##########'),
                 'nama_obat' =>  ucwords($faker->words(2, true)),
                 'produsen' => $faker->company(),
             ];
