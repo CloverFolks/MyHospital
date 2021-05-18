@@ -16,6 +16,13 @@
             <form action="/pasien/update/<?= $pasien['id']; ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="id" value="<?= $pasien['id']; ?>">
+                <?php $image = $pasien['image_profile'];
+                if ($image == '') {
+                    $image = 'default.jpg';
+                } else {
+                    $image = $pasien['image_profile'];
+                }
+                ?>
                 <input type="hidden" name="image_profile_lama" value="<?= $pasien['image_profile']; ?>">
                 <div class="mb-3">
                     <label for="nik" class="form-label">NIK</label>
@@ -100,7 +107,7 @@
                 <div class="mb-3">
                     <label for="image_profile" class="form-label">Foto Profile</label>
                     <div class="col-sm-2">
-                        <img src="/images/avatar/<?= $pasien['image_profile']; ?>" class="img-thumbnail img-preview">
+                        <img src="/images/avatar/<?= $image; ?>" class="img-thumbnail img-preview">
                     </div>
                     <div class="input-group mb-3">
                         <input type="file" class="form-control <?= ($validation->hasError('image_profile')) ? 'is-invalid' : ''; ?>" id="image_profile" name="image_profile" onchange="previewImg()" value="<?= old('image_profile'); ?>">

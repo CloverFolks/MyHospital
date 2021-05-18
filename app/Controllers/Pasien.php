@@ -193,7 +193,7 @@ class Pasien extends BaseController
         $pasien = $this->pasienModel->find($id);
 
         // cek jika file gambarnya default.jpg
-        if ($pasien['image_profile'] != 'default.jpg') {
+        if ($pasien['image_profile'] != 'default.jpg' && $pasien['image_profile'] != '') {
             //hapus gambar
             unlink('images/avatar/' . $pasien['image_profile']);
         }
@@ -341,7 +341,9 @@ class Pasien extends BaseController
         } else {
             $namaProfile = $fileProfile->getRandomName();
             $fileProfile->move('images/avatar', $namaProfile);
-            unlink('images/avatar/' . $this->request->getVar['image_profile_lama']);
+            if ($this->request->getVar('image_profile_lama') != '') {
+                unlink('images/avatar/' . $this->request->getVar('image_profile_lama'));
+            }
         }
 
         //ambil jenis kelamin

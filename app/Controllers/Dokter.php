@@ -46,7 +46,7 @@ class Dokter extends BaseController
             'title' => 'Tambah Dokter',
             'menu' => 'dokter',
             'validation' => \Config\Services::validation(),
-            'nik' => $this->dokterModel->getFreshNik(),
+            'nip' => $this->dokterModel->getFreshNip(),
         ];
         return view('dokter/create', $data);
     }
@@ -167,7 +167,7 @@ class Dokter extends BaseController
         $dokter = $this->dokterModel->find($id);
 
         // cek jika file gambarnya default.jpg
-        if ($dokter['image_profile'] != 'default.jpg') {
+        if ($dokter['image_profile'] != 'default.jpg' && $dokter['image_profile'] != '') {
             //hapus gambar
             unlink('images/avatar/' . $dokter['image_profile']);
         }
@@ -306,13 +306,14 @@ class Dokter extends BaseController
 
         $fileProfile = $this->request->getFile('image_profile');
 
-
         if ($fileProfile->getError() == 4) {
             $namaProfile = $this->request->getVar('image_profile_lama');
         } else {
             $namaProfile = $fileProfile->getRandomName();
             $fileProfile->move('images/avatar', $namaProfile);
-            unlink('images/avatar/' . $this->request->getVar['image_profile_lama']);
+            if ($this->request->getVar('image_profile_lama') != '') {
+                unlink('images/avatar/' . $this->request->getVar('image_profile_lama'));
+            }
         }
 
         //ambil jenis kelamin

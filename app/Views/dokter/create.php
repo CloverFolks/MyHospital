@@ -17,15 +17,16 @@
                 <?= csrf_field(); ?>
                 <div class="mb-3">
                     <label for="nik" class="form-label">NIK</label>
-                    <input name="nik" type="hidden" value="<?= $nik; ?>">
-                    <input type="text" class="form-control <?= ($validation->hasError('nik')) ? 'is-invalid' : ''; ?>" id="nik" name="nik" placeholder="<?= $nik; ?>" disabled>
+
+                    <input type="text" class="form-control <?= ($validation->hasError('nik')) ? 'is-invalid' : ''; ?>" id="nik" name="nik">
                     <div class="invalid-feedback">
                         <?= $validation->getError('nik'); ?>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="nip" class="form-label">NIP</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('nip')) ? 'is-invalid' : ''; ?>" id="nip" name="nip" value="<?= old('nip'); ?>">
+                    <input name="nip" type="hidden" value="<?= $nip; ?>">
+                    <input type="text" class="form-control <?= ($validation->hasError('nip')) ? 'is-invalid' : ''; ?>" id="nip" name="nip" placeholder="<?= $nip; ?>" disabled>
                     <div class="invalid-feedback">
                         <?= $validation->getError('nip'); ?>
                     </div>

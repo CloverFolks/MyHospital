@@ -18,15 +18,15 @@ class DokterModel extends Model
         }
     }
 
-    public function getFreshNik()
+    public function getFreshNip()
     {
         do {
-            $nik = "";
-            for ($i = 0; $i < 16; $i++) {
-                $nik .= mt_rand(0, 9);
+            $nip = "";
+            for ($i = 0; $i < 4; $i++) {
+                $nip .= mt_rand(0, 9);
             }
-        } while ($this->where(['nik' => $nik])->first());
-        return $nik;
+        } while ($this->where(['nip' => $nip])->first());
+        return $nip;
     }
 
 
