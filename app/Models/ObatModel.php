@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class ObatModel extends Model
 {
     protected $table = 'obat';
-    protected $allowedFields = ['kode', 'nama_obat', 'jenis_obat', 'label_obat', 'produsen', 'no_bpom', 'tgl_produksi', 'tgl_kedaluwarsa'];
+    protected $allowedFields = ['kode', 'nama_obat', 'jenis_obat', 'label_obat', 'produsen', 'kategori', 'komposisi', 'aturan_pakai', 'kontra_indikasi', 'no_bpom'];
 
     public function getObat($id = false)
     {
@@ -35,10 +35,8 @@ class ObatModel extends Model
             ->table('obat')
             ->like('kode', $keyword)
             ->orLike('nama_obat', $keyword)
-            ->orLike('produsen', $keyword)
-            ->orLike('tgl_produksi', $keyword)
-            ->orLike('tgl_kedaluwarsa', $keyword)
-            ->orderBy('tgl_kedaluwarsa', 'ASC');
+            ->orLike('jenis_obat', $keyword)
+            ->orLike('produsen', $keyword);
     }
 
     public function getObatByKode($kode)

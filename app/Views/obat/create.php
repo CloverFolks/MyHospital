@@ -44,7 +44,16 @@
                             <tr>
                                 <td>Label Obat</td>
                                 <td>
-                                    <input type="text" class="form-control <?= ($validation->hasError('label_obat')) ? 'is-invalid' : ''; ?>" id="label_obat" name="label_obat" value="<?= old('label_obat'); ?>" placeholder="e.g Obat Keras">
+                                    <select name="label_obat" class="form-select <?= ($validation->hasError('label_obat')) ? 'is-invalid' : ''; ?>" id="label_obat" name="label_obat" value="<?= old('label_obat'); ?>">
+                                        <option value="" disabled selected>Pilih label obat</option>
+                                        <option value="Herbal Tradisional">Herbal Tradisional</option>
+                                        <option value="Herbal Terstandar">Herbal Terstandar</option>
+                                        <option value="Fitofarmaka">Fitofarmaka</option>
+                                        <option value="Beredar Bebas">Beredar Bebas</option>
+                                        <option value="Bebas Terbatas">Bebas Terbatas</option>
+                                        <option value="Obat Keras">Obat Keras</option>
+                                        <option value="Narkotika">Narkotika</option>
+                                    </select>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('label_obat'); ?>
                                     </div>
@@ -60,6 +69,36 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td>Kategori</td>
+                                <td>
+                                    <select name="kategori" class="form-select <?= ($validation->hasError('kategori')) ? 'is-invalid' : ''; ?>" id="kategori" name="kategori" value="<?= old('kategori'); ?>">
+                                        <option value="" disabled selected>Pilih kategori obat</option>
+                                        <option value="Vitamin dan Suplemen">Vitamin dan Suplemen</option>
+                                        <option value="Jantung">Jantung</option>
+                                        <option value="Batuk dan Flu">Batuk dan Flu</option>
+                                        <option value="Saluran Pencernaan">Saluran Pencernaan</option>
+                                        <option value="Demam">Demam</option>
+                                        <option value="Tulang dan Sendi">Tulang dan Sendi</option>
+                                        <option value="Alergi">Alergi</option>
+                                        <option value="Antibiotik">Antibiotik</option>
+                                        <option value="Mata">Mata</option>
+                                        <option value="Kulit">Kulit</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('kategori'); ?>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Komposisi</td>
+                                <td>
+                                    <input type="text" class="form-control <?= ($validation->hasError('komposisi')) ? 'is-invalid' : ''; ?>" id="komposisi" name="komposisi" value="<?= old('komposisi'); ?>" placeholder="e.g Paracetamol 500Mg">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('komposisi'); ?>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>Nomor BPOM</td>
                                 <td>
                                     <input type="text" class="form-control <?= ($validation->hasError('no_bpom')) ? 'is-invalid' : ''; ?>" id="no_bpom" name="no_bpom" value="<?= old('no_bpom'); ?>" placeholder="e.g NA17181302437">
@@ -69,20 +108,20 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Tanggal Produksi</td>
+                                <td>Aturan Pakai</td>
                                 <td>
-                                    <input type="date" class="form-control <?= ($validation->hasError('tgl_produksi')) ? 'is-invalid' : ''; ?>" id="tgl_produksi" name="tgl_produksi" value="<?= old('tgl_produksi'); ?>" placeholder="e.g Pilih tanggal">
+                                    <input type="text" class="form-control <?= ($validation->hasError('aturan_pakai')) ? 'is-invalid' : ''; ?>" id="aturan_pakai" name="aturan_pakai" value="<?= old('aturan_pakai'); ?>" placeholder="e.g Sesudah makan">
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('tgl_produksi'); ?>
+                                        <?= $validation->getError('tgl_kedaluwarsa'); ?>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Tanggal Expired</td>
+                                <td>Kontra Indikasi</td>
                                 <td>
-                                    <input type="date" class="form-control <?= ($validation->hasError('tgl_kedaluwarsa')) ? 'is-invalid' : ''; ?>" id="tgl_kedaluwarsa" name="tgl_kedaluwarsa" value="<?= old('tgl_kedaluwarsa'); ?>" placeholder="e.g Pilih tanggal">
+                                    <input type="text" class="form-control <?= ($validation->hasError('kontra_indikasi')) ? 'is-invalid' : ''; ?>" id="kontra_indikasi" name="kontra_indikasi" value="<?= old('kontra_indikasi'); ?>" placeholder="e.g Tidak dianjurkan untuk pengidap hipertensi">
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('tgl_kedaluwarsa'); ?>
+                                        <?= $validation->getError('kontra_indikasi'); ?>
                                     </div>
                                 </td>
                             </tr>

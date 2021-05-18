@@ -33,9 +33,8 @@
                             <th scope="col">#</th>
                             <th scope="col">Kode</th>
                             <th scope="col">Nama Obat</th>
+                            <th scope="col">Jenis obat</th>
                             <th scope="col">Produsen</th>
-                            <th scope="col">Tanggal Produksi</th>
-                            <th scope="col">Tanggal Expired</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -46,9 +45,8 @@
                                 <td><?= $i++; ?></td>
                                 <td><?= $obat['kode']; ?></td>
                                 <td><?= $obat['nama_obat']; ?></td>
+                                <td><?= $obat['jenis_obat']; ?></td>
                                 <td><?= $obat['produsen']; ?></td>
-                                <td><?= $obat['tgl_produksi']; ?></td>
-                                <td><?= $obat['tgl_kedaluwarsa']; ?></td>
                                 <td>
                                     <a href="<?= base_url('/obat/detail/' . $obat['id']); ?>" class="btn btn-success">Detail</a>
                                 </td>

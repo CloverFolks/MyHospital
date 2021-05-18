@@ -44,7 +44,7 @@
                 <table class="table">
                     <tbody>
                         <tr>
-                            <th rowspan="9" scope="row">Data Obat</th>
+                            <th rowspan="11" scope="row">Data Obat</th>
                         </tr>
                         <tr>
                             <td>Kode</td>
@@ -70,16 +70,24 @@
                             <td><?= $obat['produsen']; ?></td>
                         </tr>
                         <tr>
+                            <td>Kategori</td>
+                            <td><?= $obat['kategori']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Komposisi</td>
+                            <td><?= $obat['komposisi']; ?></td>
+                        </tr>
+                        <tr>
                             <td>Nomor BPOM</td>
                             <td><?= $obat['no_bpom']; ?></td>
                         </tr>
                         <tr>
-                            <td>Tanggal Produksi</td>
-                            <td><?= $obat['tgl_produksi']; ?></td>
+                            <td>Aturan Pakai</td>
+                            <td><?= $obat['aturan_pakai']; ?></td>
                         </tr>
                         <tr>
-                            <td>Tanggal Kadaluwarsa</td>
-                            <td><?= $obat['tgl_kedaluwarsa']; ?></td>
+                            <td>Kontra Indikasi</td>
+                            <td><?= $obat['kontra_indikasi']; ?></td>
                         </tr>
                     </tbody>
                 </table>

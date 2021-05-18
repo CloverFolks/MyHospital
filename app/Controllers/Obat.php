@@ -92,6 +92,30 @@ class Obat extends BaseController
                     'required' => 'Produsen obat harus diisi'
                 ],
             ],
+            'kategori' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kategori obat harus diisi'
+                ],
+            ],
+            'komposisi' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Komposisi obat harus diisi'
+                ],
+            ],
+            'aturan_pakai' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Aturan pakai obat harus diisi'
+                ],
+            ],
+            'kontra_indikasi' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kontra indikasi obat harus diisi'
+                ],
+            ],
             'no_bpom' => [
                 'rules' => 'required|is_unique[obat.no_bpom]|min_length[8]|max_length[20]',
                 'errors' => [
@@ -99,18 +123,6 @@ class Obat extends BaseController
                     'is_unique' => 'Nomor BPOM obat sudah ada',
                     'min_length' => 'Nomor BPOM obat harus terdiri dari min. 8 angka',
                     'max_length' => 'Nomor BPOM obat harus terdiri dari max. 20 angka'
-                ],
-            ],
-            'tgl_produksi' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Tanggal produksi obat harus diisi'
-                ],
-            ],
-            'tgl_kedaluwarsa' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Tanggal Expired obat harus diisi'
                 ],
             ],
         ])) {
@@ -123,9 +135,11 @@ class Obat extends BaseController
             'jenis_obat' => $this->request->getVar('jenis_obat'),
             'label_obat' => $this->request->getVar('label_obat'),
             'produsen' => $this->request->getVar('produsen'),
-            'no_bpom' => $this->request->getVar('no_bpom'),
-            'tgl_produksi' => $this->request->getVar('tgl_produksi'),
-            'tgl_kedaluwarsa' => $this->request->getVar('tgl_kedaluwarsa')
+            'kategori' => $this->request->getVar('kategori'),
+            'komposisi' => $this->request->getVar('komposisi'),
+            'aturan_pakai' => $this->request->getVar('aturan_pakai'),
+            'kontra_indikasi' => $this->request->getVar('kontra_indikasi'),
+            'no_bpom' => $this->request->getVar('no_bpom')
         ]);
         session()->setFlashdata('pesan', 'Data Berhasil Ditambah');
         session()->setFlashdata('pesan_text', 'Anda berhasil menambah data baru, silakan tekan OK');
@@ -190,6 +204,30 @@ class Obat extends BaseController
                     'required' => 'Produsen obat harus diisi'
                 ],
             ],
+            'kategori' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kategori obat harus diisi'
+                ],
+            ],
+            'komposisi' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Komposisi obat harus diisi'
+                ],
+            ],
+            'aturan_pakai' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Aturan pakai obat harus diisi'
+                ],
+            ],
+            'kontra_indikasi' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kontra indikasi obat harus diisi'
+                ],
+            ],
             'no_bpom' => [
                 'rules' => $rule_no_bpom,
                 'errors' => [
@@ -197,18 +235,6 @@ class Obat extends BaseController
                     'is_unique' => 'Nomor BPOM obat sudah ada',
                     'min_length' => 'Nomor BPOM obat harus terdiri dari min. 8 angka',
                     'max_length' => 'Nomor BPOM obat harus terdiri dari max. 20 angka'
-                ],
-            ],
-            'tgl_produksi' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Tanggal produksi obat harus diisi'
-                ],
-            ],
-            'tgl_kedaluwarsa' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Tanggal Expired obat harus diisi'
                 ],
             ],
         ])) {
@@ -222,9 +248,11 @@ class Obat extends BaseController
             'jenis_obat' => $this->request->getVar('jenis_obat'),
             'label_obat' => $this->request->getVar('label_obat'),
             'produsen' => $this->request->getVar('produsen'),
-            'no_bpom' => $this->request->getVar('no_bpom'),
-            'tgl_produksi' => $this->request->getVar('tgl_produksi'),
-            'tgl_kedaluwarsa' => $this->request->getVar('tgl_kedaluwarsa')
+            'kategori' => $this->request->getVar('kategori'),
+            'komposisi' => $this->request->getVar('komposisi'),
+            'aturan_pakai' => $this->request->getVar('aturan_pakai'),
+            'kontra_indikasi' => $this->request->getVar('kontra_indikasi'),
+            'no_bpom' => $this->request->getVar('no_bpom')
         ]);
         session()->setFlashdata('pesan', 'Data Berhasil Diubah');
         session()->setFlashdata('pesan_text', 'Anda berhasil mengubah data, silakan tekan OK');

@@ -45,10 +45,15 @@
                             <tr>
                                 <td>Label Obat</td>
                                 <td>
-                                    <input type="text" class="form-control <?= ($validation->hasError('label_obat')) ? 'is-invalid' : ''; ?>" id="label_obat" name="label_obat" value="<?= (old('label_obat')) ? old('label_obat') : $obat['label_obat'] ?>" placeholder="e.g Obat Keras">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('label_obat'); ?>
-                                    </div>
+                                    <?php
+                                    $label_obat = array("Herbal Tradisional", "Herbal Terstandar", "Fitofarmaka", "Beredar Bebas", "Bebas Terbatas", "Obat Keras", "Narkotika");
+                                    ?>
+                                    <select name="label_obat" class="form-select" required>
+                                        <option value="" disabled>Pilih label obat</option>
+                                        <?php foreach ($label_obat as $p) : ?>
+                                            <option value="<?= $p; ?>" <?= ($p == $obat['label_obat']) ? 'selected' : ''; ?>><?= $p; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
@@ -57,6 +62,29 @@
                                     <input type="text" class="form-control <?= ($validation->hasError('produsen')) ? 'is-invalid' : ''; ?>" id="produsen" name="produsen" value="<?= (old('produsen')) ? old('produsen') : $obat['produsen'] ?>" placeholder="e.g Kimia Farma">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('produsen'); ?>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Kategori</td>
+                                <td>
+                                    <?php
+                                    $kategori = array("Vitamin dan Suplemen", "Jantung", "Batuk dan Flu", "Saluran Pencernaan", "Demam", "Tulang dan Sendi", "Alergi", "Antibiotik", "Mata", "Kulit");
+                                    ?>
+                                    <select name="kategori" class="form-select" required>
+                                        <option value="" disabled>Pilih kategori obat</option>
+                                        <?php foreach ($kategori as $p) : ?>
+                                            <option value="<?= $p; ?>" <?= ($p == $obat['kategori']) ? 'selected' : ''; ?>><?= $p; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Komposisi</td>
+                                <td>
+                                    <input type="text" class="form-control <?= ($validation->hasError('komposisi')) ? 'is-invalid' : ''; ?>" id="komposisi" name="komposisi" value="<?= (old('komposisi')) ? old('komposisi') : $obat['komposisi'] ?>" placeholder="e.g Kimia Farma">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('komposisi'); ?>
                                     </div>
                                 </td>
                             </tr>
@@ -70,20 +98,20 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Tanggal Produksi</td>
+                                <td>Aturan Pakai</td>
                                 <td>
-                                    <input type="date" class="form-control <?= ($validation->hasError('tgl_produksi')) ? 'is-invalid' : ''; ?>" id="tgl_produksi" name="tgl_produksi" value="<?= (old('tgl_produksi')) ? old('tgl_produksi') : $obat['tgl_produksi'] ?>" placeholder="e.g Pilih tanggal">
+                                    <input type="text" class="form-control <?= ($validation->hasError('aturan_pakai')) ? 'is-invalid' : ''; ?>" id="aturan_pakai" name="aturan_pakai" value="<?= (old('aturan_pakai')) ? old('aturan_pakai') : $obat['aturan_pakai'] ?>" placeholder="e.g Kimia Farma">
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('tgl_produksi'); ?>
+                                        <?= $validation->getError('aturan_pakai'); ?>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Tanggal Expired</td>
+                                <td>Kontra Indikasi</td>
                                 <td>
-                                    <input type="date" class="form-control <?= ($validation->hasError('tgl_kedaluwarsa')) ? 'is-invalid' : ''; ?>" id="tgl_kedaluwarsa" name="tgl_kedaluwarsa" value="<?= (old('tgl_kedaluwarsa')) ? old('tgl_kedaluwarsa') : $obat['tgl_kedaluwarsa'] ?>" placeholder="e.g Pilih tanggal">
+                                    <input type="text" class="form-control <?= ($validation->hasError('kontra_indikasi')) ? 'is-invalid' : ''; ?>" id="kontra_indikasi" name="kontra_indikasi" value="<?= (old('kontra_indikasi')) ? old('kontra_indikasi') : $obat['kontra_indikasi'] ?>" placeholder="e.g Kimia Farma">
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('tgl_kedaluwarsa'); ?>
+                                        <?= $validation->getError('kontra_indikasi'); ?>
                                     </div>
                                 </td>
                             </tr>
