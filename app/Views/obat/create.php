@@ -35,22 +35,15 @@
                             <tr>
                                 <td>Jenis Obat</td>
                                 <td>
-                                    <select name="jenis_obat" class="form-select <?= ($validation->hasError('jenis_obat')) ? 'is-invalid' : ''; ?>" id="jenis_obat" name="jenis_obat" value="<?= old('jenis_obat'); ?>">
-                                        <option value="" disabled selected>Pilih jenis obat</option>
-                                        <option value="Pulvis">Pulvis</option>
-                                        <option value="Pulveres">Pulveres</option>
-                                        <option value="Compressi">Compressi</option>
-                                        <option value="Solutiones">Solutiones</option>
-                                        <option value="Suspensiones">Suspensiones</option>
-                                        <option value="Elmusiones">Elmusiones</option>
-                                        <option value="Galenik">Galenik</option>
-                                        <option value="Extractum">Extractum</option>
-                                        <option value="Infusa">Infusa</option>
-                                        <option value="Immunosera">Immunosera</option>
-                                        <option value="Unguenta">Unguenta</option>
-                                        <option value="Suppositoria">Suppositoria</option>
-                                        <option value="Guttae">Guttae</option>
-                                        <option value="Injectiones">Injectiones</option>
+                                    <?php
+                                    $jenis_obat = array("Pulvis", "Pulveres", "Compressi", "Pilulae", "Solutiones", "Suspensiones", "Elmusiones", "Galenik", "Extractum", "Infusa", "Immunosera", "Unguenta", "Suppositoria", "Guttae", "Injectiones");
+                                    ?>
+
+                                    <select name="jenis_obat" class="form-select <?= ($validation->hasError('jenis_obat')) ? 'is-invalid' : ''; ?>" id="jenis_obat" name="jenis_obat">
+                                        <option value="" disabled <?= old('jenis_obat') ? '' : 'selected'; ?>>Pilih jenis obat</option>
+                                        <?php foreach ($jenis_obat as $j) : ?>
+                                            <option value="<?= $j; ?>" <?= $j == (old('jenis_obat')) ? 'selected' : ''; ?>><?= $j; ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('jenis_obat'); ?>
