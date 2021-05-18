@@ -36,6 +36,20 @@
                             <tr>
                                 <td>Jenis Obat</td>
                                 <td>
+                                    <?php
+                                    $jenis_obat = array("Pulvis", "Pulveres", "Compressi", "Pilulae", "Solutiones", "Suspensiones", "Elmusiones", "Galenik", "Extractum", "Infusa", "Immunosera", "Unguenta", "Suppositoria", "Guttae", "Injectiones");
+                                    ?>
+                                    <select name="jenis_obat" class="form-select" required>
+                                        <option value="" disabled>Pilih jenis_obat obat</option>
+                                        <?php foreach ($jenis_obat as $p) : ?>
+                                            <option value="<?= $p; ?>" <?= ($p == $obat['jenis_obat']) ? 'selected' : ''; ?>><?= $p; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Jenis Obat</td>
+                                <td>
                                     <input type="text" class="form-control <?= ($validation->hasError('jenis_obat')) ? 'is-invalid' : ''; ?>" id="jenis_obat" name="jenis_obat" value="<?= (old('jenis_obat')) ? old('jenis_obat') : $obat['jenis_obat'] ?>" placeholder="e.g Pulvis">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('jenis_obat'); ?>
@@ -100,7 +114,7 @@
                             <tr>
                                 <td>Aturan Pakai</td>
                                 <td>
-                                    <input type="text" class="form-control <?= ($validation->hasError('aturan_pakai')) ? 'is-invalid' : ''; ?>" id="aturan_pakai" name="aturan_pakai" value="<?= (old('aturan_pakai')) ? old('aturan_pakai') : $obat['aturan_pakai'] ?>" placeholder="e.g Kimia Farma">
+                                    <textarea type="text" class="form-control <?= ($validation->hasError('aturan_pakai')) ? 'is-invalid' : ''; ?>" id="aturan_pakai" name="aturan_pakai" placeholder="e.g Kimia Farma"><?= (old('aturan_pakai')) ? old('aturan_pakai') : $obat['aturan_pakai'] ?></textarea>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('aturan_pakai'); ?>
                                     </div>
@@ -109,7 +123,7 @@
                             <tr>
                                 <td>Kontra Indikasi</td>
                                 <td>
-                                    <input type="text" class="form-control <?= ($validation->hasError('kontra_indikasi')) ? 'is-invalid' : ''; ?>" id="kontra_indikasi" name="kontra_indikasi" value="<?= (old('kontra_indikasi')) ? old('kontra_indikasi') : $obat['kontra_indikasi'] ?>" placeholder="e.g Kimia Farma">
+                                    <textarea type="text" class="form-control <?= ($validation->hasError('kontra_indikasi')) ? 'is-invalid' : ''; ?>" id="kontra_indikasi" name="kontra_indikasi" placeholder="e.g Kimia Farma"><?= (old('kontra_indikasi')) ? old('kontra_indikasi') : $obat['kontra_indikasi'] ?></textarea>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('kontra_indikasi'); ?>
                                     </div>
@@ -123,4 +137,17 @@
         </div>
     </div>
 </div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $(document).ready(function() {
+        <?php if (session()->getFlashdata('pesan')) { ?>
+            swal({
+                title: "<?= session()->getFlashdata('pesan') ?>",
+                text: "<?= session()->getFlashdata('pesan_text') ?>",
+                icon: "<?= session()->getFlashdata('pesan_icon') ?>",
+            });
+        <?php } ?>
+    });
+</script>
 <?= $this->endSection(); ?>
