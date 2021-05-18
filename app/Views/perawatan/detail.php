@@ -50,11 +50,6 @@
                         <tr>
                             <th rowspan="8" scope="row">
                                 Pasien
-                                <br>
-                                <br>
-                                <a class="btn btn-outline-success" href="<?= base_url('/pasien/detail/' . $perawatan['id_pasien']); ?>" target="_blank">
-                                    <i data-feather="user"></i> Detail
-                                </a>
                             </th>
                         </tr>
                         <tr>
@@ -96,11 +91,6 @@
                         <tr>
                             <th rowspan="5" scope="row">
                                 Dokter
-                                <br>
-                                <br>
-                                <a class="btn btn-outline-success" href="<?= base_url('/dokter/detail/' . $perawatan['id_dokter']); ?>" target="_blank">
-                                    <i data-feather="user"></i> Detail
-                                </a>
                             </th>
                         </tr>
                         <tr>
