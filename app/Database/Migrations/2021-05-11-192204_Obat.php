@@ -36,12 +36,12 @@ class Obat extends Migration
 				'constraint'	=> 50,
 			],
 			'kategori' => [
-				'type'			=> 'CHAR',
+				'type'			=> 'VARCHAR',
 				'constraint'	=> 50,
 			],
 			'komposisi' => [
 				'type'			=> 'VARCHAR',
-				'constraint'	=> 50,
+				'constraint'	=> 100,
 			],
 			'aturan_pakai' => [
 				'type'			=> 'VARCHAR',
@@ -49,7 +49,7 @@ class Obat extends Migration
 			],
 			'kontra_indikasi' => [
 				'type'			=> 'VARCHAR',
-				'constraint'	=> 50,
+				'constraint'	=> 100,
 			],
 			'no_bpom' => [
 				'type'			=> 'VARCHAR',
