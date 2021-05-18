@@ -54,6 +54,7 @@ class Obat extends Migration
 			'no_bpom' => [
 				'type'			=> 'VARCHAR',
 				'constraint'	=> 20,
+			],
 			'created_at' => [
 				'type' => 'DATETIME',
 				'null' => true
