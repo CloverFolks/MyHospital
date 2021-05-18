@@ -46,31 +46,34 @@ class Pasien extends BaseController
             'title' => 'Tambah pasien',
             'menu' => 'pasien',
             'validation' => \Config\Services::validation(),
-            'nik' => $this->pasienModel->getFreshNik(),
+            'no_rekam_medis' => $this->pasienModel->getFreshNoRekamMedis(),
         ];
         return view('pasien/create', $data);
     }
 
     public function save()
     {
+
         //validation
         if (!$this->validate([
             'nik' => [
-                'rules' => 'required|is_unique[pasien.nik]|numeric|min_length[16]',
+                'rules' => 'required|is_unique[pasien.nik]|numeric|min_length[16]|max_length[16]',
                 'errors' => [
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
                     'numeric' => '{field} hanya boleh diisi angka',
-                    'min_length' => '{field} harus terdiri dari 16 angka'
+                    'min_length' => '{field} harus terdiri dari 16 angka',
+                    'max_length' => '{field} harus terdiri dari 16 angka'
                 ]
             ],
 
             'no_rekam_medis' => [
-                'rules' => 'required|is_unique[pasien.no_rekam_medis]|min_length[10]',
+                'rules' => 'required|is_unique[pasien.no_rekam_medis]|min_length[10]|max_length[10]',
                 'errors' => [
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
-                    'min_length' => '{field} harus terdiri dari 10 karakter'
+                    'min_length' => '{field} harus terdiri dari 10 karakter',
+                    'max_length' => '{field} harus terdiri dari 10 karakter'
                 ]
             ],
 
@@ -152,17 +155,17 @@ class Pasien extends BaseController
 
         //ambil jenis kelamin
         $jeniskelamin = $this->request->getVar('jenis_kelamin');
-        if ($jeniskelamin == 'laki-laki') {
-            $jenis_kelamin = 0;
-        } else {
+        if ($jeniskelamin == 'Laki-laki') {
             $jenis_kelamin = 1;
+        } else {
+            $jenis_kelamin = 0;
         }
 
         $status_menikah = $this->request->getVar('status_menikah');
-        if ($status_menikah == 'sudah menikah') {
-            $status_menikah = 0;
-        } else {
+        if ($status_menikah == 'Sudah Menikah') {
             $status_menikah = 1;
+        } else {
+            $status_menikah = 0;
         }
 
         $this->pasienModel->save([
@@ -179,7 +182,7 @@ class Pasien extends BaseController
             'status_menikah' => $status_menikah,
 
         ]);
-        session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
+
         return redirect()->to('/pasien/index');
     }
 
@@ -190,13 +193,13 @@ class Pasien extends BaseController
         $pasien = $this->pasienModel->find($id);
 
         // cek jika file gambarnya default.jpg
-        if ($pasien['image_profile'] != 'default.jpg') {
+        if ($pasien['image_profile'] != 'default.jpg' && $pasien['image_profile'] != '') {
             //hapus gambar
             unlink('images/avatar/' . $pasien['image_profile']);
         }
 
         $this->pasienModel->delete($id);
-        session()->setFlashdata('pesan', 'Data berhasil dihapus.');
+
         return redirect()->to('/pasien');
     }
 
@@ -216,10 +219,11 @@ class Pasien extends BaseController
 
     public function edit($id)
     {
+        $pasien = $this->pasienModel->getPasien($id);
         $data = [
             'title' => 'Edit Data Pasien',
             'menu' => 'pasien',
-            'pasien' => $this->pasienModel->getPasien($id),
+            'pasien' => $pasien,
             'validation' => \Config\Services::validation()
         ];
 
@@ -230,15 +234,15 @@ class Pasien extends BaseController
     {
         $pasienLama = $this->pasienModel->getPasien($id);
         if ($pasienLama['nik'] == $this->request->getVar('nik')) {
-            $rule_nik = 'required|numeric|min_length[16]';
+            $rule_nik = 'required|numeric|min_length[16]|max_length[16]';
         } else {
-            $rule_nik = 'required|is_unique[pasien.nik]|numeric|min_length[16]';
+            $rule_nik = 'required|is_unique[pasien.nik]|numeric|min_length[16]|max_length[16]';
         };
 
         if ($pasienLama['no_rekam_medis'] == $this->request->getVar('no_rekam_medis')) {
-            $rule_no_rekam_medis = 'required|min_length[10]';
+            $rule_no_rekam_medis = 'required|min_length[10]|max_length[10]';
         } else {
-            $rule_no_rekam_medis = 'required|is_unique[pasien.no_rekam_medis]|min_length[10]';
+            $rule_no_rekam_medis = 'required|is_unique[pasien.no_rekam_medis]|min_length[10]|max_length[10]';
         };
 
         //validation
@@ -249,7 +253,8 @@ class Pasien extends BaseController
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
                     'numeric' => '{field} hanya boleh diisi angka',
-                    'min_length' => '{field} harus terdiri dari 16 angka'
+                    'min_length' => '{field} harus terdiri dari 16 angka',
+                    'max_length' => '{field} harus terdiri dari 16 angka'
                 ]
             ],
 
@@ -258,7 +263,8 @@ class Pasien extends BaseController
                 'errors' => [
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
-                    'min_length' => '{field} harus terdiri dari 10 karakter'
+                    'min_length' => '{field} harus terdiri dari 10 karakter',
+                    'max_length' => '{field} harus terdiri dari 10 karakter'
                 ]
             ],
 
@@ -322,7 +328,7 @@ class Pasien extends BaseController
             ]
 
         ])) {
-            return redirect()->to('/pasien/edit')->withInput();
+            return redirect()->to('/pasien/edit/' . $this->request->getVar('id'))->withInput();
         }
 
 
@@ -335,24 +341,28 @@ class Pasien extends BaseController
         } else {
             $namaProfile = $fileProfile->getRandomName();
             $fileProfile->move('images/avatar', $namaProfile);
-            unlink('images/avatar/' . $this->request->getVar['image_profile_lama']);
+            if ($this->request->getVar('image_profile_lama') != '') {
+                unlink('images/avatar/' . $this->request->getVar('image_profile_lama'));
+            }
         }
 
         //ambil jenis kelamin
         $jeniskelamin = $this->request->getVar('jenis_kelamin');
-        if ($jeniskelamin == 'laki-laki') {
-            $jenis_kelamin = 0;
-        } else {
+        if ($jeniskelamin == 'Laki-laki') {
             $jenis_kelamin = 1;
+        } else {
+            $jenis_kelamin = 0;
         }
 
         $status_menikah = $this->request->getVar('status_menikah');
-        if ($status_menikah == 'sudah menikah') {
-            $status_menikah = 0;
+        // dd($status_menikah);
+        if ($status_menikah == 'Sudah Menikah') {
+            $nilai_menikah = 1;
         } else {
-            $status_menikah = 1;
+            $nilai_menikah = 0;
         }
 
+        // dd($status_menikah);
 
         $this->pasienModel->save([
             'id' => $id,
@@ -366,9 +376,9 @@ class Pasien extends BaseController
             'jenis_kelamin' => $jenis_kelamin,
             'golongan_darah' => $this->request->getVar('golongan_darah'),
             'tgl_lahir' => $this->request->getVar('tgl_lahir'),
-            'status_menikah' => $status_menikah
+            'status_menikah' => $nilai_menikah
         ]);
-        session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
+
         return redirect()->to('/pasien/index');
     }
 }

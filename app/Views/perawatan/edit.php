@@ -12,7 +12,7 @@
     <div class="card p-4">
         <div class="row">
             <div class="col">
-                <form action="<?= base_url('/perawatan/save'); ?>" method="POST">
+                <form action="<?= base_url('/perawatan/save/' . $perawatan['id']); ?>" method="POST">
                     <?= csrf_field(); ?>
                     <table class="table">
                         <tbody>
@@ -57,91 +57,81 @@
                             <tr>
                                 <th rowspan="7" scope="row">
                                     Pasien
-                                    <br>
-                                    <br>
-                                    <a class="btn btn-outline-success" href="<?= base_url('/pasien/edit/' . $pasien['id']); ?>" target="_blank">
-                                        <i data-feather="edit"></i> Edit
-                                    </a>
                                 </th>
                             </tr>
                             <tr>
                                 <td>NIK</td>
                                 <td>
                                     <div class="input-group">
-                                        <input id="pasien-nik" value="<?= $pasien['nik']; ?>" type="text" class="form-control" required>
+                                        <input id="pasien-nik" value="<?= $perawatan['nik']; ?>" type="text" class="form-control" required>
                                         <button id="btn-search-pasien" class="btn btn-outline-secondary" type="button"><i data-feather="search"></i></button>
                                     </div>
-                                    <input name="id_pasien" value="<?= $pasien['id']; ?>" id="pasien-id" type="text" class="visually-hidden" required>
+                                    <input name="id_pasien" value="<?= $perawatan['id_pasien']; ?>" id="pasien-id" type="text" class="visually-hidden" required>
                                 </td>
                             </tr>
                             <tr>
                                 <td>No. Rekam Medis</td>
                                 <td>
-                                    <input id="pasien-no-rekam-medis" value="<?= $pasien['no_rekam_medis']; ?>" type="text" class="form-control" disabled required>
+                                    <input id="pasien-no-rekam-medis" value="<?= $perawatan['no_rekam_medis']; ?>" type="text" class="form-control" disabled required>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Nama Lengkap</td>
                                 <td>
-                                    <input id="pasien-nama" value="<?= $pasien['nama_pasien']; ?>" type="text" class="form-control" disabled required>
+                                    <input id="pasien-nama" value="<?= $perawatan['nama_pasien']; ?>" type="text" class="form-control" disabled required>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Jenis Kelamin</td>
                                 <td>
-                                    <input id="pasien-jenis-kelamin" value="<?= ($pasien['jenis_kelamin']) ? 'Laki-laki' : 'Perempuan'; ?>" type="text" class="form-control" disabled>
+                                    <input id="pasien-jenis-kelamin" value="<?= ($perawatan['jenis_kelamin']) ? 'Laki-laki' : 'Perempuan'; ?>" type="text" class="form-control" disabled>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Golongan Darah</td>
                                 <td>
-                                    <input id="pasien-golongan-darah" value="<?= $pasien['golongan_darah']; ?>" type=" text" class="form-control" disabled>
+                                    <input id="pasien-golongan-darah" value="<?= $perawatan['golongan_darah']; ?>" type=" text" class="form-control" disabled>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Tanggal Lahir</td>
                                 <td>
-                                    <input id="pasien-tanggal-lahir" value="<?= $pasien['tgl_lahir']; ?>" type="text" class="form-control" disabled>
+                                    <input id="pasien-tanggal-lahir" value="<?= $perawatan['tgl_lahir']; ?>" type="text" class="form-control" disabled>
                                 </td>
                             </tr>
 
                             <tr>
                                 <th rowspan="5" scope="row">
                                     Dokter
-                                    <br>
-                                    <br>
-                                    <a class="btn btn-outline-success" href="<?= base_url('/dokter/edit/' . $dokter['id']); ?>" target="_blank">
-                                        <i data-feather="edit"></i> Edit
-                                    </a>
                                 </th>
                             </tr>
                             <tr>
                                 <td>NIP</td>
                                 <td>
                                     <div class="input-group">
-                                        <input id="dokter-nip" value="<?= $dokter['nip']; ?>" type="text" class="form-control" required>
+                                        <input id="dokter-nip" value="<?= $perawatan['nip']; ?>" type="text" class="form-control" required>
                                         <button id="btn-search-dokter" class="btn btn-outline-secondary" type="button"><i data-feather="search"></i></button>
                                     </div>
-                                    <input name="id_dokter" value="<?= $dokter['id']; ?>" id="dokter-id" class="visually-hidden" required>
+                                    <input name="id_dokter" value="<?= $perawatan['id_dokter']; ?>" id="dokter-id" class="visually-hidden" required>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Nama Lengkap</td>
                                 <td>
-                                    <input id="dokter-nama" value="<?= $dokter['nama']; ?>" type="text" class="form-control" disabled>
+                                    <input id="dokter-nama" value="<?= $perawatan['nama']; ?>" type="text" class="form-control" disabled>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Izin Praktik</td>
                                 <td>
-                                    <input id="dokter-izin-praktik" value="<?= $dokter['izin_praktek']; ?>" type="text" class="form-control" disabled>
+                                    <input id="dokter-izin-praktik" value="<?= $perawatan['izin_praktek']; ?>" type="text" class="form-control" disabled>
 
                                 </td>
                             </tr>
                             <tr>
                                 <td>No. HP</td>
                                 <td>
-                                    <input id="dokter-no-hp" value="<?= $dokter['no_hp']; ?>" type="text" class="form-control" disabled>
+                                    <input id="dokter-no-hp" value="<?= $perawatan['no_hp']; ?>" type="text" class="form-control" disabled>
                                 </td>
                             </tr>
                         </tbody>

@@ -41,17 +41,16 @@
                     </thead>
                     <tbody>
                         <?php $i = $startingNumber ?>
-                        <?php foreach ($dokterList as $item) : ?>
+                        <?php foreach ($dokterList as $dokter) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?= $item['nip']; ?></td>
-                                <td><?= $item['nama']; ?></td>
-                                <td><?= $item['izin_praktek']; ?></td>
-                                <td><?= $item['no_hp']; ?></td>
+                                <td><?= $dokter['nip']; ?></td>
+                                <td><?= $dokter['nama']; ?></td>
+                                <td><?= $dokter['izin_praktek']; ?></td>
+                                <td><?= $dokter['no_hp']; ?></td>
                                 <td>
-                                    <a href="<?= base_url('/dokter/detail/' . $item['id']); ?>" class="btn btn-outline-success"><i data-feather="eye"></i></a>
-                                    <a href="<?= base_url('/dokter/edit/' . $item['id']); ?>" class="btn btn-outline-primary"><i data-feather="edit"></i></a>
-                                    <a href="/dokter/delete/<?= $item['id']; ?>?>" class="btn btn-outline-danger"><i data-feather="trash-2"></i></a>
+                                    <a href="<?= base_url('/dokter/detail/' . $dokter['id']); ?>" class="btn btn-success">Detail</a>
+
                                 </td>
                             </tr>
                         <?php endforeach; ?>

@@ -98,7 +98,7 @@
                         <li class="dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                                 <div class="avatar me-1">
-                                    <img src="/images/avatar/2.jpg" alt="" />
+                                    <img src="/images/avatar/default.jpg" alt="" />
                                 </div>
                                 <div class="d-none d-md-block d-lg-inline-block">
                                     Hi, Admin

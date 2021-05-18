@@ -17,7 +17,7 @@ class PasienSeeder extends Seeder
         for ($i = 0; $i < 100; $i++) {
             $data = [
                 'nik' => $faker->unique()->nik(),
-                'image_profile' => $faker->numerify('#.jpg'),
+                'image_profile' => '',
                 'no_rekam_medis' => $faker->numerify('####-##-##'),
                 'nama_pasien' => $faker->name(),
                 'pekerjaan'    => $faker2->jobTitle(),

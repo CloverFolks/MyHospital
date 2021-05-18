@@ -49,7 +49,15 @@
                                 <td><?= $perawatan['tgl_masuk']; ?></td>
                                 <td><?= ($perawatan['tgl_keluar']) ? $perawatan['tgl_keluar'] : '-'; ?></td>
                                 <td>
-                                    <a href="<?= base_url('/perawatan/detail/' . $perawatan['id']); ?>" class="btn btn-success">Detail</a>
+                                    <div class="btn-group">
+                                        <a href="<?= base_url('/perawatan/detail/' . $perawatan['id']); ?>" class="btn btn-success btn-sm">Detail</a>
+                                        <button type="button" class="btn btn-sm btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="<?= base_url('/perawatan/edit/' . $perawatan['id']); ?>"><i data-feather="edit"></i> Edit data</a></li>
+                                            <li><button onclick="hapusPerawatan(<?= $perawatan['id']; ?>)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalHapusPerawatan"><i data-feather="trash-2"></i> Hapus data</button></li>
+                                        </ul>
+                                    </div>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -60,4 +68,32 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modalHapusPerawatan" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Hapus</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Apakah yakin ingin menghapus data perawatan ini?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                <form id="formHapusPerawatan" action="" method="POST" class="d-inline">
+                    <?= csrf_field(); ?>
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function hapusPerawatan(id) {
+        $('#formHapusPerawatan').attr('action', "<?= base_url('/perawatan/delete') ?>/" + id);
+    }
+</script>
 <?= $this->endSection(); ?>

@@ -6,6 +6,8 @@ use CodeIgniter\Model;
 
 class DokterModel extends Model
 {
+    protected $useTimestamps = true;
+    protected $useSoftDeletes = true;
     protected $table = 'dokter';
     protected $allowedFields = ['nik', 'nip', 'nama', 'email', 'alamat', 'jenis_kelamin', 'image_profile', 'izin_praktek', 'tgl_mulai_bekerja', 'no_hp'];
 
@@ -18,32 +20,23 @@ class DokterModel extends Model
         }
     }
 
-    public function getFreshNik()
-    {
-        do {
-            $nik = "";
-            for ($i = 0; $i < 10; $i++) {
-                $nik .= mt_rand(0, 9);
-            }
-        } while ($this->where(['nik' => $nik])->first());
-        return $nik;
-    }
-
     public function getFreshNip()
     {
         do {
             $nip = "";
-            for ($i = 0; $i < 10; $i++) {
+            for ($i = 0; $i < 4; $i++) {
                 $nip .= mt_rand(0, 9);
             }
         } while ($this->where(['nip' => $nip])->first());
         return $nip;
     }
 
+
     public function search($keyword)
     {
         return $this
             ->table('dokter')
+            ->where(['deleted_at' => null])
             ->like('nik', $keyword)
             ->orLike('nip', $keyword)
             ->orLike('nama', $keyword)

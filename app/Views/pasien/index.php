@@ -41,17 +41,15 @@
                     </thead>
                     <tbody>
                         <?php $i = $startingNumber ?>
-                        <?php foreach ($pasienList as $item) : ?>
+                        <?php foreach ($pasienList as $pasien) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?= $item['nik']; ?></td>
-                                <td><?= $item['nama_pasien']; ?></td>
-                                <td><?= $item['no_rekam_medis']; ?></td>
-                                <td><?= $item['no_hp']; ?></td>
+                                <td><?= $pasien['nik']; ?></td>
+                                <td><?= $pasien['nama_pasien']; ?></td>
+                                <td><?= $pasien['no_rekam_medis']; ?></td>
+                                <td><?= $pasien['no_hp']; ?></td>
                                 <td>
-                                    <a href="<?= base_url('/pasien/detail/' . $item['id']); ?>" class="btn btn-outline-success"><i data-feather="eye"></i></a>
-                                    <a href="<?= base_url('/pasien/edit/' . $item['id']); ?>" class="btn btn-outline-primary"><i data-feather="edit"></i></a>
-                                    <a href="/pasien/delete/<?= $item['id']; ?>?>" class="btn btn-outline-danger"><i data-feather="trash-2"></i></a>
+                                    <a href="<?= base_url('/pasien/detail/' . $pasien['id']); ?>" class="btn btn-success">Detail</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
