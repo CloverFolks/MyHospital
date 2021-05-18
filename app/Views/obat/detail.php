@@ -48,7 +48,10 @@
                         </tr>
                         <tr>
                             <td>Kode</td>
-                            <td><?= $obat['kode']; ?></td>
+                            <td>
+                                <svg class="barcode" jsbarcode-format="ean13" jsbarcode-value="<?= $obat['kode']; ?>" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold">
+                                </svg>
+                            </td>
                         </tr>
                         <tr>
                             <td>Nama Obat</td>
@@ -84,4 +87,8 @@
         </div>
     </div>
 </div>
+<script src="/js/jsbarcode.all.min.js"></script>
+<script>
+    JsBarcode(".barcode").init();
+</script>
 <?= $this->endSection(); ?>
