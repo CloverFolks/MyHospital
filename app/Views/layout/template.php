@@ -5,9 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?= $title; ?> | MyHospital</title>
-    <link rel="stylesheet" href="/css/bootstrap.css" />
-    <link rel="stylesheet" href="/css/app.css" />
-    <script src="/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="<?= base_url('/css/bootstrap.css'); ?>" />
+    <link rel="stylesheet" href="<?= base_url('/css/app.css'); ?>" />
+    <link rel="icon" href="<?= base_url('/images/logo.png'); ?>">
+    <script src="<?= base_url('/js/jquery.min.js'); ?>"></script>
 </head>
 
 <body>
@@ -15,8 +16,8 @@
         <!-- Bagian Navigasi -->
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
-                <div class="sidebar-header">
-                    <p class="sidebar-title">MyHospital</p>
+                <div class="mt-5 mx-4">
+                    <img class="img-fluid" src="<?= base_url('images/logo-with-text.png'); ?>">
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
