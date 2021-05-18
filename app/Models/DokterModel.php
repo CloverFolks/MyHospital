@@ -6,6 +6,8 @@ use CodeIgniter\Model;
 
 class DokterModel extends Model
 {
+    protected $useTimestamps = true;
+    protected $useSoftDeletes = true;
     protected $table = 'dokter';
     protected $allowedFields = ['nik', 'nip', 'nama', 'email', 'alamat', 'jenis_kelamin', 'image_profile', 'izin_praktek', 'tgl_mulai_bekerja', 'no_hp'];
 
@@ -44,6 +46,7 @@ class DokterModel extends Model
     {
         return $this
             ->table('dokter')
+            ->where(['deleted_at' => null])
             ->like('nik', $keyword)
             ->orLike('nip', $keyword)
             ->orLike('nama', $keyword)

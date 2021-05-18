@@ -6,6 +6,8 @@ use CodeIgniter\Model;
 
 class PasienModel extends Model
 {
+    protected $useTimestamps = true;
+    protected $useSoftDeletes = true;
     protected $table = 'pasien';
     protected $allowedFields = ['nik', 'image_profile', 'no_rekam_medis', 'nama_pasien', 'pekerjaan', 'no_hp', 'alamat', 'jenis_kelamin', 'golongan_darah', 'tgl_lahir'];
 
@@ -32,7 +34,8 @@ class PasienModel extends Model
     public function search($keyword)
     {
         return $this
-            ->table('dokter')
+            ->table('pasien')
+            ->where(['deleted_at' => null])
             ->like('nik', $keyword)
             ->orLike('no_rekam_medis', $keyword)
             ->orLike('nama_pasien', $keyword)
