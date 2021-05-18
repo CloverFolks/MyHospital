@@ -48,7 +48,15 @@
                                 <td><?= $obat['jenis_obat']; ?></td>
                                 <td><?= $obat['produsen']; ?></td>
                                 <td>
-                                    <a href="<?= base_url('/obat/detail/' . $obat['id']); ?>" class="btn btn-success">Detail</a>
+                                    <div class="btn-group">
+                                        <a href="<?= base_url('/obat/detail/' . $obat['id']); ?>" class="btn btn-success btn-sm">Detail</a>
+                                        <button type="button" class="btn btn-sm btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="<?= base_url('/obat/edit/' . $obat['id']); ?>"><i data-feather="edit"></i> Edit data</a></li>
+                                            <li><button onclick="hapusObat(<?= $obat['id']; ?>)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalHapusObat"><i data-feather="trash-2"></i> Hapus data</button></li>
+                                        </ul>
+                                    </div>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -60,6 +68,33 @@
     </div>
 </div>
 
+<div class="modal fade" id="modalHapusObat" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Hapus</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Apakah yakin ingin menghapus data perawatan ini?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                <form id="formHapusObat" action="" method="POST" class="d-inline">
+                    <?= csrf_field(); ?>
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function hapusObat(id) {
+        $('#formHapusObat').attr('action', "<?= base_url('/obat/delete') ?>/" + id);
+    }
+</script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     $(document).ready(function() {
