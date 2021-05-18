@@ -49,7 +49,7 @@
                         <tr>
                             <td>Kode</td>
                             <td>
-                                <svg class="barcode" jsbarcode-format="ean13" jsbarcode-value="<?= $obat['kode']; ?>" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold">
+                                <svg class="barcode" jsbarcode-value="<?= $obat['kode']; ?>" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold">
                                 </svg>
                             </td>
                         </tr>
