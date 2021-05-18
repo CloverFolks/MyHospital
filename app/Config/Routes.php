@@ -32,8 +32,8 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Perawatan::index');
-$routes->get('/perawatan/detail/(:segment)', 'Perawatan::detail/$1');
-$routes->get('/perawatan/edit/(:segment)', 'Perawatan::edit/$1');
+$routes->get('/perawatan/detail/(:num)', 'Perawatan::detail/$1');
+$routes->get('/perawatan/edit/(:num)', 'Perawatan::edit/$1');
 
 $routes->get('/dokter', 'Dokter::index');
 $routes->get('/dokter/create/(:segment)', 'Dokter::create/$1');
