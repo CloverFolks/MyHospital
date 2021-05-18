@@ -46,7 +46,6 @@
                                     ?>
                                     <select name="poliklinik" class="form-select" required>
                                         <option value="" disabled>Pilih poliklinik</option>
-                                        <option value="Bedah">Bedah</option>
                                         <?php foreach ($poliklinik as $p) : ?>
                                             <option value="<?= $p; ?>" <?= ($p == $perawatan['poliklinik']) ? 'selected' : ''; ?>><?= $p; ?></option>
                                         <?php endforeach; ?>
