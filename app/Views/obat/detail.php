@@ -44,52 +44,52 @@
                 <table class="table">
                     <tbody>
                         <tr>
-                            <th rowspan="11" scope="row" width="200px">Data Obat</th>
+                            <th rowspan="11" scope="row" scope="row" width="200px">Data Obat</th>
                         </tr>
                         <tr>
-                            <td>Kode</td>
+                            <td width="150px">Kode</td>
                             <td>
                                 <svg class="barcode" jsbarcode-value="<?= $obat['kode']; ?>" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold">
                                 </svg>
                             </td>
                         </tr>
                         <tr>
-                            <td>Nama Obat</td>
+                            <td width="150px">Nama Obat</td>
                             <td><?= $obat['nama_obat']; ?></td>
                         </tr>
                         <tr>
-                            <td>Jenis Obat</td>
+                            <td width="150px">Jenis Obat</td>
                             <td><?= $obat['jenis_obat']; ?></td>
                         </tr>
                         <tr>
-                            <td>Label Obat</td>
+                            <td width="150px">Label Obat</td>
                             <td><?= $obat['label_obat']; ?></td>
                         </tr>
                         <tr>
-                            <td>Produsen</td>
+                            <td width="150px">Produsen</td>
                             <td><?= $obat['produsen']; ?></td>
                         </tr>
                         <tr>
-                            <td>Kategori</td>
+                            <td width="150px">Kategori</td>
                             <td><?= $obat['kategori']; ?></td>
                         </tr>
                         <tr>
-                            <td>Komposisi</td>
+                            <td width="150px">Komposisi</td>
                             <td><?= $obat['komposisi']; ?></td>
                         </tr>
                         <tr>
-                            <td>Nomor BPOM</td>
+                            <td width="150px">Nomor BPOM</td>
                             <td><?= $obat['no_bpom']; ?></td>
                         </tr>
                         <tr>
-                            <td>Aturan Pakai</td>
-                            <td>
-                                <p class="text-break"><?= $obat['aturan_pakai']; ?></p>
+                            <td width="150px">Aturan Pakai</td>
+                            <td style="padding-right: 100px;">
+                                <?= $obat['aturan_pakai']; ?>
                             </td>
                         </tr>
                         <tr>
-                            <td>Kontra Indikasi</td>
-                            <td>
+                            <td width="150px">Kontra Indikasi</td>
+                            <td style="padding-right: 100px;">
                                 <?= $obat['kontra_indikasi']; ?>
                             </td>
                         </tr>
