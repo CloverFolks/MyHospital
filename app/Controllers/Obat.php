@@ -45,7 +45,7 @@ class Obat extends BaseController
         $obat = $this->obatModel->getobat($id);
 
         $data = [
-            'title' => 'Detail Perawatan',
+            'title' => 'Detail Obat',
             'menu' => 'obat',
             'obat' => $obat
         ];

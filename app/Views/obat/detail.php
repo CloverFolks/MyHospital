@@ -44,7 +44,7 @@
                 <table class="table">
                     <tbody>
                         <tr>
-                            <th rowspan="11" scope="row">Data Obat</th>
+                            <th rowspan="11" scope="row" width="200px">Data Obat</th>
                         </tr>
                         <tr>
                             <td>Kode</td>
@@ -83,11 +83,15 @@
                         </tr>
                         <tr>
                             <td>Aturan Pakai</td>
-                            <td><?= $obat['aturan_pakai']; ?></td>
+                            <td>
+                                <p class="text-break"><?= $obat['aturan_pakai']; ?></p>
+                            </td>
                         </tr>
                         <tr>
                             <td>Kontra Indikasi</td>
-                            <td><?= $obat['kontra_indikasi']; ?></td>
+                            <td>
+                                <?= $obat['kontra_indikasi']; ?>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -98,5 +102,18 @@
 <script src="/js/jsbarcode.all.min.js"></script>
 <script>
     JsBarcode(".barcode").init();
+</script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $(document).ready(function() {
+        <?php if (session()->getFlashdata('pesan')) { ?>
+            swal({
+                title: "<?= session()->getFlashdata('pesan') ?>",
+                text: "<?= session()->getFlashdata('pesan_text') ?>",
+                icon: "<?= session()->getFlashdata('pesan_icon') ?>",
+            });
+        <?php } ?>
+    });
 </script>
 <?= $this->endSection(); ?>

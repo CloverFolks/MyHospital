@@ -59,4 +59,17 @@
         </div>
     </div>
 </div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $(document).ready(function() {
+        <?php if (session()->getFlashdata('pesan')) { ?>
+            swal({
+                title: "<?= session()->getFlashdata('pesan') ?>",
+                text: "<?= session()->getFlashdata('pesan_text') ?>",
+                icon: "<?= session()->getFlashdata('pesan_icon') ?>",
+            });
+        <?php } ?>
+    });
+</script>
 <?= $this->endSection(); ?>

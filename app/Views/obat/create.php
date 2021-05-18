@@ -35,7 +35,23 @@
                             <tr>
                                 <td>Jenis Obat</td>
                                 <td>
-                                    <input type="text" class="form-control <?= ($validation->hasError('jenis_obat')) ? 'is-invalid' : ''; ?>" id="jenis_obat" name="jenis_obat" value="<?= old('jenis_obat'); ?>" placeholder="e.g Pulvis">
+                                    <select name="jenis_obat" class="form-select <?= ($validation->hasError('jenis_obat')) ? 'is-invalid' : ''; ?>" id="jenis_obat" name="jenis_obat" value="<?= old('jenis_obat'); ?>">
+                                        <option value="" disabled selected>Pilih jenis obat</option>
+                                        <option value="Pulvis">Pulvis</option>
+                                        <option value="Pulveres">Pulveres</option>
+                                        <option value="Compressi">Compressi</option>
+                                        <option value="Solutiones">Solutiones</option>
+                                        <option value="Suspensiones">Suspensiones</option>
+                                        <option value="Elmusiones">Elmusiones</option>
+                                        <option value="Galenik">Galenik</option>
+                                        <option value="Extractum">Extractum</option>
+                                        <option value="Infusa">Infusa</option>
+                                        <option value="Immunosera">Immunosera</option>
+                                        <option value="Unguenta">Unguenta</option>
+                                        <option value="Suppositoria">Suppositoria</option>
+                                        <option value="Guttae">Guttae</option>
+                                        <option value="Injectiones">Injectiones</option>
+                                    </select>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('jenis_obat'); ?>
                                     </div>
@@ -71,10 +87,10 @@
                             <tr>
                                 <td>Kategori</td>
                                 <td>
-                                    <select name="kategori" class="form-select <?= ($validation->hasError('kategori')) ? 'is-invalid' : ''; ?>" id="kategori" name="kategori" value="<?= old('kategori'); ?>">
+                                    <select name="kategori" class="form-select <?= ($validation->hasError('kategori')) ? 'is-invalid' : ''; ?>" id="kategori" name="kategori">
                                         <option value="" disabled selected>Pilih kategori obat</option>
-                                        <option value="Vitamin dan Suplemen">Vitamin dan Suplemen</option>
-                                        <option value="Jantung">Jantung</option>
+                                        <option value="Vitamin dan Su<?= old('kategori'); ?>">Vitamin dan Suplemen</option>
+                                        <option value="<?= old('kategori'); ?>">Jantung</option>
                                         <option value="Batuk dan Flu">Batuk dan Flu</option>
                                         <option value="Saluran Pencernaan">Saluran Pencernaan</option>
                                         <option value="Demam">Demam</option>
@@ -110,16 +126,16 @@
                             <tr>
                                 <td>Aturan Pakai</td>
                                 <td>
-                                    <input type="text" class="form-control <?= ($validation->hasError('aturan_pakai')) ? 'is-invalid' : ''; ?>" id="aturan_pakai" name="aturan_pakai" value="<?= old('aturan_pakai'); ?>" placeholder="e.g Sesudah makan">
+                                    <textarea class="form-control <?= ($validation->hasError('aturan_pakai')) ? 'is-invalid' : ''; ?>" placeholder="Dikonsumsi setelah makan" id="aturan_pakai" name="aturan_pakai"><?= old('aturan_pakai'); ?></textarea>
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('tgl_kedaluwarsa'); ?>
+                                        <?= $validation->getError('aturan_pakai'); ?>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Kontra Indikasi</td>
                                 <td>
-                                    <input type="text" class="form-control <?= ($validation->hasError('kontra_indikasi')) ? 'is-invalid' : ''; ?>" id="kontra_indikasi" name="kontra_indikasi" value="<?= old('kontra_indikasi'); ?>" placeholder="e.g Tidak dianjurkan untuk pengidap hipertensi">
+                                    <textarea class="form-control <?= ($validation->hasError('kontra_indikasi')) ? 'is-invalid' : ''; ?>" placeholder="Tidak dianjurkan untuk pengidap hipertensi" id="kontra_indikasi" name="kontra_indikasi"><?= old('kontra_indikasi'); ?></textarea>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('kontra_indikasi'); ?>
                                     </div>
@@ -133,4 +149,17 @@
         </div>
     </div>
 </div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $(document).ready(function() {
+        <?php if (session()->getFlashdata('pesan')) { ?>
+            swal({
+                title: "<?= session()->getFlashdata('pesan') ?>",
+                text: "<?= session()->getFlashdata('pesan_text') ?>",
+                icon: "<?= session()->getFlashdata('pesan_icon') ?>",
+            });
+        <?php } ?>
+    });
+</script>
 <?= $this->endSection(); ?>
