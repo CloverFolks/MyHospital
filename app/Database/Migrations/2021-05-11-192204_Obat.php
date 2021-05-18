@@ -35,18 +35,34 @@ class Obat extends Migration
 				'type'			=> 'VARCHAR',
 				'constraint'	=> 50,
 			],
+			'kategori' => [
+				'type'			=> 'CHAR',
+				'constraint'	=> 50,
+			],
+			'komposisi' => [
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 50,
+			],
+			'aturan_pakai' => [
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 50,
+			],
+			'kontra_indikasi' => [
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 50,
+			],
 			'no_bpom' => [
 				'type'			=> 'VARCHAR',
 				'constraint'	=> 20,
 			],
-			'tgl_produksi' => [
-				'type'			=> 'DATE',
-				'constraint'	=> null,
-			],
-			'tgl_kedaluwarsa' => [
-				'type'			=> 'DATE',
-				'constraint'	=> null,
-			]
+			// 'tgl_produksi' => [
+			// 	'type'			=> 'DATE',
+			// 	'constraint'	=> null,
+			// ],
+			// 'tgl_kedaluwarsa' => [
+			// 	'type'			=> 'DATE',
+			// 	'constraint'	=> null,
+			// ]
 		]);
 		$this->forge->addKey('id', true);
 		$this->forge->createTable('obat');
