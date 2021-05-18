@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class PasienModel extends Model
 {
     protected $table = 'pasien';
-    protected $allowedFields = ['nik', 'image_profile', 'no_rekam_medis', 'nama_pasien', 'pekerjaan', 'no_hp', 'alamat', 'jenis_kelamin', 'golongan_darah', 'tgl_lahir'];
+    protected $allowedFields = ['nik', 'image_profile', 'no_rekam_medis', 'nama_pasien', 'pekerjaan', 'no_hp', 'alamat', 'jenis_kelamin', 'golongan_darah', 'tgl_lahir', 'status_menikah'];
 
     public function getPasien($id = false)
     {
@@ -18,15 +18,23 @@ class PasienModel extends Model
         }
     }
 
-    public function getFreshNik()
+    public function getFreshNoRekamMedis()
     {
         do {
-            $nik = "";
-            for ($i = 0; $i < 10; $i++) {
-                $nik .= mt_rand(0, 9);
+            $no_rekam_medis = "";
+            for ($i = 0; $i < 4; $i++) {
+                $no_rekam_medis .= mt_rand(0, 9);
             }
-        } while ($this->where(['nik' => $nik])->first());
-        return $nik;
+            $no_rekam_medis .= '-';
+            for ($i = 0; $i < 2; $i++) {
+                $no_rekam_medis .= mt_rand(0, 9);
+            }
+            $no_rekam_medis .= '-';
+            for ($i = 0; $i < 2; $i++) {
+                $no_rekam_medis .= mt_rand(0, 9);
+            }
+        } while ($this->where(['no_rekam_medis' => $no_rekam_medis])->first());
+        return $no_rekam_medis;
     }
 
     public function search($keyword)

@@ -24,7 +24,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="no_rekam_medis" class="form-label">No. Rekam Medis</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('no_rekam_medis')) ? 'is-invalid' : ''; ?>" id="no_rekam_medis" name="no_rekam_medis" value="<?= old('no_rekam_medis'); ?>" placeholder="0000-00-00">
+                    <input name="no_rekam_medis" type="hidden" value="<?= $no_rekam_medis; ?>">
+                    <input type="text" class="form-control <?= ($validation->hasError('no_rekam_medis')) ? 'is-invalid' : ''; ?>" id="no_rekam_medis" name="no_rekam_medis" placeholder="<?= $no_rekam_medis; ?>" disabled>
                     <div class="invalid-feedback">
                         <?= $validation->getError('no_rekam_medis'); ?>
                     </div>
@@ -66,21 +67,31 @@
                 </div>
                 <div class="mb-3">
                     <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : ''; ?>" id="jenis_kelamin" name="jenis_kelamin" value="<?= old('jenis_kelamin'); ?>" placeholder="laki-laki/perempuan">
-                    <div class="invalid-feedback">
-                        <?= $validation->getError('jenis_kelamin'); ?>
-                    </div>
+                    <select name="jenis_kelamin" class="form-select <?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : ''; ?>" aria-label="Default select example">
+                        <option value="" selected>Pilih jenis kelamin</option>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('jenis_kelamin'); ?>
+                        </div>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="status_menikah" class="form-label">Status Menikah</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('status_menikah')) ? 'is-invalid' : ''; ?>" id="status_menikah" name="status_menikah" value="<?= old('status_menikah'); ?>" placeholder="sudah menikah/belum menikah">
-                    <div class="invalid-feedback">
-                        <?= $validation->getError('status_menikah'); ?>
-                    </div>
+                    <select name="status_menikah" class="form-select <?= ($validation->hasError('status_menikah')) ? 'is-invalid' : ''; ?>" aria-label="Default select example">
+                        <option value="" selected>Pilih status menikah</option>
+                        <option value="Sudah Menikah">Sudah Menikah</option>
+                        <option value="Belum Menikah">Belum Menikah</option>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('status_menikah'); ?>
+                        </div>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="alamat" class="form-label">Alamat</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" value="<?= old('alamat'); ?>">
+                    <div class="form-floating">
+                        <textarea class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" placeholder="Leave a comment here" id="alamat" name="alamat"><?= old('alamat'); ?></textarea>
+                    </div>
                     <div class="invalid-feedback">
                         <?= $validation->getError('alamat'); ?>
                     </div>

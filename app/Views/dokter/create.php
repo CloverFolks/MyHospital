@@ -17,14 +17,16 @@
                 <?= csrf_field(); ?>
                 <div class="mb-3">
                     <label for="nik" class="form-label">NIK</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('nik')) ? 'is-invalid' : ''; ?>" id="nik" name="nik" value="<?= old('nik'); ?>">
+
+                    <input type="text" class="form-control <?= ($validation->hasError('nik')) ? 'is-invalid' : ''; ?>" id="nik" name="nik">
                     <div class="invalid-feedback">
                         <?= $validation->getError('nik'); ?>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="nip" class="form-label">NIP</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('nip')) ? 'is-invalid' : ''; ?>" id="nip" name="nip" value="<?= old('nip'); ?>">
+                    <input name="nip" type="hidden" value="<?= $nip; ?>">
+                    <input type="text" class="form-control <?= ($validation->hasError('nip')) ? 'is-invalid' : ''; ?>" id="nip" name="nip" placeholder="<?= $nip; ?>" disabled>
                     <div class="invalid-feedback">
                         <?= $validation->getError('nip'); ?>
                     </div>
@@ -45,14 +47,20 @@
                 </div>
                 <div class="mb-3">
                     <label for="alamat" class="form-label">Alamat</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" value="<?= old('alamat'); ?>">
+                    <div class="form-floating">
+                        <textarea class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" placeholder="Leave a comment here" id="alamat" name="alamat"><?= old('alamat'); ?></textarea>
+                    </div>
                     <div class="invalid-feedback">
                         <?= $validation->getError('alamat'); ?>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : ''; ?>" id="jenis_kelamin" name="jenis_kelamin" value="<?= old('jenis_kelamin'); ?>" placeholder="laki-laki/perempuan">
+                    <select name="jenis_kelamin" class="form-select <?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : ''; ?>" aria-label="Default select example">
+                        <option value="" selected>Pilih jenis kelamin</option>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                    </select>
                     <div class="invalid-feedback">
                         <?= $validation->getError('jenis_kelamin'); ?>
                     </div>

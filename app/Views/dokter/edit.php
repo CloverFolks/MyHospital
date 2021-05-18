@@ -15,6 +15,14 @@
         <div class="card p-4">
             <form action="/dokter/update/<?= $dokter['id']; ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
+                <input type="hidden" name="id" value="<?= $dokter['id']; ?>">
+                <?php $image = $dokter['image_profile'];
+                if ($image == '') {
+                    $image = 'default.jpg';
+                } else {
+                    $image = $dokter['image_profile'];
+                }
+                ?>
                 <input type="hidden" name="image_profile_lama" value="<?= $dokter['image_profile']; ?>">
                 <div class="mb-3">
                     <label for="nik" class="form-label">NIK</label>
@@ -46,17 +54,26 @@
                 </div>
                 <div class="mb-3">
                     <label for="alamat" class="form-label">Alamat</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" value="<?= (old('alamat')) ? old('alamat') : $dokter['alamat'] ?>">
+                    <div class="form-floating">
+                        <textarea class="form-control  <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" placeholder="Leave a comment here" id="alamat" name="alamat"><?= (old('alamat')) ? old('alamat') : $dokter['alamat'] ?></textarea>
+                    </div>
                     <div class="invalid-feedback">
                         <?= $validation->getError('alamat'); ?>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : ''; ?>" id="jenis_kelamin" name="jenis_kelamin" value="<?= (old('jenis_kelamin')) ? old('jenis_kelamin') : (($dokter['jenis_kelamin']) ? 'Laki-laki' : 'Perempuan'); ?>">
-                    <div class="invalid-feedback">
-                        <?= $validation->getError('jenis_kelamin'); ?>
-                    </div>
+                    <select name="jenis_kelamin" class="form-select <?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : ''; ?>" aria-label="Default select example">
+                        <option value="<?= (old('jenis_kelamin')) ? old('jenis_kelamin') : (($dokter['jenis_kelamin']) ? 'Laki-laki' : 'Perempuan'); ?>" selected><?= (old('jenis_kelamin')) ? old('jenis_kelamin') : (($dokter['jenis_kelamin']) ? 'Laki-laki' : 'Perempuan'); ?></option>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('jenis_kelamin'); ?>
+                        </div>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('jenis_kelamin'); ?>
+                        </div>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="izin_praktek" class="form-label">Izin Praktek</label>
@@ -82,7 +99,7 @@
                 <div class="mb-3">
                     <label for="image_profile" class="form-label">Foto Profile</label>
                     <div class="col-sm-2">
-                        <img src="/images/avatar/<?= $dokter['image_profile']; ?>" class="img-thumbnail img-preview">
+                        <img src="/images/avatar/<?= $image; ?>" class="img-thumbnail img-preview">
                     </div>
                     <div class="input-group mb-3">
                         <input type="file" class="form-control <?= ($validation->hasError('image_profile')) ? 'is-invalid' : ''; ?>" id="image_profile" name="image_profile" onchange="previewImg()">

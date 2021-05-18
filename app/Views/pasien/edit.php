@@ -15,6 +15,14 @@
         <div class="card p-4">
             <form action="/pasien/update/<?= $pasien['id']; ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
+                <input type="hidden" name="id" value="<?= $pasien['id']; ?>">
+                <?php $image = $pasien['image_profile'];
+                if ($image == '') {
+                    $image = 'default.jpg';
+                } else {
+                    $image = $pasien['image_profile'];
+                }
+                ?>
                 <input type="hidden" name="image_profile_lama" value="<?= $pasien['image_profile']; ?>">
                 <div class="mb-3">
                     <label for="nik" class="form-label">NIK</label>
@@ -53,7 +61,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="no_hp" class="form-label">No. Handphone</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('no_hp')) ? 'is-invalid' : ''; ?>" id="no_hp" name="no_hp" value="<?= (old('pekerjaan')) ? old('pekerjaan') : $pasien['pekerjaan'] ?>">
+                    <input type="text" class="form-control <?= ($validation->hasError('no_hp')) ? 'is-invalid' : ''; ?>" id="no_hp" name="no_hp" value="<?= (old('no_hp')) ? old('no_hp') : $pasien['no_hp'] ?>">
                     <div class="invalid-feedback">
                         <?= $validation->getError('no_hp'); ?>
                     </div>
@@ -67,21 +75,31 @@
                 </div>
                 <div class="mb-3">
                     <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : ''; ?>" id="jenis_kelamin" name="jenis_kelamin" value="<?= (old('jenis_kelamin')) ? old('jenis_kelamin') : (($pasien['jenis_kelamin']) ? 'Laki-laki' : 'Perempuan'); ?>">
-                    <div class="invalid-feedback">
-                        <?= $validation->getError('jenis_kelamin'); ?>
-                    </div>
+                    <select name="jenis_kelamin" class="form-select <?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : ''; ?>" aria-label="Default select example">
+                        <option value="<?= (old('jenis_kelamin')) ? old('jenis_kelamin') : (($pasien['jenis_kelamin']) ? 'Laki-laki' : 'Perempuan'); ?>" selected><?= (old('jenis_kelamin')) ? old('jenis_kelamin') : (($pasien['jenis_kelamin']) ? 'Laki-laki' : 'Perempuan'); ?></option>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('jenis_kelamin'); ?>
+                        </div>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="status_menikah" class="form-label">Status Menikah</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('status_menikah')) ? 'is-invalid' : ''; ?>" id="status_menikah" name="status_menikah" value="<?= (old('status_menikah')) ? old('status_menikah') : (($pasien['status_menikah']) ? 'Sudah Menikah' : 'Belum Menikah'); ?>">
-                    <div class="invalid-feedback">
-                        <?= $validation->getError('status_menikah'); ?>
-                    </div>
+                    <select name="status_menikah" class="form-select <?= ($validation->hasError('status_menikah')) ? 'is-invalid' : ''; ?>" aria-label="Default select example">
+                        <option value="<?= (old('status_menikah')) ? old('status_menikah') : (($pasien['status_menikah']) ? 'Sudah Menikah' : 'Belum Menikah'); ?>" selected><?= (old('status_menikah')) ? old('status_menikah') : (($pasien['status_menikah']) ? 'Sudah Menikah' : 'Belum Menikah'); ?></option>
+                        <option value="Sudah Menikah">Sudah Menikah</option>
+                        <option value="Belum Menikah">Belum Menikah</option>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('status_kelamin'); ?>
+                        </div>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="alamat" class="form-label">Alamat</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" value="<?= (old('alamat')) ? old('alamat') : $pasien['alamat'] ?>">
+                    <div class="form-floating">
+                        <textarea class="form-control  <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" placeholder="Leave a comment here" id="alamat" name="alamat"><?= (old('alamat')) ? old('alamat') : $pasien['alamat'] ?></textarea>
+                    </div>
                     <div class="invalid-feedback">
                         <?= $validation->getError('alamat'); ?>
                     </div>
@@ -89,7 +107,7 @@
                 <div class="mb-3">
                     <label for="image_profile" class="form-label">Foto Profile</label>
                     <div class="col-sm-2">
-                        <img src="/images/avatar/<?= $pasien['image_profile']; ?>" class="img-thumbnail img-preview">
+                        <img src="/images/avatar/<?= $image; ?>" class="img-thumbnail img-preview">
                     </div>
                     <div class="input-group mb-3">
                         <input type="file" class="form-control <?= ($validation->hasError('image_profile')) ? 'is-invalid' : ''; ?>" id="image_profile" name="image_profile" onchange="previewImg()" value="<?= old('image_profile'); ?>">

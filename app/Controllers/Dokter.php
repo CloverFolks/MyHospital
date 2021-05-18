@@ -46,7 +46,6 @@ class Dokter extends BaseController
             'title' => 'Tambah Dokter',
             'menu' => 'dokter',
             'validation' => \Config\Services::validation(),
-            'nik' => $this->dokterModel->getFreshNik(),
             'nip' => $this->dokterModel->getFreshNip(),
         ];
         return view('dokter/create', $data);
@@ -57,22 +56,24 @@ class Dokter extends BaseController
         //validation
         if (!$this->validate([
             'nik' => [
-                'rules' => 'required|is_unique[dokter.nik]|numeric|min_length[16]',
+                'rules' => 'required|is_unique[dokter.nik]|numeric|min_length[16]|max_length[16]',
                 'errors' => [
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
                     'numeric' => '{field} hanya boleh diisi angka',
-                    'min_length' => '{field} harus terdiri dari 16 angka'
+                    'min_length' => '{field} harus terdiri dari 16 angka',
+                    'max_length' => '{field} harus terdiri dari 16 angka'
 
                 ]
             ],
             'nip' => [
-                'rules' => 'required|is_unique[dokter.nip]|numeric|min_length[4]',
+                'rules' => 'required|is_unique[dokter.nip]|numeric|min_length[4]|max_length[4]',
                 'errors' => [
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
                     'numeric' => '{field} hanya boleh diisi angka',
-                    'min_length' => '{field} harus terdiri dari 18 angka'
+                    'min_length' => '{field} harus terdiri dari 18 angka',
+                    'max_length' => '{field} harus terdiri dari 18 angka'
 
                 ]
             ],
@@ -95,11 +96,12 @@ class Dokter extends BaseController
                 ]
             ],
             'izin_praktek' => [
-                'rules' => 'required|is_unique[dokter.izin_praktek]|min_length[18]',
+                'rules' => 'required|is_unique[dokter.izin_praktek]|min_length[18]|max_length[18]',
                 'errors' => [
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
-                    'min_length' => '{field} harus terdiri dari 18 karakter'
+                    'min_length' => '{field} harus terdiri dari 18 karakter',
+                    'max_length' => '{field} harus terdiri dari 18 karakter'
                 ]
             ],
             'tgl_mulai_bekerja' => [
@@ -136,10 +138,10 @@ class Dokter extends BaseController
 
         //ambil jenis kelamin
         $jeniskelamin = $this->request->getVar('jenis_kelamin');
-        if ($jeniskelamin == 'laki-laki') {
-            $jenis_kelamin = 0;
-        } else {
+        if ($jeniskelamin == 'Laki-laki') {
             $jenis_kelamin = 1;
+        } else {
+            $jenis_kelamin = 0;
         }
 
         $this->dokterModel->save([
@@ -154,7 +156,7 @@ class Dokter extends BaseController
             'tgl_mulai_bekerja' => $this->request->getVar('tgl_mulai_bekerja'),
             'no_hp' => $this->request->getVar('no_hp')
         ]);
-        session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
+
         return redirect()->to('/dokter/index');
     }
 
@@ -165,19 +167,18 @@ class Dokter extends BaseController
         $dokter = $this->dokterModel->find($id);
 
         // cek jika file gambarnya default.jpg
-        if ($dokter['image_profile'] != 'default.jpg') {
+        if ($dokter['image_profile'] != 'default.jpg' && $dokter['image_profile'] != '') {
             //hapus gambar
             unlink('images/avatar/' . $dokter['image_profile']);
         }
 
         $this->dokterModel->delete($id);
-        session()->setFlashdata('pesan', 'Data berhasil dihapus.');
+
         return redirect()->to('/dokter');
     }
 
     public function detail($id)
     {
-
         $dokter = $this->dokterModel->getDokter($id);
 
         $data = [
@@ -191,10 +192,13 @@ class Dokter extends BaseController
 
     public function edit($id)
     {
+
+        $dokter = $this->dokterModel->getDokter($id);
+
         $data = [
             'title' => 'Edit Data Dokter',
             'menu' => 'dokter',
-            'dokter' => $this->dokterModel->getDokter($id),
+            'dokter' => $dokter,
             'validation' => \Config\Services::validation()
         ];
 
@@ -203,25 +207,27 @@ class Dokter extends BaseController
 
     public function update($id)
     {
-        $dokterLama = $this->dokterModel->getDokter($id);
+
+        $dokterLama = $this->dokterModel->getDokter($this->request->getVar('id'));
+
         if ($dokterLama['nik'] == $this->request->getVar('nik')) {
-            $rule_nik = 'required|numeric|min_length[16]';
+            $rule_nik = 'required|numeric|min_length[16]|max_length[16]';
         } else {
-            $rule_nik = 'required|is_unique[dokter.nik]|numeric|min_length[16]';
+            $rule_nik = 'required|is_unique[dokter.nik]|numeric|min_length[16]|max_length[16]';
         };
 
-        // $nipLama = $this->dokterModel->getDokter($this->request->getVar('id'));
+
         if ($dokterLama['nip'] == $this->request->getVar('nip')) {
-            $rule_nip = 'required|numeric|min_length[4]';
+            $rule_nip = 'required|numeric|min_length[4]|max_length[4]';
         } else {
-            $rule_nip = 'required|is_unique[dokter.nip]|numeric|min_length[4]';
+            $rule_nip = 'required|is_unique[dokter.nip]|numeric|min_length[4]|max_length[4]';
         };
 
-        // $izin_praktekLama = $this->dokterModel->getDokter($this->request->getVar('id'));
+
         if ($dokterLama['izin_praktek'] == $this->request->getVar('izin_praktek')) {
-            $rule_izin_praktek = 'required|min_length[18]';
+            $rule_izin_praktek = 'required|min_length[18]|max_length[18]';
         } else {
-            $rule_izin_praktek = 'required|is_unique[dokter.izin_praktek]|min_length[18]';
+            $rule_izin_praktek = 'required|is_unique[dokter.izin_praktek]|min_length[18]|max_length[18]';
         };
 
 
@@ -233,7 +239,8 @@ class Dokter extends BaseController
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
                     'numeric' => '{field} hanya boleh diisi angka',
-                    'min_length' => '{field} harus terdiri dari 16 angka'
+                    'min_length' => '{field} harus terdiri dari 16 angka',
+                    'max_length' => '{field} harus terdiri dari 16 angka'
 
                 ]
             ],
@@ -243,7 +250,8 @@ class Dokter extends BaseController
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
                     'numeric' => '{field} hanya boleh diisi angka',
-                    'min_length' => '{field} harus terdiri dari 18 angka'
+                    'min_length' => '{field} harus terdiri dari 18 angka',
+                    'max_length' => '{field} harus terdiri dari 18 angka'
 
                 ]
             ],
@@ -270,7 +278,8 @@ class Dokter extends BaseController
                 'errors' => [
                     'required' => '{field} harus diisi',
                     'is_unique' => '{field} sudah terdaftar',
-                    'min_length' => '{field} harus terdiri dari 18 karakter'
+                    'min_length' => '{field} harus terdiri dari 18 karakter',
+                    'max_length' => '{field} harus terdiri dari 16 angka'
                 ]
             ],
             'tgl_mulai_bekerja' => [
@@ -290,28 +299,29 @@ class Dokter extends BaseController
             ]
 
         ])) {
-            return redirect()->to('/dokter/edit')->withInput();
+            return redirect()->to('/dokter/edit/' . $this->request->getVar('id'))->withInput();
         }
 
 
 
         $fileProfile = $this->request->getFile('image_profile');
 
-
         if ($fileProfile->getError() == 4) {
             $namaProfile = $this->request->getVar('image_profile_lama');
         } else {
             $namaProfile = $fileProfile->getRandomName();
             $fileProfile->move('images/avatar', $namaProfile);
-            unlink('images/avatar/' . $this->request->getVar['image_profile_lama']);
+            if ($this->request->getVar('image_profile_lama') != '') {
+                unlink('images/avatar/' . $this->request->getVar('image_profile_lama'));
+            }
         }
 
         //ambil jenis kelamin
         $jeniskelamin = $this->request->getVar('jenis_kelamin');
-        if ($jeniskelamin == 'laki-laki') {
-            $jenis_kelamin = 0;
-        } else {
+        if ($jeniskelamin == 'Laki-laki') {
             $jenis_kelamin = 1;
+        } else {
+            $jenis_kelamin = 0;
         }
 
         $this->dokterModel->save([
@@ -328,7 +338,7 @@ class Dokter extends BaseController
             'no_hp' => $this->request->getVar('no_hp')
         ]);
 
-        session()->setFlashdata('pesan', 'Data berhasil diubah');
+
 
         return redirect()->to('/dokter/index');
     }
