@@ -25,28 +25,35 @@ class Obat extends Migration
 			],
 			'jenis_obat' => [
 				'type'			=> 'VARCHAR',
-				'constraint'	=> 50,
+				'constraint'	=> 30,
 			],
 			'label_obat' => [
 				'type'			=> 'VARCHAR',
-				'constraint'	=> 50,
+				'constraint'	=> 20,
 			],
 			'produsen' => [
 				'type'			=> 'VARCHAR',
 				'constraint'	=> 50,
 			],
+			'kategori' => [
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 50,
+			],
+			'komposisi' => [
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 255,
+			],
+			'aturan_pakai' => [
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 255,
+			],
+			'kontra_indikasi' => [
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 255,
+			],
 			'no_bpom' => [
 				'type'			=> 'VARCHAR',
 				'constraint'	=> 20,
-			],
-			'tgl_produksi' => [
-				'type'			=> 'DATE',
-				'constraint'	=> null,
-			],
-			'tgl_kedaluwarsa' => [
-				'type'			=> 'DATE',
-				'constraint'	=> null,
-			],
 			'created_at' => [
 				'type' => 'DATETIME',
 				'null' => true
