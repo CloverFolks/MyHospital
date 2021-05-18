@@ -25,11 +25,11 @@ class Obat extends Migration
 			],
 			'jenis_obat' => [
 				'type'			=> 'VARCHAR',
-				'constraint'	=> 50,
+				'constraint'	=> 30,
 			],
 			'label_obat' => [
 				'type'			=> 'VARCHAR',
-				'constraint'	=> 50,
+				'constraint'	=> 20,
 			],
 			'produsen' => [
 				'type'			=> 'VARCHAR',
@@ -41,28 +41,20 @@ class Obat extends Migration
 			],
 			'komposisi' => [
 				'type'			=> 'VARCHAR',
-				'constraint'	=> 100,
+				'constraint'	=> 255,
 			],
 			'aturan_pakai' => [
 				'type'			=> 'VARCHAR',
-				'constraint'	=> 50,
+				'constraint'	=> 255,
 			],
 			'kontra_indikasi' => [
 				'type'			=> 'VARCHAR',
-				'constraint'	=> 100,
+				'constraint'	=> 255,
 			],
 			'no_bpom' => [
 				'type'			=> 'VARCHAR',
 				'constraint'	=> 20,
-			],
-			// 'tgl_produksi' => [
-			// 	'type'			=> 'DATE',
-			// 	'constraint'	=> null,
-			// ],
-			// 'tgl_kedaluwarsa' => [
-			// 	'type'			=> 'DATE',
-			// 	'constraint'	=> null,
-			// ]
+			]
 		]);
 		$this->forge->addKey('id', true);
 		$this->forge->createTable('obat');
