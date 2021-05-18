@@ -59,6 +59,18 @@ class Pasien extends Migration
 				'type' => 'BOOLEAN',
 				'constraint' => null,
 			],
+			'created_at' => [
+				'type' => 'DATETIME',
+				'null' => true
+			],
+			'updated_at' => [
+				'type' => 'DATETIME',
+				'null' => true
+			],
+			'deleted_at' => [
+				'type' => 'DATETIME',
+				'null' => true
+			]
 		]);
 		$this->forge->addKey('id', true);
 		$this->forge->createTable('pasien');

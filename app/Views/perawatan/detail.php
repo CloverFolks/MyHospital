@@ -13,12 +13,12 @@
         <div class="row mb-3">
             <div class="col">
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
                         <i data-feather="settings"></i>
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="<?= base_url('/perawatan/edit/' . $perawatan['id']); ?>"><i data-feather="edit"></i> Edit data</a></li>
-                        <li><a class="dropdown-item" href="#"><i data-feather="trash-2"></i> Hapus data</a></li>
+                        <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalHapusPerawatan"><i data-feather="trash-2"></i> Hapus data</button></li>
                     </ul>
                 </div>
             </div>
@@ -48,33 +48,40 @@
                         </tr>
 
                         <tr>
-                            <th rowspan="8" scope="row">Pasien</th>
+                            <th rowspan="8" scope="row">
+                                Pasien
+                                <br>
+                                <br>
+                                <a class="btn btn-outline-success" href="<?= base_url('/pasien/detail/' . $perawatan['id_pasien']); ?>" target="_blank">
+                                    <i data-feather="user"></i> Detail
+                                </a>
+                            </th>
                         </tr>
                         <tr>
                             <td>NIK</td>
-                            <td><?= $pasien['nik']; ?></td>
+                            <td><?= ($perawatan['nik']); ?></td>
                         </tr>
                         <tr>
                             <td>No. Rekam Medis</td>
-                            <td><?= $pasien['no_rekam_medis']; ?></td>
+                            <td><?= $perawatan['no_rekam_medis']; ?></td>
                         </tr>
                         <tr>
                             <td>Nama Lengkap</td>
-                            <td><?= $pasien['nama_pasien']; ?></td>
+                            <td><?= $perawatan['nama_pasien']; ?></td>
                         </tr>
                         <tr>
                             <td>Jenis Kelamin</td>
-                            <td><?= ($pasien['jenis_kelamin']) ? 'Laki-laki' : 'Perempuan'; ?></td>
+                            <td><?= ($perawatan['jenis_kelamin']) ? 'Laki-laki' : 'Perempuan'; ?></td>
                         </tr>
                         <tr>
                             <td>Golongan Darah</td>
-                            <td><?= $pasien['golongan_darah']; ?></td>
+                            <td><?= $perawatan['golongan_darah']; ?></td>
                         </tr>
                         <tr>
                             <td>Umur</td>
                             <td>
                                 <?php
-                                $dob = new DateTime($pasien['tgl_lahir']);
+                                $dob = new DateTime($perawatan['tgl_lahir']);
                                 $now = new DateTime();
                                 $umur = $now->diff($dob);
                                 echo $umur->y . ' tahun';
@@ -83,27 +90,34 @@
                         </tr>
                         <tr>
                             <td>Tanggal Lahir</td>
-                            <td><?= $pasien['tgl_lahir']; ?></td>
+                            <td><?= $perawatan['tgl_lahir']; ?></td>
                         </tr>
 
                         <tr>
-                            <th rowspan="5" scope="row">Dokter</th>
+                            <th rowspan="5" scope="row">
+                                Dokter
+                                <br>
+                                <br>
+                                <a class="btn btn-outline-success" href="<?= base_url('/dokter/detail/' . $perawatan['id_dokter']); ?>" target="_blank">
+                                    <i data-feather="user"></i> Detail
+                                </a>
+                            </th>
                         </tr>
                         <tr>
                             <td>NIP</td>
-                            <td><?= $dokter['nip']; ?></td>
+                            <td><?= $perawatan['nip']; ?></td>
                         </tr>
                         <tr>
                             <td>Nama Lengkap</td>
-                            <td><?= $dokter['nama']; ?></td>
+                            <td><?= $perawatan['nama']; ?></td>
                         </tr>
                         <tr>
                             <td>Izin Praktik</td>
-                            <td><?= $dokter['izin_praktek']; ?></td>
+                            <td><?= $perawatan['izin_praktek']; ?></td>
                         </tr>
                         <tr>
                             <td>No. HP</td>
-                            <td><?= $dokter['no_hp']; ?></td>
+                            <td><?= $perawatan['no_hp']; ?></td>
                         </tr>
                     </tbody>
                 </table>
@@ -120,9 +134,10 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Tanggal</th>
+                            <th scope="col">Dokter</th>
                             <th scope="col">Tindakan</th>
                             <th scope="col">Biaya</th>
-                            <th scope="col">Metode Pembayaran</th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -137,9 +152,19 @@
                             <tr>
                                 <th scope="row"><?= $i++; ?></th>
                                 <td><?= $tindakan['tanggal']; ?></td>
+                                <td><?= $tindakan['nama']; ?></td>
                                 <td><?= $tindakan['nama_tindakan']; ?></td>
                                 <td><?= 'Rp' . number_format($tindakan['biaya'], 0, ',', '.'); ?></td>
-                                <td><?= $tindakan['metode_pembayaran']; ?></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><button onclick="populateFormTindakan(<?= $tindakan['id']; ?>)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalEditRiwayatTindakan"><i data-feather="edit"></i> Edit</a></button></li>
+                                            <li><button type="button" onclick="hapusTindakan(<?= $tindakan['id']; ?>)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalHapusPemberianTindakan"><i data-feather="trash-2"></i> Hapus</button></li>
+                                        </ul>
+                                    </div>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -149,16 +174,16 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalTambahRiwayatTindakan" tabindex="-1">
+    <div class="modal fade" id="modalTambahRiwayatTindakan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Tambah data pemberian tindakan</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close btn-close-modal" data-bs-dismiss="modal"></button>
                 </div>
-                <form action="<?= base_url('/perawatan/savePemberianTindakan'); ?>" method="POST">
-                    <input type="hidden" name="tindakan_id_perawatan" value="<?= $perawatan['id']; ?>">
+                <form id="formTindakan" action="<?= base_url('/perawatan/savePemberianTindakan'); ?>" method="POST">
                     <?= csrf_field(); ?>
+                    <input id="tindakan-id" type="hidden" name="tindakan_id_perawatan" value="<?= $perawatan['id']; ?>">
                     <div class="modal-body">
                         <div class="form-floating mb-3">
                             <input name="tindakan_tanggal" type="date" class="form-control" id="formTindakanTanggal" placeholder="0" required>
@@ -190,7 +215,56 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-close-modal btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary"><i data-feather="save"></i> Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalEditRiwayatTindakan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit data pemberian tindakan</h5>
+                    <button type="button" class="btn-close btn-close-modal" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="formEditTindakan" action="" method="POST">
+                    <?= csrf_field(); ?>
+                    <input type="hidden" name="tindakan_id_perawatan" value="<?= $perawatan['id']; ?>">
+                    <div class="modal-body">
+                        <div class="form-floating mb-3">
+                            <input name="tindakan_tanggal" type="date" class="form-control" id="formEditTindakanTanggal" placeholder="0" required>
+                            <label for="formEditTindakanTanggal">Tanggal</label>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <input id="formEditTindakanDokterNip" type="number" class="form-control" placeholder="NIP Dokter" required>
+                            <button id="btn-search-dokter" class="btn btn-outline-secondary" type="button"><i data-feather="search"></i></button>
+                        </div>
+
+                        <input name="tindakan_id_dokter" id="formEditTindakanDokterId" class="visually-hidden" required>
+
+                        <input id="formEditTindakanDokterNama" type="text" class="form-control mb-3" placeholder="Nama dokter" disabled>
+
+                        <div class="form-floating mb-3">
+                            <textarea name="tindakan_nama" id="formEditTindakanNama" class="form-control" placeholder="Masukkan deskripsi tindakan" style="height: 100px" required></textarea>
+                            <label for="formEditTindakanNama">Tindakan</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input name="tindakan_biaya" type="number" class="form-control" id="formEditTindakanBiaya" placeholder="0" required>
+                            <label for="formEditTindakanBiaya">Biaya</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input name="tindakan_metode_pembayaran" type="text" class="form-control" id="formEditTindakanMetodePembayaran" placeholder="0" required>
+                            <label for="formEditTindakanMetodePembayaran">Metode Pembayaran</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-close-modal btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-primary"><i data-feather="save"></i> Simpan</button>
                     </div>
                 </form>
@@ -211,7 +285,7 @@
                             <th scope="col">Nama Obat</th>
                             <th scope="col">Kuantitas</th>
                             <th scope="col">Biaya</th>
-                            <th scope="col">Metode Pembayaran</th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -230,26 +304,35 @@
                                 <td><?= $obat['nama_obat']; ?></td>
                                 <td><?= $obat['kuantitas']; ?></td>
                                 <td><?= 'Rp' . number_format($obat['biaya'], 0, ',', '.'); ?></td>
-                                <td><?= $obat['metode_pembayaran']; ?></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><button onclick="populateFormPemberianObat(<?= $obat['id']; ?>)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalEditRiwayatObat"><i data-feather="edit"></i> Edit</a></button></li>
+                                            <li><button type="button" onclick="hapusPemberianObat(<?= $obat['id']; ?>)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalHapusPemberianObat"><i data-feather="trash-2"></i> Hapus</button></li>
+                                        </ul>
+                                    </div>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalTambahRiwayatObat"><i data-feather="plus-circle"></i> Tambah data</button>
+                <button id="btn-modal-tindakan" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalTambahRiwayatObat"><i data-feather="plus-circle"></i> Tambah data</button>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="modalTambahRiwayatObat" tabindex="-1">
+    <div class="modal fade" id="modalTambahRiwayatObat" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Tambah data pemberian obat</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close btn-close-modal" data-bs-dismiss="modal"></button>
                 </div>
-                <form action="<?= base_url('/perawatan/savePemberianObat'); ?>" method="POST">
-                    <input type="hidden" name="obat_id_perawatan" value="<?= $perawatan['id']; ?>">
+                <form id="formObat" action="<?= base_url('/perawatan/savePemberianObat'); ?>" method="POST">
                     <?= csrf_field(); ?>
+                    <input id="pemberian-obat-id" type="hidden" name="obat_id_perawatan" value="<?= $perawatan['id']; ?>">
                     <div class="modal-body">
                         <div class="form-floating mb-3">
                             <input name="obat_tanggal" type="date" class="form-control" id="formObatTanggal" placeholder="0" required>
@@ -281,7 +364,56 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-close-modal btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary"><i data-feather="save"></i> Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalEditRiwayatObat" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit data pemberian obat</h5>
+                    <button type="button" class="btn-close btn-close-modal" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="formEditPemberianObat" action="" method="POST">
+                    <?= csrf_field(); ?>
+                    <input type="hidden" name="obat_id_perawatan" value="<?= $perawatan['id']; ?>">
+                    <div class="modal-body">
+                        <div class="form-floating mb-3">
+                            <input name="obat_tanggal" type="date" class="form-control" id="formEditPemberianObatTanggal" placeholder="0" required>
+                            <label for="formEditPemberianObatTanggal">Tanggal</label>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <input id="formEditPemberianObatKodeObat" type="number" class="form-control" placeholder="Kode Obat" required>
+                            <button id="btn-search-obat" class="btn btn-outline-secondary" type="button"><i data-feather="search"></i></button>
+                        </div>
+
+                        <input name="obat_id_obat" id="formEditPemberianObatIdObat" class="visually-hidden" required>
+
+                        <input id="formEditPemberianObatNama" type="text" class="form-control mb-3" placeholder="Nama obat" disabled>
+
+                        <div class="form-floating mb-3">
+                            <input name="obat_kuantitas" type="number" class="form-control" id="formEditPemberianObatKuantitas" placeholder="0" required>
+                            <label for="formEditPemberianObatKuantitas">Kuantitas</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input name="obat_biaya" type="number" class="form-control" id="formEditPemberianObatBiaya" placeholder="0" required>
+                            <label for="formEditPemberianObatBiaya">Biaya</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input name="obat_metode_pembayaran" type="text" class="form-control" id="formEditPemberianObatMetodePembayaran" placeholder="0" required>
+                            <label for="formEditPemberianObatMetodePembayaran">Metode Pembayaran</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-close-modal btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-primary"><i data-feather="save"></i> Simpan</button>
                     </div>
                 </form>
@@ -289,6 +421,73 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modalHapusPerawatan" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Hapus</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Apakah yakin ingin menghapus data perawatan ini?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                <form action="<?= base_url('/perawatan/delete/' . $perawatan['id']); ?>" method="POST" class="d-inline">
+                    <?= csrf_field(); ?>
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalHapusPemberianTindakan" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Hapus</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Apakah yakin ingin menghapus data pemberian tindakan ini?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                <form action="<?= base_url('/perawatan/deletePemberianTindakan'); ?>" method="POST" class="d-inline">
+                    <?= csrf_field(); ?>
+                    <input id="formHapusPemberianTindakanId" type="hidden" name="id_tindakan" value="">
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalHapusPemberianObat" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Hapus</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Apakah yakin ingin menghapus data pemberian obat ini?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                <form action="<?= base_url('/perawatan/deletePemberianObat'); ?>" method="POST" class="d-inline">
+                    <?= csrf_field(); ?>
+                    <input id="formHapusPemberianObatId" type="hidden" name="id_pemberian_obat" value="">
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script>
     $("#btn-search-dokter").click(function() {
@@ -333,7 +532,6 @@
                     $("#obat-id").val(obat.id);
                     $("#obat-nama").val(obat.nama_obat);
                 } catch (error) {
-                    alert(error);
                     $("#obat-kode").addClass('is-invalid');
                     $("#obat-id").val('');
                     $("#obat-nama").val('Obat tidak ditemukan');
@@ -341,6 +539,72 @@
             }
         })
     });
+
+    function populateFormTindakan(id) {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('perawatan/findPemberianTindakanById'); ?>",
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            data: {
+                id: id
+            },
+            success: function(result) {
+                try {
+                    let tindakan = JSON.parse(result).tindakan;
+                    let dokter = JSON.parse(result).dokter;
+                    $('#formEditTindakan').attr('action', '<?= base_url('/perawatan/savePemberianTindakan'); ?>/' + tindakan.id);
+                    $('#formEditTindakanTanggal').val(tindakan.tanggal);
+                    $('#formEditTindakanDokterNip').val(dokter.nip);
+                    $('#formEditTindakanDokterId').val(dokter.id);
+                    $('#formEditTindakanDokterNama').val(dokter.nama);
+                    $('#formEditTindakanNama').val(tindakan.nama_tindakan);
+                    $('#formEditTindakanBiaya').val(tindakan.biaya);
+                    $('#formEditTindakanMetodePembayaran').val(tindakan.metode_pembayaran);
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        })
+    }
+
+    function populateFormPemberianObat(id) {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('perawatan/findPemberianObatById'); ?>",
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            data: {
+                id: id
+            },
+            success: function(result) {
+                try {
+                    let pemberianObat = JSON.parse(result).pemberianObat;
+                    let obat = JSON.parse(result).obat;
+                    $('#formEditPemberianObat').attr('action', '<?= base_url('/perawatan/savePemberianObat'); ?>/' + pemberianObat.id);
+                    $('#formEditPemberianObatTanggal').val(pemberianObat.tanggal);
+                    $('#formEditPemberianObatKodeObat').val(obat.kode);
+                    $('#formEditPemberianObatIdObat').val(pemberianObat.id_obat);
+                    $('#formEditPemberianObatNama').val(obat.nama_obat);
+                    $('#formEditPemberianObatKuantitas').val(pemberianObat.kuantitas);
+                    $('#formEditPemberianObatBiaya').val(pemberianObat.biaya);
+                    $('#formEditPemberianObatMetodePembayaran').val(pemberianObat.metode_pembayaran);
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        })
+    }
+
+    function hapusTindakan(id) {
+        $('#formHapusPemberianTindakanId').val(id);
+    }
+
+    function hapusPemberianObat(id) {
+        $('#formHapusPemberianObatId').val(id);
+    }
 </script>
 
 <?= $this->endSection(); ?>
