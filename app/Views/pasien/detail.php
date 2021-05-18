@@ -47,19 +47,9 @@
                 <table class="table">
                     <tbody>
                         <tr>
-                            <th rowspan="12" scope="row">Biodata pasien</th>
-                        </tr>
-                        <?php
-                        $image = $pasien['image_profile'];
-                        if ($image == '') {
-                            $image = 'default.jpg';
-                        } else {
-                            $image = $pasien['image_profile'];
-                        }
-
-                        ?>
-                        <tr>
-                            <td><img src="/images/avatar/<?= $image; ?>" alt="" class="image" style="width: 150px;"></td>
+                            <th rowspan="12" scope="row">
+                                <img src="/images/avatar/<?= ($pasien['image_profile']) ? $pasien['image_profile'] : 'default.jpg'; ?>" alt="" class="image img-thumbnail" width="200px">
+                            </th>
                         </tr>
                         <tr>
                             <td>NIK</td>
