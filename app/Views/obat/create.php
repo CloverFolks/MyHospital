@@ -53,15 +53,15 @@
                             <tr>
                                 <td>Label Obat</td>
                                 <td>
-                                    <select name="label_obat" class="form-select <?= ($validation->hasError('label_obat')) ? 'is-invalid' : ''; ?>" id="label_obat" name="label_obat" value="<?= old('label_obat'); ?>">
-                                        <option value="" disabled selected>Pilih label obat</option>
-                                        <option value="Herbal Tradisional">Herbal Tradisional</option>
-                                        <option value="Herbal Terstandar">Herbal Terstandar</option>
-                                        <option value="Fitofarmaka">Fitofarmaka</option>
-                                        <option value="Beredar Bebas">Beredar Bebas</option>
-                                        <option value="Bebas Terbatas">Bebas Terbatas</option>
-                                        <option value="Obat Keras">Obat Keras</option>
-                                        <option value="Narkotika">Narkotika</option>
+                                    <?php
+                                    $label_obat = array("Herbal Tradisional", "Herbal Terstandar", "Fitofarmaka", "Beredar Bebas", "Bebas Terbatas", "Obat Keras", "Narkotika");
+                                    ?>
+
+                                    <select name="label_obat" class="form-select <?= ($validation->hasError('label_obat')) ? 'is-invalid' : ''; ?>" id="label_obat" name="label_obat">
+                                        <option value="" disabled <?= old('label_obat') ? '' : 'selected'; ?>>Pilih jenis obat</option>
+                                        <?php foreach ($label_obat as $j) : ?>
+                                            <option value="<?= $j; ?>" <?= $j == (old('label_obat')) ? 'selected' : ''; ?>><?= $j; ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('label_obat'); ?>
@@ -80,18 +80,15 @@
                             <tr>
                                 <td>Kategori</td>
                                 <td>
+                                    <?php
+                                    $kategori = array("Vitamin dan Suplemen", "Jantung", "Batuk dan Flu", "Saluran Pencernaan", "Demam", "Tulang dan Sendi", "Alergi", "Antibiotik", "Mata", "Kulit");
+                                    ?>
+
                                     <select name="kategori" class="form-select <?= ($validation->hasError('kategori')) ? 'is-invalid' : ''; ?>" id="kategori" name="kategori">
-                                        <option value="" disabled selected>Pilih kategori obat</option>
-                                        <option value="Vitamin dan Su<?= old('kategori'); ?>">Vitamin dan Suplemen</option>
-                                        <option value="<?= old('kategori'); ?>">Jantung</option>
-                                        <option value="Batuk dan Flu">Batuk dan Flu</option>
-                                        <option value="Saluran Pencernaan">Saluran Pencernaan</option>
-                                        <option value="Demam">Demam</option>
-                                        <option value="Tulang dan Sendi">Tulang dan Sendi</option>
-                                        <option value="Alergi">Alergi</option>
-                                        <option value="Antibiotik">Antibiotik</option>
-                                        <option value="Mata">Mata</option>
-                                        <option value="Kulit">Kulit</option>
+                                        <option value="" disabled <?= old('kategori') ? '' : 'selected'; ?>>Pilih jenis obat</option>
+                                        <?php foreach ($kategori as $j) : ?>
+                                            <option value="<?= $j; ?>" <?= $j == (old('kategori')) ? 'selected' : ''; ?>><?= $j; ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('kategori'); ?>
