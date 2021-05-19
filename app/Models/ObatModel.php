@@ -35,6 +35,7 @@ class ObatModel extends Model
     {
         return $this
             ->table('obat')
+            ->where(['deleted_at' => null])
             ->like('kode', $keyword)
             ->orLike('nama_obat', $keyword)
             ->orLike('jenis_obat', $keyword)
