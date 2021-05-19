@@ -13,9 +13,9 @@ class PemberianObatSeeder extends Seeder
     public function run()
     {
         $faker = \Faker\Factory::create('id_ID');
-        for ($i = 0; $i < 300; $i++) {
+        for ($i = 0; $i < 350; $i++) {
             $data = [
-                'id_obat' => $faker->numberBetween(1, 20),
+                'id_obat' => $faker->numberBetween(1, 30),
                 'kuantitas' => $faker->numberBetween(1, 10),
                 'tanggal' => Time::createFromTimestamp($faker->numberBetween(1550000000, time())),
                 'id_registrasi_perawatan' => $faker->numberBetween(1, 100),

@@ -24,8 +24,8 @@ class RegistrasiPerawatanSeeder extends Seeder
                 'tgl_masuk'     => Time::createFromTimestamp($timeMasuk),
                 'tgl_keluar'    => Time::createFromTimestamp($timeKeluar),
                 'poliklinik'    => $faker->randomElement($poliklinik),
-                'id_dokter'     => $faker->numberBetween(1, 20),
-                'id_pasien'     => $faker->numberBetween(1, 20)
+                'id_dokter'     => $faker->numberBetween(1, 40),
+                'id_pasien'     => $faker->numberBetween(1, 100)
             ];
             $this->db->table('registrasi_perawatan')->insert($data);
         }
