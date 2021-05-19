@@ -22,11 +22,12 @@ php spark db:seed ObatSeeder
 php spark db:seed UsersSeeder
 ```
 
-6. Login with the following credential.
+6. Open `http://localhost:8080/` in your web browser.
+7. Login with the following credential.
 
 ```
 username : admin
 password : coolhand
 ```
 
-7. You are good to go.
+8. You are good to go.
