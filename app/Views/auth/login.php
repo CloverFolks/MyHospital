@@ -49,10 +49,7 @@
                                     </label>
                                 </div>
                             <?php endif; ?>
-
-                            <br>
-
-                            <button type="submit" class="btn btn-primary btn-block"><?= lang('Auth.loginAction') ?></button>
+                            <button type="submit" class="btn btn-primary btn-block mt-3"><?= lang('Auth.loginAction') ?></button>
                         </form>
 
                         <?php if ($config->allowRegistration) : ?>
@@ -63,10 +60,7 @@
                         <?php endif; ?>
                     </div>
                 </div>
-                <div class="col-md-6" style="
-                background-image: url('<?= base_url('/images/background/login.jpg'); ?>'); background-size:     cover;
-                background-repeat:   no-repeat;
-                background-position: center center; ">
+                <div class="auth-side-banner col-md-6">
                 </div>
             </div>
         </div>
