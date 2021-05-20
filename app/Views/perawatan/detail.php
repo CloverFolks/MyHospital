@@ -231,7 +231,7 @@
 
                         <div class="input-group mb-3">
                             <input id="formEditTindakanDokterNip" type="number" class="form-control" placeholder="NIP Dokter" required>
-                            <button id="btn-search-dokter" class="btn btn-outline-secondary" type="button"><i data-feather="search"></i></button>
+                            <button id="formEditTindakanBtnSearch" class="btn btn-outline-secondary" type="button"><i data-feather="search"></i></button>
                         </div>
 
                         <input name="tindakan_id_dokter" id="formEditTindakanDokterId" class="visually-hidden" required>
@@ -380,7 +380,7 @@
 
                         <div class="input-group mb-3">
                             <input id="formEditPemberianObatKodeObat" type="number" class="form-control" placeholder="Kode Obat" required>
-                            <button id="btn-search-obat" class="btn btn-outline-secondary" type="button"><i data-feather="search"></i></button>
+                            <button id="formEditPemberianObatBtnSearch" class="btn btn-outline-secondary" type="button"><i data-feather="search"></i></button>
                         </div>
 
                         <input name="obat_id_obat" id="formEditPemberianObatIdObat" class="visually-hidden" required>
@@ -505,6 +505,31 @@
         })
     });
 
+    $("#formEditTindakanBtnSearch").click(function() {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('perawatan/findDokterByNip'); ?>",
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            data: {
+                nip: $("#formEditTindakanDokterNip").val()
+            },
+            success: function(result) {
+                try {
+                    let dokter = JSON.parse(result);
+                    $("#formEditTindakanDokterNip").removeClass('is-invalid');
+                    $("#formEditTindakanDokterId").val(dokter.id);
+                    $("#formEditTindakanDokterNama").val(dokter.nama);
+                } catch (error) {
+                    $("#formEditTindakanDokterNip").addClass('is-invalid');
+                    $("#formEditTindakanDokterId").val('');
+                    $("#formEditTindakanDokterNama").val('Dokter tidak ditemukan');
+                }
+            }
+        })
+    });
+
     $("#btn-search-obat").click(function() {
         $.ajax({
             type: "POST",
@@ -525,6 +550,31 @@
                     $("#obat-kode").addClass('is-invalid');
                     $("#obat-id").val('');
                     $("#obat-nama").val('Obat tidak ditemukan');
+                }
+            }
+        })
+    });
+
+    $("#formEditPemberianObatBtnSearch").click(function() {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('perawatan/findObatByKode'); ?>",
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            data: {
+                kode: $("#formEditPemberianObatKodeObat").val()
+            },
+            success: function(result) {
+                try {
+                    let obat = JSON.parse(result);
+                    $("#formEditPemberianObatKodeObat").removeClass('is-invalid');
+                    $("#formEditPemberianObatIdObat").val(obat.id);
+                    $("#formEditPemberianObatNama").val(obat.nama_obat);
+                } catch (error) {
+                    $("#formEditPemberianObatKodeObat").addClass('is-invalid');
+                    $("#formEditPemberianObatIdObat").val('');
+                    $("#formEditPemberianObatNama").val('Obat tidak ditemukan');
                 }
             }
         })
