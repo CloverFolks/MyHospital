@@ -48,15 +48,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Jenis Obat</td>
-                                <td>
-                                    <input type="text" class="form-control <?= ($validation->hasError('jenis_obat')) ? 'is-invalid' : ''; ?>" id="jenis_obat" name="jenis_obat" value="<?= (old('jenis_obat')) ? old('jenis_obat') : $obat['jenis_obat'] ?>" placeholder="e.g Pulvis">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('jenis_obat'); ?>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>Label Obat</td>
                                 <td>
                                     <?php
