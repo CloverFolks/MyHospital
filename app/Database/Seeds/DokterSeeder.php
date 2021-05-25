@@ -34,6 +34,7 @@ class DokterSeeder extends Seeder
                 'izin_praktek' => strtoupper($faker->bothify('###/????/???/#/200#')),
                 'tgl_mulai_bekerja' => $faker->date('Y_m_d'),
                 'no_hp' => $faker->phoneNumber,
+                'gaji_dokter' => $faker->numerify('1##00000', true)
             ];
             $this->db->table('dokter')->insert($data);
         }

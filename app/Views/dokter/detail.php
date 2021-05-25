@@ -87,6 +87,10 @@
                             <td>Alamat</td>
                             <td><?= $dokter['alamat']; ?></td>
                         </tr>
+                        <tr>
+                            <td>Gaji Dokter</td>
+                            <td><?= $dokter['gaji_dokter']; ?></td>
+                        </tr>
 
                     </tbody>
                 </table>

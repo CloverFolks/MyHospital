@@ -20,7 +20,7 @@
                 <table class="table">
                     <tbody>
                         <tr>
-                            <th rowspan="11">
+                            <th rowspan="12">
                                 <img src="/images/avatar/<?= ($dokter['image_profile']) ? $dokter['image_profile'] : 'default.jpg'; ?>" class="img-thumbnail img-preview mb-3" width="200px">
                             </th>
                         </tr>
@@ -142,6 +142,17 @@
                                 <input type="text" class="form-control <?= ($validation->hasError('no_hp')) ? 'is-invalid' : ''; ?>" id="no_hp" name="no_hp" value="<?= (old('no_hp')) ? old('no_hp') : $dokter['no_hp'] ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('no_hp'); ?>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="gaji_dokter" class="form-label">Gaji Dokter</label>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control <?= ($validation->hasError('gaji_dokter')) ? 'is-invalid' : ''; ?>" id="gaji_dokter" name="gaji_dokter" value="<?= (old('gaji_dokter')) ? old('gaji_dokter') : $dokter['gaji_dokter'] ?>">
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('gaji_dokter'); ?>
                                 </div>
                             </td>
                         </tr>

@@ -59,6 +59,10 @@ class Dokter extends Migration
 				'type' => 'VARCHAR',
 				'constraint' => '20',
 			],
+			'gaji_dokter' => [
+				'type' => 'INT',
+				'constraint' => 11,
+			],
 			'created_at' => [
 				'type' => 'DATETIME',
 				'null' => true

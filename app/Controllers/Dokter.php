@@ -118,6 +118,13 @@ class Dokter extends BaseController
                     'mime_in' =>  'Yang anda pilih bukan gambar'
                 ]
 
+            ],
+            'gaji_dokter' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => '{field} harus diisi',
+                    'numeric' => '{field} harus diisi angka'
+                ]
             ]
 
         ])) {
@@ -154,7 +161,8 @@ class Dokter extends BaseController
             'image_profile' => $namaProfile,
             'izin_praktek' => $this->request->getVar('izin_praktek'),
             'tgl_mulai_bekerja' => $this->request->getVar('tgl_mulai_bekerja'),
-            'no_hp' => $this->request->getVar('no_hp')
+            'no_hp' => $this->request->getVar('no_hp'),
+            'gaji_dokter' => $this->request->getVar('gaji_dokter')
         ]);
 
         return redirect()->to('/dokter/index');
@@ -296,6 +304,13 @@ class Dokter extends BaseController
                     'mime_in' =>  'Yang anda pilih bukan gambar'
                 ]
 
+            ],
+            'gaji_dokter' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => '{field} harus diisi',
+                    'numeric' => '{field} harus diisi angka'
+                ]
             ]
 
         ])) {
@@ -335,7 +350,8 @@ class Dokter extends BaseController
             'image_profile' => $namaProfile,
             'izin_praktek' => $this->request->getVar('izin_praktek'),
             'tgl_mulai_bekerja' => $this->request->getVar('tgl_mulai_bekerja'),
-            'no_hp' => $this->request->getVar('no_hp')
+            'no_hp' => $this->request->getVar('no_hp'),
+            'gaji_dokter' => $this->request->getVar('gaji_dokter')
         ]);
 
 
