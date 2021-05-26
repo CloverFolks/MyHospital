@@ -60,7 +60,8 @@
                         <?php endif; ?>
                     </div>
                 </div>
-                <div class="auth-side-banner col-md-6">
+                <div class="col-md-6">
+                    <img src="/images/background/login.jpg" class="card-img" style="object-fit: cover;" height="100%">
                 </div>
             </div>
         </div>

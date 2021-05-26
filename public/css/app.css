@@ -1471,13 +1471,6 @@ footer {
   border: none;
 }
 
-.auth-side-banner {
-  background-image: url(../images/background/login.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
 #error {
   height: 100vh;
   width: 100%;
