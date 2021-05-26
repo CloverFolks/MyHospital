@@ -61,12 +61,12 @@ class ObatSeeder extends Seeder
                 'nama_obat' => $nama_obat[$i],
                 'jenis_obat' => $faker->randomElement($jenis_obat),
                 'label_obat' => $faker->randomElement($label_obat),
-                'produsen' => $faker->company(),
                 'kategori' => $faker->randomElement($kategori),
                 'komposisi' => $komposisi[$i],
                 'aturan_pakai' => $faker->randomElement($aturan_pakai),
                 'kontra_indikasi' => $faker->randomElement($kontra_indikasi),
-                'no_bpom' => $faker->bothify('??#########')
+                'no_bpom' => $faker->bothify('??#########'),
+                'id_produsen'     => $faker->numberBetween(1, 20),
             ];
             $this->db->table('obat')->insert($data);
         }

@@ -15,6 +15,10 @@ class Produsen extends Migration
 				'unsigned'       => true,
 				'auto_increment' => true,
 			],
+			'kode_produsen' => [
+				'type'       => 'CHAR',
+				'constraint' => 13,
+			],
 			'nama_produsen' => [
 				'type'			=> 'VARCHAR',
 				'constraint'	=> 50,

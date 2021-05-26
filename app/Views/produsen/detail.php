@@ -44,7 +44,11 @@
                 <table class="table">
                     <tbody>
                         <tr>
-                            <th rowspan="8" scope="row">Data Produsen</th>
+                            <th rowspan="9" scope="row">Data Produsen</th>
+                        </tr>
+                        <tr>
+                            <td>Kode Produsen</td>
+                            <td><?= $produsen['kode_produsen']; ?></td>
                         </tr>
                         <tr>
                             <td>Nama Produsen</td>
@@ -80,10 +84,6 @@
         </div>
     </div>
 </div>
-<script src="/js/jsbarcode.all.min.js"></script>
-<script>
-    JsBarcode(".barcode").init();
-</script>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>

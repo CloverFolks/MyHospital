@@ -69,15 +69,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Produsen</td>
-                                <td>
-                                    <input type="text" class="form-control <?= ($validation->hasError('produsen')) ? 'is-invalid' : ''; ?>" id="produsen" name="produsen" value="<?= old('produsen'); ?>" placeholder="e.g Kimia Farma">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('produsen'); ?>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>Kategori</td>
                                 <td>
                                     <?php

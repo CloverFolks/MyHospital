@@ -13,11 +13,34 @@ class ProdusenSeeder extends Seeder
     public function run()
     {
         $faker = \Faker\Factory::create('id_ID');
-        for ($i = 0; $i < 30; $i++) {
-            $nama_produsen = array("PT Kalbe Farma Tbk.", "PT Kimia Farma Tbk.", "PT Afifarma", "PT Bayer Indonesia Tbk", "PT Combiphar Farma", "PT Darya Varia Laboratoria", "PT Samco Farma", "PT Zenith Pharmaceutical", "PT Medifarma Laboratories", "PT Ifars Pharmaceutical & Lab");
 
+        $nama_produsen = array(
+            "PT Kalbe Farma Tbk.",
+            "PT Kimia Farma Tbk.",
+            "PT Afifarma",
+            "PT Bayer Indonesia Tbk",
+            "PT Combiphar Farma",
+            "PT Darya Varia Laboratoria",
+            "PT Samco Farma", "PT Zenith Pharmaceutical",
+            "PT Medifarma Laboratories",
+            "PT Ifars Pharmaceutical & Lab",
+            "PT Bio Farma",
+            "PT Nellco Indopharma",
+            "PT Phapros",
+            "PT Lapi Laboratories",
+            "PT Mersifarma Tirmaku Mercusana",
+            "PT Graha Farma",
+            "PT Henson Farma",
+            "PT Samco Farma",
+            "PT Combiphar Farma",
+            "PT Emba Megafarma",
+            "PT Errita Pharma"
+        );
+
+        for ($i = 0; $i < 20; $i++) {
             $data = [
-                'nama_produsen' => $faker->randomElement($nama_produsen),
+                'kode_produsen' => $faker->unique()->numerify('#######'),
+                'nama_produsen' => $nama_produsen[$i],
                 'alamat' => $faker->address(),
                 'tanggal_berdiri' => $faker->date('Y_m_d'),
                 'telepon' => $faker->phoneNumber,

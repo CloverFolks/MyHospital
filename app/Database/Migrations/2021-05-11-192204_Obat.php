@@ -31,10 +31,6 @@ class Obat extends Migration
 				'type'			=> 'VARCHAR',
 				'constraint'	=> 20,
 			],
-			'produsen' => [
-				'type'			=> 'VARCHAR',
-				'constraint'	=> 50,
-			],
 			'kategori' => [
 				'type'			=> 'VARCHAR',
 				'constraint'	=> 50,
@@ -54,6 +50,10 @@ class Obat extends Migration
 			'no_bpom' => [
 				'type'			=> 'VARCHAR',
 				'constraint'	=> 20,
+			],
+			'id_produsen' => [
+				'type'			=> 'INT',
+				'constraint'	=> '11',
 			],
 			'created_at' => [
 				'type' => 'DATETIME',

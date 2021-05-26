@@ -9,7 +9,7 @@ class ProdusenModel extends Model
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
     protected $table = 'produsen';
-    protected $allowedFields = ['nama_produsen', 'alamat', 'tanggal_berdiri', 'telepon', 'email', 'pabrik', 'website'];
+    protected $allowedFields = ['kode_produsen', 'nama_produsen', 'alamat', 'tanggal_berdiri', 'telepon', 'email', 'pabrik', 'website'];
 
     public function getProdusen($id = false)
     {

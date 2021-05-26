@@ -114,6 +114,7 @@ class Produsen extends BaseController
         }
 
         $this->produsenModel->save([
+            'kode_produsen' => $this->request->getVar('kode_produsen'),
             'nama_produsen' => $this->request->getVar('nama_produsen'),
             'alamat' => $this->request->getVar('alamat'),
             'tanggal_berdiri' => $this->request->getVar('tanggal_berdiri'),
@@ -202,6 +203,7 @@ class Produsen extends BaseController
 
         $this->produsenModel->save([
             'id' => $id,
+            'kode_produsen' => $this->request->getVar('kode_produsen'),
             'nama_produsen' => $this->request->getVar('nama_produsen'),
             'alamat' => $this->request->getVar('alamat'),
             'tanggal_berdiri' => $this->request->getVar('tanggal_berdiri'),

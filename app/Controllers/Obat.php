@@ -86,12 +86,6 @@ class Obat extends BaseController
                     'required' => 'Label obat harus diisi'
                 ],
             ],
-            'produsen' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Produsen obat harus diisi'
-                ],
-            ],
             'kategori' => [
                 'rules' => 'required',
                 'errors' => [
@@ -134,12 +128,12 @@ class Obat extends BaseController
             'nama_obat' => $this->request->getVar('nama_obat'),
             'jenis_obat' => $this->request->getVar('jenis_obat'),
             'label_obat' => $this->request->getVar('label_obat'),
-            'produsen' => $this->request->getVar('produsen'),
             'kategori' => $this->request->getVar('kategori'),
             'komposisi' => $this->request->getVar('komposisi'),
             'aturan_pakai' => $this->request->getVar('aturan_pakai'),
             'kontra_indikasi' => $this->request->getVar('kontra_indikasi'),
-            'no_bpom' => $this->request->getVar('no_bpom')
+            'no_bpom' => $this->request->getVar('no_bpom'),
+            'id_produsen' => $this->request->getVar('id_produsen')
         ]);
         session()->setFlashdata('pesan', 'Data Berhasil Ditambah');
         session()->setFlashdata('pesan_text', 'Anda berhasil menambah data baru, silakan tekan OK');
@@ -198,12 +192,6 @@ class Obat extends BaseController
                     'required' => 'Label obat harus diisi'
                 ],
             ],
-            'produsen' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Produsen obat harus diisi'
-                ],
-            ],
             'kategori' => [
                 'rules' => 'required',
                 'errors' => [
@@ -252,7 +240,8 @@ class Obat extends BaseController
             'komposisi' => $this->request->getVar('komposisi'),
             'aturan_pakai' => $this->request->getVar('aturan_pakai'),
             'kontra_indikasi' => $this->request->getVar('kontra_indikasi'),
-            'no_bpom' => $this->request->getVar('no_bpom')
+            'no_bpom' => $this->request->getVar('no_bpom'),
+            'id_produsen' => $this->request->getVar('id_produsen')
         ]);
         session()->setFlashdata('pesan', 'Data Berhasil Diubah');
         session()->setFlashdata('pesan_text', 'Anda berhasil mengubah data, silakan tekan OK');

@@ -95,6 +95,7 @@
         $('#formHapusProdusen').attr('action', "<?= base_url('/produsen/delete') ?>/" + id);
     }
 </script>
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     $(document).ready(function() {

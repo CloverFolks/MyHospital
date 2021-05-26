@@ -17,6 +17,13 @@
                     <table class="table">
                         <tbody>
                             <tr>
+                                <td>Kode Produsen</td>
+                                <td>
+                                    <input name="kode_produsen" type="hidden" value="<?= old('kode_produsen'); ?>">
+                                    <input type="text" class="form-control" placeholder="e.g KP-34567" autofocus>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>Nama Produsen</td>
                                 <td>
                                     <input type="text" class="form-control <?= ($validation->hasError('nama_produsen')) ? 'is-invalid' : ''; ?>" id="nama_produsen" name="nama_produsen" value="<?= old('nama_produsen'); ?>" autofocus placeholder="e.g PT Kimia Farma">
