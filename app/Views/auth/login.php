@@ -1,7 +1,7 @@
 <?= $this->extend($config->viewLayout) ?>
 <?= $this->section('main') ?>
 
-<div class="container mt-5">
+<div class="container pt-5">
     <div class="row">
         <div class="col-md-9 card p-0">
             <div class="row">
