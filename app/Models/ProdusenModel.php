@@ -20,6 +20,17 @@ class ProdusenModel extends Model
         }
     }
 
+    public function getFreshKode()
+    {
+        do {
+            $kode_produsen = "";
+            for ($i = 0; $i < 13; $i++) {
+                $kode_produsen .= mt_rand(0, 9);
+            }
+        } while ($this->where(['kode_produsen' => $kode_produsen])->first());
+        return $kode_produsen;
+    }
+
     public function search($keyword)
     {
         return $this

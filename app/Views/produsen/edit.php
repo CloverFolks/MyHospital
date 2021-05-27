@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row mx-3 mb-3">
         <div class="col">
-            <a class="btn mb-1" href="<?= base_url('/obat'); ?>"><i data-feather="arrow-left"></i> Kembali</a>
+            <a class="btn mb-1" href="<?= base_url('/produsen'); ?>"><i data-feather="arrow-left"></i> Kembali</a>
             <h1 class="inline"><?= $title; ?></h1>
         </div>
     </div>
@@ -65,6 +65,15 @@
                                     <input type="email" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" id="email" name="email" value="<?= (old('email')) ? old('email') : $produsen['email'] ?>" placeholder="e.g info@kable.id">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('email'); ?>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pabrik</td>
+                                <td>
+                                    <textarea type="text" class="form-control <?= ($validation->hasError('pabrik')) ? 'is-invalid' : ''; ?>" id="pabrik" name="pabrik" placeholder="e.g Jl. Agus Salim"><?= (old('pabrik')) ? old('pabrik') : $produsen['pabrik'] ?></textarea>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('pabrik'); ?>
                                     </div>
                                 </td>
                             </tr>

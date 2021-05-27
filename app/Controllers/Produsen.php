@@ -58,6 +58,7 @@ class Produsen extends BaseController
         $data = [
             'title' => 'Form Tambah Data Produsen',
             'menu' => 'produsen',
+            'kode_produsen' => $this->produsenModel->getFreshKode(),
             'validation' => \Config\Services::validation()
         ];
 

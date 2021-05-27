@@ -19,8 +19,8 @@
                             <tr>
                                 <td>Kode Produsen</td>
                                 <td>
-                                    <input name="kode_produsen" type="hidden" value="<?= old('kode_produsen'); ?>">
-                                    <input type="text" class="form-control" placeholder="e.g KP-34567" autofocus>
+                                    <input name="kode_produsen" type="hidden" value="<?= $kode_produsen ?>">
+                                    <input type="text" class="form-control" disabled placeholder="<?= $kode_produsen; ?>">
                                 </td>
                             </tr>
                             <tr>
