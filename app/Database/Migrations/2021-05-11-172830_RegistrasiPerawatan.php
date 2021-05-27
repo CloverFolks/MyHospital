@@ -28,6 +28,10 @@ class RegistrasiPerawatan extends Migration
 				'constraint' 	=> null,
 				'null'			=> true,
 			],
+			'inap' => [
+				'type' => 'BOOLEAN',
+				'constraint' => null,
+			],
 			'poliklinik' => [
 				'type'			=> 'VARCHAR',
 				'constraint' 	=> '50',

@@ -28,11 +28,15 @@
                 <table class="table">
                     <tbody>
                         <tr>
-                            <th rowspan="5" scope="row">Perawatan</th>
+                            <th rowspan="6" scope="row">Perawatan</th>
                         </tr>
                         <tr>
                             <td>No. Registrasi</td>
                             <td><?= $perawatan['no_registrasi']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Jenis Perawatan</td>
+                            <td><?= ($perawatan['inap']) ? 'Rawat Inap' : 'Rawat Jalan'; ?></td>
                         </tr>
                         <tr>
                             <td>Tanggal Masuk</td>

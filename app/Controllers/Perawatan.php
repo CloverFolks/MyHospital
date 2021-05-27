@@ -98,6 +98,7 @@ class Perawatan extends BaseController
     {
         $data = [
             'no_registrasi' => $this->request->getVar('no_registrasi'),
+            'inap' => $this->request->getVar('inap'),
             'tgl_masuk' => $this->request->getVar('tgl_masuk'),
             'tgl_keluar' => ($this->request->getVar('tgl_keluar')) ? $this->request->getVar('tgl_keluar') : null,
             'poliklinik' => $this->request->getVar('poliklinik'),
