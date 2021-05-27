@@ -17,7 +17,7 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th rowspan="5" scope="row">Perawatan</th>
+                                <th rowspan="6" scope="row">Perawatan</th>
                             </tr>
                             <tr>
                                 <td>No. Registrasi</td>
