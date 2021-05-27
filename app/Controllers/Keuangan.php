@@ -34,7 +34,7 @@ class Keuangan extends BaseController
         $startingNumber = 1 + $itemsCount * ($currentPage - 1);
 
         $data = [
-            'title' => 'Daftar Keuangan',
+            'title' => 'Laporan Keuangan',
             'menu' => 'keuangan',
             'keuanganList' => $keuangan->paginate($itemsCount, 'keuangan'),
             'pager' => $keuangan->pager,
@@ -43,5 +43,39 @@ class Keuangan extends BaseController
         ];
 
         return view('keuangan/index', $data);
+    }
+
+    public function saveLaporan($id = false)
+    {
+        $jenis = $this->request->getVar('jenis');
+        $keterangan = $this->request->getVar('keterangan');
+        $jumlah = $this->request->getVar('jumlah');
+
+        $jumlah = ($jenis == 'pemasukan') ? $jumlah : $jumlah * -1;
+
+        $data = [
+            'keterangan' => $keterangan,
+            'jumlah' => $jumlah
+        ];
+
+        if ($id) {
+            $data = array_merge(['id' => $id], $data);
+        }
+
+        $this->keuanganModel->save($data);
+        return redirect()->to('/keuangan');
+    }
+
+    public function findById()
+    {
+        $id = $this->request->getVar('id');
+        return json_encode($this->keuanganModel->find($id));
+    }
+
+    public function delete()
+    {
+        $id = $this->request->getVar('id');
+        $this->keuanganModel->delete($id);
+        return redirect()->to('/keuangan');
     }
 }
