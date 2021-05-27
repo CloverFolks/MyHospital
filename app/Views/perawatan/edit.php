@@ -27,6 +27,16 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td>Jenis Perawatan</td>
+                                <td>
+                                    <select name="inap" class="form-select" required>
+                                        <option value="" disabled>Pilihan</option>
+                                        <option value="1" <?= ($perawatan['inap']) ? "selected" : "" ?>>Rawat Inap</option>
+                                        <option value="0" <?= (!$perawatan['inap']) ? "selected" : "" ?>>Rawat Jalan</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>Tanggal Masuk</td>
                                 <td>
                                     <input name="tgl_masuk" value="<?= $perawatan['tgl_masuk']; ?>" type="date" class="form-control" required>
