@@ -31,10 +31,10 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">Kode Produsen</th>
                             <th scope="col">Nama Produsen</th>
                             <th scope="col">Telepon</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Website</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -43,10 +43,10 @@
                         <?php foreach ($produsenList as $produsen) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
+                                <td><?= $produsen['kode_produsen']; ?></td>
                                 <td><?= $produsen['nama_produsen']; ?></td>
                                 <td><?= $produsen['telepon']; ?></td>
                                 <td><?= $produsen['email']; ?></td>
-                                <td><?= $produsen['website']; ?></td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="<?= base_url('/produsen/detail/' . $produsen['id']); ?>" class="btn btn-success btn-sm">Detail</a>

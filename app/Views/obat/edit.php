@@ -18,6 +18,48 @@
                     <table class="table">
                         <tbody>
                             <tr>
+                                <th rowspan="5" scope="row">
+                                    Produsen
+                                    <br>
+                                    <br>
+                                    <a class="btn btn-outline-success" href="<?= base_url('/produsen/create'); ?>" target="_blank">
+                                        <i data-feather="user-plus"></i> Baru
+                                    </a>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>Kode Produsen</td>
+                                <td>
+                                    <div class="input-group">
+                                        <input id="produsen-kode" type="text" class="form-control" value="<?= $obat['kode_produsen']; ?>" autofocus required>
+                                        <button id="btn-search-produsen" class="btn btn-outline-secondary" type="button"><i data-feather="search"></i></button>
+                                    </div>
+                                    <input name="id_produsen" id="produsen-id" type="text" class="visually-hidden" value="<?= $obat['id_produsen']; ?>" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Nama Produsen</td>
+                                <td>
+                                    <input id="produsen-nama" type="text" class="form-control" value="<?= $obat['nama_produsen']; ?>" disabled required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Telepon</td>
+                                <td>
+                                    <input id="produsen-telepon" type="text" class="form-control" value="<?= $obat['telepon']; ?>" disabled required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>
+                                    <input id="produsen-email" type="text" class="form-control" value="<?= $obat['email']; ?>" disabled required>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th rowspan="10" scope="row">Obat</th>
+                            </tr>
+                            <tr>
                                 <td>Kode</td>
                                 <td>
                                     <input name="kode" type="hidden" value="<?= $obat['kode']; ?>">
@@ -59,15 +101,6 @@
                                             <option value="<?= $p; ?>" <?= ($p == $obat['label_obat']) ? 'selected' : ''; ?>><?= $p; ?></option>
                                         <?php endforeach; ?>
                                     </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Produsen</td>
-                                <td>
-                                    <input type="text" class="form-control <?= ($validation->hasError('produsen')) ? 'is-invalid' : ''; ?>" id="produsen" name="produsen" value="<?= (old('produsen')) ? old('produsen') : $obat['produsen'] ?>" placeholder="e.g Kimia Farma">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('produsen'); ?>
-                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -128,6 +161,37 @@
         </div>
     </div>
 </div>
+
+<script>
+    $("#btn-search-produsen").click(function() {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('obat/findProdusenByKode'); ?>",
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            data: {
+                kode_produsen: $("#produsen-kode").val()
+            },
+            success: function(result) {
+                try {
+                    let produsen = JSON.parse(result);
+                    $("#produsen-kode").removeClass('is-invalid');
+                    $("#produsen-id").val(produsen.id);
+                    $("#produsen-nama").val(produsen.nama_produsen);
+                    $("#produsen-telepon").val(produsen.telepon);
+                    $("#produsen-email").val(produsen.email);
+                } catch (error) {
+                    $("#produsen-kode").addClass('is-invalid');
+                    $("#produsen-id").val('');
+                    $("#produsen-nama").val('Nama produsen tidak ditemukan');
+                    $("#produsen-telepon").val('Nomor telepon tidak ditemukan');
+                    $("#produsen-email").val('Alamat email tidak ditemukan');
+                }
+            }
+        })
+    });
+</script>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>

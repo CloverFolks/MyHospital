@@ -3,14 +3,17 @@
 namespace App\Controllers;
 
 use App\Models\ObatModel;
+use App\Models\ProdusenModel;
 
 class Obat extends BaseController
 {
     protected $obatModel;
+    protected $produsenModel;
 
     public function __construct()
     {
         $this->obatModel = new ObatModel();
+        $this->produsenModel = new ProdusenModel();
     }
 
     public function index()
@@ -42,7 +45,7 @@ class Obat extends BaseController
 
     public function detail($id)
     {
-        $obat = $this->obatModel->getobat($id);
+        $obat = $this->obatModel->getDetailObat($id);
 
         $data = [
             'title' => 'Detail Obat',
@@ -154,10 +157,12 @@ class Obat extends BaseController
 
     public function edit($id)
     {
+        $obat = $this->obatModel->getDetailObat($id);
+
         $data = [
             'title' => 'Form Ubah Data Obat',
             'menu' => 'obat',
-            'obat' => $this->obatModel->getObat($id),
+            'obat' => $obat,
             'validation' => \Config\Services::validation()
         ];
 
@@ -247,5 +252,12 @@ class Obat extends BaseController
         session()->setFlashdata('pesan_text', 'Anda berhasil mengubah data, silakan tekan OK');
         session()->setFlashdata('pesan_icon', 'success');
         return redirect()->to('/obat/detail/' . $this->request->getVar('id'))->withInput();
+    }
+
+    public function findProdusenByKode()
+    {
+        $kode_produsen = $this->request->getVar('kode_produsen');
+        $result = json_encode($this->produsenModel->getProdusenByKode($kode_produsen));
+        return $result;
     }
 }

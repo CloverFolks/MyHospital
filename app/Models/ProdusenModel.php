@@ -41,4 +41,9 @@ class ProdusenModel extends Model
             ->orLike('email', $keyword)
             ->orLike('website', $keyword);
     }
+
+    public function getProdusenByKode($kode_produsen)
+    {
+        return $this->where(['kode_produsen' => $kode_produsen])->first();
+    }
 }

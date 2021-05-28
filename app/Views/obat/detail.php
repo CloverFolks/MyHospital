@@ -44,6 +44,27 @@
                 <table class="table">
                     <tbody>
                         <tr>
+                            <th rowspan="5" scope="row">Produsen</th>
+                        </tr>
+                        <tr>
+                            <td>Kode Produsen</td>
+                            <td><?= ($obat['kode_produsen']); ?></td>
+                        </tr>
+                        <tr>
+                            <td>Nama Produsen</td>
+                            <td><?= $obat['nama_produsen']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Telepon</td>
+                            <td><?= $obat['telepon']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><?= $obat['email']; ?></td>
+                        </tr>
+
+
+                        <tr>
                             <th rowspan="11" scope="row" scope="row" width="200px">Obat</th>
                         </tr>
                         <tr>
@@ -64,10 +85,6 @@
                         <tr>
                             <td width="150px">Label Obat</td>
                             <td><?= $obat['label_obat']; ?></td>
-                        </tr>
-                        <tr>
-                            <td width="150px">Produsen</td>
-                            <td><?= $obat['produsen']; ?></td>
                         </tr>
                         <tr>
                             <td width="150px">Kategori</td>
@@ -92,21 +109,6 @@
                             <td style="padding-right: 100px;">
                                 <?= $obat['kontra_indikasi']; ?>
                             </td>
-                        </tr>
-                        <tr>
-                            <th rowspan="4" scope="row">Produsen</th>
-                        </tr>
-                        <tr>
-                            <td>Kode Produsen</td>
-                            <td><?= $obat['kode_produsen']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Nama Produsen</td>
-                            <td><?= $obat['nama_produsen']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Telepon</td>
-                            <td><?= $obat['telepon']; ?></td>
                         </tr>
                     </tbody>
                 </table>
