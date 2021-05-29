@@ -21,6 +21,7 @@ php spark db:seed PemberianObatSeeder
 php spark db:seed ObatSeeder
 php spark db:seed UsersSeeder
 php spark db:seed KeuanganSeeder
+php spark db:seed ProdusenSeeder
 ```
 
 6. Open `http://localhost:8080/` in your web browser.
