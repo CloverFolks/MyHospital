@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Obat extends Migration
+class Produsen extends Migration
 {
 	public function up()
 	{
@@ -15,45 +15,37 @@ class Obat extends Migration
 				'unsigned'       => true,
 				'auto_increment' => true,
 			],
-			'kode' => [
+			'kode_produsen' => [
 				'type'       => 'CHAR',
 				'constraint' => 13,
 			],
-			'nama_obat' => [
+			'nama_produsen' => [
 				'type'			=> 'VARCHAR',
 				'constraint'	=> 50,
 			],
-			'jenis_obat' => [
-				'type'			=> 'VARCHAR',
-				'constraint'	=> 30,
-			],
-			'label_obat' => [
-				'type'			=> 'VARCHAR',
-				'constraint'	=> 20,
-			],
-			'kategori' => [
+			'alamat' => [
 				'type'			=> 'VARCHAR',
 				'constraint'	=> 50,
 			],
-			'komposisi' => [
-				'type'			=> 'VARCHAR',
-				'constraint'	=> 255,
+			'tanggal_berdiri' => [
+				'type'			=> 'DATE',
+				'constraint'	=> null,
 			],
-			'aturan_pakai' => [
-				'type'			=> 'VARCHAR',
-				'constraint'	=> 255,
-			],
-			'kontra_indikasi' => [
-				'type'			=> 'VARCHAR',
-				'constraint'	=> 255,
-			],
-			'no_bpom' => [
+			'telepon' => [
 				'type'			=> 'VARCHAR',
 				'constraint'	=> 20,
 			],
-			'id_produsen' => [
-				'type'			=> 'INT',
-				'constraint'	=> '11',
+			'email' => [
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 50,
+			],
+			'pabrik' => [
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 50,
+			],
+			'website' => [
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 50,
 			],
 			'created_at' => [
 				'type' => 'DATETIME',
@@ -69,11 +61,11 @@ class Obat extends Migration
 			]
 		]);
 		$this->forge->addKey('id', true);
-		$this->forge->createTable('obat');
+		$this->forge->createTable('produsen');
 	}
 
 	public function down()
 	{
-		$this->forge->dropTable('obat');
+		$this->forge->dropTable('produsen');
 	}
 }

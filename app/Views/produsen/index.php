@@ -6,7 +6,7 @@
         <div class="col">
             <h1><?= $title; ?></h1>
             <?php if ($keyword) : ?>
-                <p>Menampilkan <?= sizeOf($obatList); ?> hasil pencarian dengan kata kunci '<?= $keyword; ?>'. <a href="<?= base_url('/obat'); ?>">Reset pencarian.</a></p>
+                <p>Menampilkan <?= sizeOf($produsenList); ?> hasil pencarian dengan kata kunci '<?= $keyword; ?>'. <a href="<?= base_url('/produsen'); ?>">Reset pencarian.</a></p>
             <?php endif; ?>
         </div>
     </div>
@@ -14,7 +14,7 @@
     <div class="card px-4 py-3">
         <div class="row">
             <div class="col">
-                <a href="/obat/create" class="btn btn-primary mt-3"><i data-feather="plus"></i> Tambah data</a>
+                <a href="/produsen/create" class="btn btn-primary mt-3"><i data-feather="plus"></i> Tambah data</a>
             </div>
             <div class="col">
                 <form action="" method="GET">
@@ -31,30 +31,30 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Kode</th>
-                            <th scope="col">Nama Obat</th>
-                            <th scope="col">Jenis Obat</th>
-                            <th scope="col">Label Obat</th>
+                            <th scope="col">Kode Produsen</th>
+                            <th scope="col">Nama Produsen</th>
+                            <th scope="col">Telepon</th>
+                            <th scope="col">Email</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i = $startingNumber ?>
-                        <?php foreach ($obatList as $obat) : ?>
+                        <?php foreach ($produsenList as $produsen) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?= $obat['kode']; ?></td>
-                                <td><?= $obat['nama_obat']; ?></td>
-                                <td><?= $obat['jenis_obat']; ?></td>
-                                <td><?= $obat['label_obat']; ?></td>
+                                <td><?= $produsen['kode_produsen']; ?></td>
+                                <td><?= $produsen['nama_produsen']; ?></td>
+                                <td><?= $produsen['telepon']; ?></td>
+                                <td><?= $produsen['email']; ?></td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="<?= base_url('/obat/detail/' . $obat['id']); ?>" class="btn btn-success btn-sm">Detail</a>
+                                        <a href="<?= base_url('/produsen/detail/' . $produsen['id']); ?>" class="btn btn-success btn-sm">Detail</a>
                                         <button type="button" class="btn btn-sm btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="<?= base_url('/obat/edit/' . $obat['id']); ?>"><i data-feather="edit"></i> Edit data</a></li>
-                                            <li><button onclick="hapusObat(<?= $obat['id']; ?>)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalHapusObat"><i data-feather="trash-2"></i> Hapus data</button></li>
+                                            <li><a class="dropdown-item" href="<?= base_url('/produsen/edit/' . $produsen['id']); ?>"><i data-feather="edit"></i> Edit data</a></li>
+                                            <li><button onclick="hapusProdusen(<?= $produsen['id']; ?>)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalHapusProdusen"><i data-feather="trash-2"></i> Hapus data</button></li>
                                         </ul>
                                     </div>
                                 </td>
@@ -62,13 +62,13 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-                <?= $pager->links('obat', 'custom_simple'); ?>
+                <?= $pager->links('produsen', 'custom_simple'); ?>
             </div>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="modalHapusObat" tabindex="-1">
+<div class="modal fade" id="modalHapusProdusen" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -76,11 +76,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Apakah yakin ingin menghapus data obat ini?</p>
+                <p>Apakah yakin ingin menghapus data produsen ini?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
-                <form id="formHapusObat" action="" method="POST" class="d-inline">
+                <form id="formHapusProdusen" action="" method="POST" class="d-inline">
                     <?= csrf_field(); ?>
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btn btn-danger">Hapus</button>
@@ -91,10 +91,11 @@
 </div>
 
 <script>
-    function hapusObat(id) {
-        $('#formHapusObat').attr('action', "<?= base_url('/obat/delete') ?>/" + id);
+    function hapusProdusen(id) {
+        $('#formHapusProdusen').attr('action', "<?= base_url('/produsen/delete') ?>/" + id);
     }
 </script>
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     $(document).ready(function() {

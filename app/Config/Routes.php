@@ -45,6 +45,16 @@ $routes->get('/pasien', 'Pasien::index');
 $routes->get('/pasien/create/(:segment)', 'Pasien::create/$1');
 $routes->get('/pasien/detail/(:segment)', 'Pasien::detail/$1');
 $routes->get('/pasien/edit/(:segment)', 'Pasien::edit/$1');
+
+$routes->get('/obat', 'obat::index');
+$routes->get('/obat/create/(:segment)', 'obat::create/$1');
+$routes->get('/obat/detail/(:segment)', 'obat::detail/$1');
+$routes->get('/obat/edit/(:segment)', 'obat::edit/$1');
+
+$routes->get('/produsen', 'produsen::index');
+$routes->get('/produsen/create/(:segment)', 'produsen::create/$1');
+$routes->get('/produsen/detail/(:segment)', 'produsen::detail/$1');
+$routes->get('/produsen/edit/(:segment)', 'produsen::edit/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

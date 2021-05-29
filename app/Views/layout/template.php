@@ -83,6 +83,19 @@
                             </ul>
                         </li>
 
+                        <li class="sidebar-item has-sub <?= ($menu == 'produsen') ? 'active' : ''; ?>">
+                            <a href="#" class="sidebar-link">
+                                <i data-feather="truck" width="20"></i>
+                                <span>Produsen</span>
+                            </a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="<?= base_url('/produsen'); ?>">Lihat Daftar Produsen</a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url('/produsen/create'); ?>">Tambah Data Produsen</a>
+                                </li>
+                            </ul>
                         <li class="sidebar-item <?= ($menu == 'keuangan') ? 'active' : ''; ?>">
                             <a href="<?= base_url('/keuangan'); ?>" class="sidebar-link">
                                 <i data-feather="dollar-sign" width="20"></i>
