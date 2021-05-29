@@ -96,6 +96,11 @@
                                     <a href="<?= base_url('/produsen/create'); ?>">Tambah Data Produsen</a>
                                 </li>
                             </ul>
+                        <li class="sidebar-item <?= ($menu == 'keuangan') ? 'active' : ''; ?>">
+                            <a href="<?= base_url('/keuangan'); ?>" class="sidebar-link">
+                                <i data-feather="dollar-sign" width="20"></i>
+                                <span>Keuangan</span>
+                            </a>
                         </li>
                     </ul>
                 </div>

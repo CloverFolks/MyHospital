@@ -17,7 +17,7 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th rowspan="5" scope="row">Perawatan</th>
+                                <th rowspan="6" scope="row">Perawatan</th>
                             </tr>
                             <tr>
                                 <td>No. Registrasi</td>
@@ -26,6 +26,17 @@
                                     <input type="text" class="form-control" placeholder="<?= $noRegistrasi; ?>" disabled>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>Jenis Perawatan</td>
+                                <td>
+                                    <select name="inap" class="form-select" required>
+                                        <option value="" disabled selected>Pilihan</option>
+                                        <option value="1">Rawat Inap</option>
+                                        <option value="0">Rawat Jalan</option>
+                                    </select>
+                                </td>
+                            </tr>
+
                             <tr>
                                 <td>Tanggal Masuk</td>
                                 <td>
@@ -42,7 +53,7 @@
                                 <td>Poliklinik</td>
                                 <td>
                                     <select name="poliklinik" class="form-select" required>
-                                        <option value="" disabled selected>Pilih poliklinik</option>
+                                        <option value="" disabled selected>Pilihan</option>
                                         <option value="Bedah">Bedah</option>
                                         <option value="Penyakit Dalam">Penyakit Dalam</option>
                                         <option value="Obstetri dan Ginekologi">Obstetri dan Ginekologi</option>

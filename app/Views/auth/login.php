@@ -1,7 +1,7 @@
 <?= $this->extend($config->viewLayout) ?>
 <?= $this->section('main') ?>
 
-<div class="container mt-5">
+<div class="container pt-5">
     <div class="row">
         <div class="col-md-9 card p-0">
             <div class="row">
@@ -60,7 +60,8 @@
                         <?php endif; ?>
                     </div>
                 </div>
-                <div class="auth-side-banner col-md-6">
+                <div class="col-md-6">
+                    <img src="/images/background/login.jpg" class="card-img" style="object-fit: cover;" height="100%">
                 </div>
             </div>
         </div>

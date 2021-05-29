@@ -17,13 +17,23 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th rowspan="5" scope="row">Perawatan</th>
+                                <th rowspan="6" scope="row">Perawatan</th>
                             </tr>
                             <tr>
                                 <td>No. Registrasi</td>
                                 <td>
                                     <input name="no_registrasi" value="<?= $perawatan['no_registrasi']; ?>" type="hidden">
                                     <input type="text" placeholder="<?= $perawatan['no_registrasi']; ?>" class="form-control" disabled>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Jenis Perawatan</td>
+                                <td>
+                                    <select name="inap" class="form-select" required>
+                                        <option value="" disabled>Pilihan</option>
+                                        <option value="1" <?= ($perawatan['inap']) ? "selected" : "" ?>>Rawat Inap</option>
+                                        <option value="0" <?= (!$perawatan['inap']) ? "selected" : "" ?>>Rawat Jalan</option>
+                                    </select>
                                 </td>
                             </tr>
                             <tr>

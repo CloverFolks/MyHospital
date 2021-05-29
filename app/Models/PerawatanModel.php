@@ -9,7 +9,7 @@ class PerawatanModel extends Model
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
     protected $table = 'registrasi_perawatan';
-    protected $allowedFields = ['no_registrasi', 'tgl_masuk', 'tgl_keluar', 'poliklinik', 'id_dokter', 'id_pasien'];
+    protected $allowedFields = ['no_registrasi', 'tgl_masuk', 'tgl_keluar', 'inap', 'poliklinik', 'id_dokter', 'id_pasien'];
 
     public function getPerawatan($id = false)
     {
