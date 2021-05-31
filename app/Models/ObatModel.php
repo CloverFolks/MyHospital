@@ -50,6 +50,6 @@ class ObatModel extends Model
             ->like('kode', $keyword)
             ->orLike('nama_obat', $keyword)
             ->orLike('jenis_obat', $keyword)
-            ->orLike('produsen', $keyword);
+            ->orLike('label_obat', $keyword);
     }
 }
