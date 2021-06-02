@@ -10,7 +10,7 @@ class UsersSeeder extends Seeder
     {
         $data = [
             'id' => 1,
-            'email' => 'admin@myhospital.com',
+            'email' => 'clover.cloverr1@gmail.com',
             'username' => 'admin',
             'password_hash' => '$2y$10$.eQGB2gKbq9OUgOeYfwVI.sVOjdEwZtXz8gyQGB7Tnknobm1GBsL2',
             'reset_hash' => null,
