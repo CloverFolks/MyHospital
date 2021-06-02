@@ -8,7 +8,7 @@
 
                 <div class="col-md-6">
                     <h4 class="mt-5 mx-4"><?= lang('Auth.loginTitle') ?></h4>
-                    <div class="card-body mb-5">
+                    <div class="card-body">
 
                         <?= view('Myth\Auth\Views\_message_block') ?>
 
@@ -55,8 +55,9 @@
                         <?php if ($config->allowRegistration) : ?>
                             <p><a href="<?= route_to('register') ?>"><?= lang('Auth.needAnAccount') ?></a></p>
                         <?php endif; ?>
+
                         <?php if ($config->activeResetter) : ?>
-                            <p><a href="<?= route_to('forgot') ?>"><?= lang('Auth.forgotYourPassword') ?></a></p>
+                            <p class="mt-3"><a href="<?= route_to('forgot') ?>"><?= lang('Auth.forgotYourPassword') ?></a></p>
                         <?php endif; ?>
                     </div>
                 </div>
