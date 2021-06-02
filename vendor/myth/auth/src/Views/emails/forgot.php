@@ -1,4 +1,4 @@
-<p>Someone requested a password reset at this email address for <?= base_url() ?>.</p>
+<p>Someone requested a password reset at this email address for MyHospital.</p>
 
 <p>To reset the password use this code or URL and follow the instructions.</p>
 
