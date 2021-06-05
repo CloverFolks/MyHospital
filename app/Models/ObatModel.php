@@ -52,4 +52,9 @@ class ObatModel extends Model
             ->orLike('jenis_obat', $keyword)
             ->orLike('label_obat', $keyword);
     }
+
+    public function getObatByKode($kode)
+    {
+        return $this->where(['kode' => $kode])->first();
+    }
 }
