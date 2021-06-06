@@ -35,7 +35,7 @@
                             <th scope="col">No. Registrasi</th>
                             <th scope="col">Poliklinik</th>
                             <th scope="col">Tanggal Masuk</th>
-                            <th scope="col">Tanggal Keluar</th>
+                            <th scope="col">Jenis Perawatan</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -47,7 +47,7 @@
                                 <td><?= $perawatan['no_registrasi']; ?></td>
                                 <td><?= $perawatan['poliklinik']; ?></td>
                                 <td><?= $perawatan['tgl_masuk']; ?></td>
-                                <td><?= ($perawatan['tgl_keluar']) ? $perawatan['tgl_keluar'] : '-'; ?></td>
+                                <td><?= ($perawatan['inap']) ? 'Rawat Inap' : 'Rawat Jalan'; ?></td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="<?= base_url('/perawatan/detail/' . $perawatan['id']); ?>" class="btn btn-success btn-sm">Detail</a>
