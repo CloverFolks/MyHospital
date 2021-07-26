@@ -3,6 +3,8 @@
 Web based hospital management system.
 Designed by Clover 🍀
 
+![Preview](https://i.imgur.com/blEm0JE.png)
+
 ## Setup
 
 1. Clone repo.
